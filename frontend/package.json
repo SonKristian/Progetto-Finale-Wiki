@@ -10,9 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.11.16",
+    "@mui/material": "^5.13.5",
+    "flat-carousel": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.13.0"
+    "react-router-dom": "^6.13.0",
+    "swiper": "^9.4.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.37",

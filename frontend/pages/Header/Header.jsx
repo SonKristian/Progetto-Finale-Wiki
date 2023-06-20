@@ -1,6 +1,6 @@
 import HeaderDown from "./HeaderDown"
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
+import "./header.css"
 
 const Header = () => {
 //   async function searchProducts(searchContent) { 
@@ -16,8 +16,8 @@ const Header = () => {
     <header >
         <nav className="bg-slate-950">
             <div className="flex items-center">
-            <a href="https://www.amazon.it">
-            <img src=".\src\assets\logo.png" alt="logo" className="w-[70px] m-[2rem]"/>
+            <a href="">
+            <img src="./img/logoSpotlight.svg" alt="logo" className="w-[70px] m-[2rem]"/>
           </a>
             </div>
             <div className="search-icon-bar "> 
@@ -33,7 +33,7 @@ const Header = () => {
           </a>
         </div>
         <div className="cart">
-        <button className="btn-container" type="button"><ShoppingCartIcon /></button>
+        <button className="btn-container" type="button">Dark Mode</button>
         </div>
         </nav>
         <HeaderDown />

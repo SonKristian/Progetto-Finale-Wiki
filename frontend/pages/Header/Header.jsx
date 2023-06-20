@@ -1,6 +1,5 @@
-import HeaderDown from "./HeaderDown"
+// import HeaderDown from "./HeaderDown"
 import SearchIcon from '@mui/icons-material/Search';
-import "./header.css"
 
 const Header = () => {
 //   async function searchProducts(searchContent) { 
@@ -13,7 +12,7 @@ const Header = () => {
 // }
 
   return (
-    <header >
+    <header>
         <nav className="bg-slate-950">
             <div className="flex items-center">
             <a href="">
@@ -36,7 +35,6 @@ const Header = () => {
         <button className="btn-container" type="button">Dark Mode</button>
         </div>
         </nav>
-        <HeaderDown />
     </header>
 
   )

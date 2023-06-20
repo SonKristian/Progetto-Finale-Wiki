@@ -1,5 +1,5 @@
-import Carousel from "../Main/Carousel.jsx"
-import Header from "../Header/Header.jsx"
+import Carousel from "../main/Carousel.jsx"
+import Header from "../header/Header.jsx"
 
 const Home = () => {
   return (

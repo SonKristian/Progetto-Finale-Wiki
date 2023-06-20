@@ -1,14 +1,19 @@
-import './index.css'
+import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import  Home  from "../pages/home/Home.jsx";
+
+import Home from "./components/Main/Home";
+import Cards from "./components/Main/Cards"
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Cards />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

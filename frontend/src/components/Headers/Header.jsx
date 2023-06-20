@@ -1,5 +1,6 @@
-// import HeaderDown from "./HeaderDown"
+import HeaderDown from "./HeaderDown"
 import SearchIcon from '@mui/icons-material/Search';
+import "./header.css"
 
 const Header = () => {
 //   async function searchProducts(searchContent) { 
@@ -11,17 +12,22 @@ const Header = () => {
 //   return data.products; 
 // }
 
+// async function handleSearch() {  
+//   const products = await searchProducts(search); 
+//   // Search(products);
+// }
+
   return (
-    <header>
+    <header >
         <nav className="bg-slate-950">
             <div className="flex items-center">
-            <a href="">
-            <img src="./img/logoSpotlight.svg" alt="logo" className="w-[70px] m-[2rem]"/>
+            <a href="https://www.amazon.it">
+            <img src=".\src\assets\logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
           </a>
             </div>
-            <div className="search-icon-bar "> 
-                <input type="search" id="searchbar" placeholder="Search for your product" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]"/>
-                <button className="btn-container" type="button"><SearchIcon /></button>
+            <div className="search-icon-bar ">
+                <input type="search" id="searchbar" placeholder="Search for your product" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" />
+                <button className="btn-container" type="button" > <SearchIcon /> </button>
             </div>
               <div className="form">
           <a href="login.html">
@@ -32,9 +38,10 @@ const Header = () => {
           </a>
         </div>
         <div className="cart">
-        <button className="btn-container" type="button">Dark Mode</button>
+        <button className="btn-container" type="button"> Dark Mode </button>
         </div>
         </nav>
+        <HeaderDown />
     </header>
 
   )

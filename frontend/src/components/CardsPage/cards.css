@@ -1,5 +1,6 @@
-  .card {
-    width: 100px;
+  .card-home {
+    min-width: 100px;
+    max-width: 150px;
     background-color: #ff0033;
     margin: 1rem;
     display: flex;

@@ -9,6 +9,7 @@
 
 .close{
     left: -100%;
+    transition: 900ms;
   }
   
   ul {

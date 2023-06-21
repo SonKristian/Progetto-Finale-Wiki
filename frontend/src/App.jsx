@@ -1,19 +1,15 @@
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Home from "./components/Main/Home";
-import Cards from "./components/Main/Cards"
+// import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Header from "./components/Headers/Header.jsx";
+// import Sidebar from "./components/Main/Sidebar.jsx";
+// import Footer from "./components/Footers/Footer.jsx";
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/" element={<Cards />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <Header />
+      {/* <Footer /> */}
+    </>
   );
 }
 

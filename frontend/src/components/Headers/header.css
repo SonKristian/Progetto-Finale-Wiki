@@ -79,7 +79,7 @@
   }
   
   .btn-container{
-    background-color: orangered !important;
+    background-color: #ff0033 !important;
     border: none;
     border-radius: 5px;
     height: 40px;
@@ -93,7 +93,7 @@
 
   .btn-container-form{
     color: white;
-    background-color: orangered !important;
+    background-color: #ff0033 !important;
     border: none;
     border-radius: 5px;
     height: 40px;

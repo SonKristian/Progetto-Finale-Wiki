@@ -1,8 +1,7 @@
 // import Cards from "./Cards";
 // import { useEffect , useState } from "react"
 import Carousel from "../Carousel/Carousel.jsx"
-import Footer from "../Footers/Footer";
-import Header from "../Headers/Header";
+// import Footer from "../Footers/Footer.jsx";
 
 const Home = () => {
     // const [products, setProduct] = useState([])
@@ -24,11 +23,7 @@ const Home = () => {
     //         <Cards key={index} product={product}/>
     //       ))}
     // </div
-    <>
-    <Header />
-    <Carousel />
-    <Footer />
-    </>
+    <Carousel /> 
   );
 };
 

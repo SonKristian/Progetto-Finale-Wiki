@@ -1,0 +1,30 @@
+  .card {
+    width: 100px;
+    background-color: #ff0033;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: flex-end;
+    border: 1px solid black;
+    border-radius: 5px ;
+  }
+  
+  .card > h2{
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .card > p{
+    font-weight: bold;
+  }
+  
+  .card:hover{
+    opacity: 90%;
+    cursor: pointer;
+  }
+  
+  .card img {
+    width: 200px;
+    height: 200px;
+  }
+  

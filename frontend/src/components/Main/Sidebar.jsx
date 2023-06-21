@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Home.jsx";
-import Cards from "./Cards.jsx";
+import Cards from "../CardsPage/Cards.jsx";
 import "./sidebar.css"
 
 function Sidebar({active}) {

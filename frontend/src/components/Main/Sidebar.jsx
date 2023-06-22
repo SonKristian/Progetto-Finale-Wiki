@@ -1,6 +1,6 @@
 import { Routes, Route, Link } from "react-router-dom";
 import Home from "./Home.jsx";
-import Cards from "../CardsPage/Cards.jsx";
+import CardsPage from "../CardsPage/CardsPage.jsx";
 import "./sidebar.css"
 
 function Sidebar({active}) {
@@ -15,14 +15,14 @@ function Sidebar({active}) {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/cards">Cards</Link>
+              <Link to="/cards">CardsPage</Link>
             </li>
           </ul>
       </div>
     </div>
        <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/cards" element={<Cards />} />
+          <Route path="/cards" element={<CardsPage />} />
         </Routes>
     </div>
   );

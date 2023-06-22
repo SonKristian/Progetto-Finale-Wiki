@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import "./header.css"
 import { useState } from "react"
 import Sidebar from "../Main/Sidebar.jsx"
+
 const Header = () => {
 //   async function searchProducts(searchContent) { 
 //   const response = await fetch(

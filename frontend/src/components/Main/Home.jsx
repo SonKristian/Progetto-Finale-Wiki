@@ -28,11 +28,11 @@ const Home = () => {
     <>
       <Carousel />
       <div className="card-container">
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
-        <Cards />
+        <Cards size="small" />
+        <Cards size="small"/>
+        <Cards size="small"/>
+        <Cards size="small"/>
+        <Cards size="small"/>
         {/* {products.map((product, index) => (
           <Cards key={index} product={product} />
         ))} */}

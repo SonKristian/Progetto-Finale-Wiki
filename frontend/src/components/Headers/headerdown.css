@@ -1,11 +1,29 @@
 .open{
   display: flex;
-  justify-content: center;
-  position: fixed;
-  transition: 850ms;
+  cursor: none;
+  opacity: 1;
+  transition: opacity 500ms ease-out;
+}
+
+#submenu {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+}
+
+li:hover{
+  opacity: 70%;
+}
+
+#submenu li a {
+  color: white;
+  text-decoration: none;
+  padding: 1rem;
 }
 
 .close{
-  left: 0;
-  transition: 350ms;
+  display: none;
+  opacity: 0;
+  transition: opacity 500ms ease-out;
 }
+

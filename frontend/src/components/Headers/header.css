@@ -1,26 +1,9 @@
-
-  nav {
-    display: flex;
-    justify-content: space-between;
-    height: 60px;
-  }
-  
-  nav div {
-    display: flex;
-  }
-  
-  nav div img {
-    width: 100px;
-    margin: 1rem;
-  }
-  
   #searchbar {
     width: 600px;
     border-radius: 5px;
     height: 40px;
     margin: 0.4rem;
   }
-
   
   .dark-mode {
     display: flex;
@@ -64,11 +47,6 @@
     margin: -0.4rem;
     text-decoration: none;
   }
-  
-  li:hover{
-      opacity: 70%;
-      cursor: pointer;
-    }
     
     .form {
       padding: 1rem;

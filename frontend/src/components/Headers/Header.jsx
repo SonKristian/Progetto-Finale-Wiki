@@ -20,7 +20,7 @@ const Header = () => {
 //   // Search(products);
 // }
 
-const [active, setActive] = useState(false)
+const [active, setActive] = useState(true)
 const toggleBar = () => {
     setActive(!active)
     // console.log(active)
@@ -28,7 +28,7 @@ const toggleBar = () => {
 
   return (
     <header >
-        <nav className="bg-slate-100">
+        <nav className="bg-slate-100 h-[60px] flex justify-between">
           <div className="ml-5 flex items-center">
             <Link to="#" onClick={toggleBar}>
             <MenuIcon />

@@ -3,7 +3,6 @@
 import Carousel from "../Carousel/Carousel.jsx";
 // import Footer from "../Footers/Footer.jsx";
 import Cards from "../CardsPage/Cards.jsx";
-import "./home.css"
 
 const Home = () => {
   // const [products, setProduct] = useState([])
@@ -27,8 +26,10 @@ const Home = () => {
     // </div
     <>
       <Carousel />
-      <div className="card-container">
+      <div className="flex justify-center items-center mt-[2rem] text-[20px]">
         <h2>Personaggi in evidenza</h2>
+        </div>
+      <div className="card-container">
         <Cards size="small" />
         <Cards size="small"/>
         <Cards size="small"/>

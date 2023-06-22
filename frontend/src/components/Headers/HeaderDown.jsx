@@ -15,10 +15,10 @@ const HeaderDown = ({active}) => {
   //   getCategories(); 
   // }, [])
   return (
-    <nav className={active ? "close" : "open"}>
-      {console.log(active)}
-        <div id="header-down" className="bg-slate-800 text-white">
-         <ul id="subemenu" className="gap-7">
+    <nav className="bg-slate-800 mb-7 text-white h-[30px] flex items-center justify-center">
+      {/* {console.log(active)} */}
+        <div className={active ? "open" : "close"}>
+         <ul id="submenu">
          <li>
               <Link to="/">Home</Link>
             </li>

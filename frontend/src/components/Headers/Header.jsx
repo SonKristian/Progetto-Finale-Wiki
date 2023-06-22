@@ -1,10 +1,9 @@
-// import HeaderDown from "./HeaderDown"
+import HeaderDown from "./HeaderDown"
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./header.css"
 import { useState } from "react"
-import Sidebar from "../Main/Sidebar.jsx"
 
 const Header = () => {
 //   async function searchProducts(searchContent) { 
@@ -29,7 +28,7 @@ const toggleBar = () => {
 
   return (
     <header >
-        <nav className="bg-slate-100 mb-5">
+        <nav className="bg-slate-100">
           <div className="ml-5 flex items-center">
             <Link to="#" onClick={toggleBar}>
             <MenuIcon />
@@ -41,10 +40,10 @@ const toggleBar = () => {
             </Link>
             </div>
             <div className="search-icon-bar ">
-                <input type="search" id="searchbar" placeholder="Search for your product" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" />
+                <input type="search" id="searchbar" placeholder="     Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" />
                 <button className="btn-container" type="button" > <SearchIcon /> </button>
             </div>
-            <div className="cart">
+            <div className="dark-mode">
               <button className="btn-container" type="button"> Dark Mode </button>
             </div>
               <div className="form">
@@ -56,9 +55,9 @@ const toggleBar = () => {
           </a>
         </div>
         </nav>
-        {/* <HeaderDown /> */}
-        <Sidebar active={active}/>
+        <HeaderDown active={active} />
     </header>
+    
   )
 }
 

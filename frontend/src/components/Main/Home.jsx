@@ -28,6 +28,7 @@ const Home = () => {
     <>
       <Carousel />
       <div className="card-container">
+        <h2>Personaggi in evidenza</h2>
         <Cards size="small" />
         <Cards size="small"/>
         <Cards size="small"/>

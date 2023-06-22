@@ -4,7 +4,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const CardsPage = () => {
   return (
-    <main className="flex justify-around gap-5 mx-5 back bg-slate-400">
+    <div className="flex justify-around width-[100%] back bg-slate-400">
         {/* left */}
         <div className="ml-5">
         <Cards size="big" />
@@ -31,7 +31,7 @@ const CardsPage = () => {
                             </button>
                         </div>
                     </div>
-    </main>
+    </div>
   )
 }
 

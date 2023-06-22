@@ -1,27 +1,30 @@
-import { useState, useEffect } from "react"
+import { Link } from "react-router-dom";
+import "./headerdown.css"
 
-const HeaderDown = () => {
-  const [categories, setCategories] = useState([]); 
+const HeaderDown = ({active}) => {
+  // const [categories, setCategories] = useState([]); 
 
-  useEffect(() => {
-    async function getCategories() {
-      const response = await fetch("https://dummyjson.com/products/categories");  
-      const data = await response.json();
-      const categoriesSliced = data.slice(0, 10);
-      setCategories(categoriesSliced); 
-    }
+  // useEffect(() => {
+  //   async function getCategories() {
+  //     const response = await fetch("https://dummyjson.com/products/categories");  
+  //     const data = await response.json();
+  //     const categoriesSliced = data.slice(0, 10);
+  //     setCategories(categoriesSliced); 
+  //   }
 
-    getCategories(); 
-  }, [])
+  //   getCategories(); 
+  // }, [])
   return (
-    <nav >
-        <div id="header-down" className="bg-slate-800 0 text-white">
-         <ul id="submenu" className="gap-7">
-          {categories.map((category, index) => (
-            <li key={index} className="mr-4 hover:underline cursor-pointer">
-              {category.toUpperCase()}
+    <nav className={active ? "close" : "open"}>
+      {console.log(active)}
+        <div id="header-down" className="bg-slate-800 text-white">
+         <ul id="subemenu" className="gap-7">
+         <li>
+              <Link to="/">Home</Link>
             </li>
-          ))}
+            <li>
+              <Link to="/cards">CardsPage</Link>
+            </li>
         </ul>
       </div>
       </nav>

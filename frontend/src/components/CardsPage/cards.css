@@ -8,7 +8,7 @@
     flex-direction: column;
     align-content: flex-end;
     border: 1px solid black;
-    border-radius: 10px ;
+    border-radius: 18px ;
   }
   
   .small-card > h2{
@@ -42,7 +42,7 @@
     flex-direction: column;
     align-content: flex-end;
     border: 1px solid black;
-    border-radius: 10px ;
+    border-radius: 36px ;
   }
   
   .big-card > h2{
@@ -60,7 +60,7 @@
   }
   
   .big-card img {
-    border-radius: 10px;
+    border-radius: 20px;
     width: 400px;
     height: 470px;
   }

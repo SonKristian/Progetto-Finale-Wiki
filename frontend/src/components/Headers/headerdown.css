@@ -1,0 +1,11 @@
+.open{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  transition: 850ms;
+}
+
+.close{
+  left: 0;
+  transition: 350ms;
+}

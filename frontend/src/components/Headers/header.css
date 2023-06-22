@@ -1,9 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Open Sans", sans-serif;
-  }
-  
+
   nav {
     display: flex;
     justify-content: space-between;
@@ -25,34 +20,9 @@
     height: 40px;
     margin: 0.4rem;
   }
+
   
-  #header-down {
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  ul {
-    display: flex;
-    list-style-type: none;
-    align-items: center;
-  }
-  
-  ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 1rem;
-  }
-  
-  .form {
-    padding: 1rem;
-  }
-  
-  .form button {
-    margin-right: 2rem;
-  }
-  
-  .cart {
+  .dark-mode {
     display: flex;
     align-items: center;
     margin: 1rem;
@@ -62,14 +32,7 @@
     opacity: 80%;
     cursor: pointer;
   }
-  
-  #submenu > li:hover {
-    opacity: 70%;
-    cursor: pointer;
-    border: white 2px solid;
-  }
-  
-  
+
   .search-icon-bar{
     display: flex;
     justify-content: flex-start;
@@ -107,57 +70,10 @@
       cursor: pointer;
     }
     
-  main {
-    display: flex;
-  }
-  
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  main > div:nth-child(2) {
-    width: 30%;
-  }
-  
-  .card {
-    min-width: 200px;
-    max-width: 250px;
-    background-color: beige;
-    margin: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-content: flex-end;
-    border: 1px solid black;
-    border-radius: 5px ;
-  }
-  
-  .card > h2{
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .card > p{
-    font-weight: bold;
-  }
-  
-  .card:hover{
-    opacity: 70%;
-    cursor: pointer;
-  }
-  
-  .card img {
-    width: 200px;
-    height: 200px;
-  }
-  
-  .add{
-    display: flex;
-    align-items: flex-end;
-    color: orangered;
-  }
-  
-  .add > p{
-    color: black;
-  }
+    .form {
+      padding: 1rem;
+    }
+    
+    .form button {
+      margin-right: 2rem;
+    }

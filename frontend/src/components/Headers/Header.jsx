@@ -6,19 +6,32 @@ import "./header.css"
 import { useState } from "react"
 
 const Header = () => {
-//   async function searchProducts(searchContent) { 
-//   const response = await fetch(
-//     `https://dummyjson.com/products/search?q=${searchContent}` 
-//   );
-//   const data = await response.json(); 
-//   console.log(data.products)
-//   return data.products; 
-// }
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
-// async function handleSearch() {  
-//   const products = await searchProducts(search); 
-//   // Search(products);
-// }
+   
+  const searchHero = async (hero) => {
+    try {
+      const response = await fetch(
+        `https://superheroapi.com/api/235074712596162/search/name?q=${hero}`
+      );
+      const data = await response.json();
+      console.log(data.results); // Assuming the response contains an array of results
+      setSearchResults(data.results);
+    } catch (error) {
+      console.error('Error searching for hero:', error);
+      setSearchResults([]);
+    }
+  };
+
+  const handleSearch = () => {
+    searchHero(searchQuery);
+  };
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+  
 
 const [active, setActive] = useState(true)
 const toggleBar = () => {
@@ -39,9 +52,9 @@ const toggleBar = () => {
             <img src=".\src\assets\logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
             </Link>
             </div>
-            <div className="search-icon-bar ">
-                <input type="search" id="searchbar" placeholder="     Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" />
-                <button className="btn-container" type="button" > <SearchIcon /> </button>
+            <div className="search-icon-bar">
+                <input type="search" id="searchbar" placeholder="     Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange}/>
+                <button className="btn-container" type="button" onClick={handleSearch} > <SearchIcon /> </button>
             </div>
             <div className="dark-mode">
               <button className="btn-container" type="button"> Dark Mode </button>

@@ -1,10 +1,15 @@
   #searchbar {
     width: 600px;
-    border-radius: 5px;
+    border-radius: 10px;
     height: 40px;
     margin: 0.4rem;
   }
-  
+
+  input:focus, input:hover{
+    outline: none;
+    background-color: rgb(220, 225, 225);
+}
+
   .dark-mode {
     display: flex;
     align-items: center;

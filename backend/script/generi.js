@@ -5,19 +5,36 @@ let superheroArr = Object.values(supereroi)
 const publisherDistinti = new Set();
 
 // Ciclo forEach per scorrere gli oggetti di oggetti
-for (let i = 0; i < 731; i++) {
-    let y= superheroArr[i].biography.publisher
-    console.log(y)
-    console.log(i)
-    const element = y
-    publisherDistinti.add(element)
-}
+// for (let i = 0; i < 731; i++) {
+//     let y= superheroArr[i].biography.publisher
+//     console.log(y)
+//     console.log(i)
+//     const element = y
+//     publisherDistinti.add(element)
+// }
 
 // Array finale contenente i publisher distinti
 // const publisherArray = Array.from(publisherDistinti);
 
-console.log(publisherDistinti)
 
+// console.log(superheroArr.filter(el => el.biography.publisher == "Marvel Comics"))
+let obj = []
+
+const marvel = new Set(['Ant-Man', 'Hawkeye', 'Captain Marvel',])
+const dc = new Set([])
+
+for (let i = 0; i < 731; i++) {
+  let y = superheroArr[i].biography.publisher;
+  let newObj = { ...superheroArr[i] };
+
+  if (marvel.has(y)) {
+    newObj.biography.publisher = "Marvel Comics";
+    
+  }
+  obj.push(newObj);
+
+}
+console.log(obj)
 /*
 Set(90) {
   'Marvel Comics',
@@ -44,7 +61,6 @@ Set(90) {
   'Nightwing',
   'Icon Comics',
   'SyFy',
-  'Captain Marvel',
   '',
   'Hanna-Barbera',
   'Vertigo II',
@@ -64,10 +80,8 @@ Set(90) {
   'Black Racer',
   'Speed Demon',
   'Impulse',
-  'Ant-Man',
   'Shueisha',
   'Atlas',
-  'Hawkeye',
   'Sony Pictures',
   'J. K. Rowling',
   'Batgirl III',

@@ -2,7 +2,7 @@ import axios from "axios";
 import fs from 'node:fs/promises';
 import newHeroes from "../db/newhero.json" assert {type : "json"}
 
-let DB_PATH_NEWHERO = "../db/newhero.json"
+const DB_PATH_NEWHERO = "./db/newhero.json"
 
 export let nextId = Object.keys(newHeroes).reduce(
     (biggest, id) => (biggest > parseInt(id, 10) ? biggest : parseInt(id, 10)),

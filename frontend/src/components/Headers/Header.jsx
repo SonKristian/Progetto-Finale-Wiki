@@ -3,21 +3,22 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./header.css"
-import { useState } from "react"
+import axios from "axios"
+import { useState, useEffect } from "react"
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-   
-  const searchHero = async (hero) => {
+  const fetchHero = async (hero) => {
     try {
-      const response = await fetch(
-        `https://superheroapi.com/api/235074712596162/search/name?q=${hero}`
-      );
-      const data = await response.json();
-      console.log(data.results); // Assuming the response contains an array of results
-      setSearchResults(data.results);
+      const response = await axios.get(`https://superheroapi.com/api/235074712596162/search/${hero}`, {
+        mode: "cors",
+        method: "GET",
+      });
+      const data = await response.data;
+      console.log(data); // Assuming the response contains an array of results
+      setSearchResults(data);
     } catch (error) {
       console.error('Error searching for hero:', error);
       setSearchResults([]);
@@ -25,11 +26,12 @@ const Header = () => {
   };
 
   const handleSearch = () => {
-    searchHero(searchQuery);
+    fetchHero(searchQuery);
   };
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
+    console.log(searchQuery)
   };
   
 

@@ -10,10 +10,10 @@ import { Navigation } from "swiper";
 
 const Carousel = () => (
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-      <SwiperSlide><img src=".\src\assets\Marvel.png" /></SwiperSlide>
+      <SwiperSlide><img id="marvel" src=".\src\assets\Marvel.png" /></SwiperSlide>
       <SwiperSlide><img id="dc" src=".\src\assets\dc.png" /></SwiperSlide>
-      <SwiperSlide><img src=".\src\assets\Lucasfilm.svg" /></SwiperSlide>
-      <SwiperSlide><img src=".\src\assets\Shueisha.svg" /></SwiperSlide>
+      <SwiperSlide><img id="lucas" src=".\src\assets\Lucasfilm.svg" /></SwiperSlide>
+      <SwiperSlide><img id="shueisha" src=".\src\assets\Shueisha.svg" /></SwiperSlide>
     </Swiper>
 );
 

@@ -1,7 +1,5 @@
-// import Cards from "./Cards";
 // import { useEffect , useState } from "react"
 import Carousel from "../Carousel/Carousel.jsx";
-// import Footer from "../Footers/Footer.jsx";
 import Cards from "../CardsPage/Cards.jsx";
 
 const Home = () => {
@@ -24,22 +22,22 @@ const Home = () => {
     //         <Cards key={index} product={product}/>
     //       ))}
     // </div
-    <>
+    <div className="flex flex-col justify-center items-center">
       <Carousel />
-      <div className="flex justify-center items-center mt-[2rem] text-[20px]">
-        <h2>Personaggi in evidenza</h2>
+      <div className="mt-[4rem]">
+        <h2 className="font-black text-[32px]">Personaggi in evidenza</h2>
         </div>
       <div className="card-container">
-        <Cards size="small" />
-        <Cards size="small"/>
-        <Cards size="small"/>
-        <Cards size="small"/>
-        <Cards size="small"/>
+        <Cards size="small" sizeContainer="small"/>
+        <Cards size="small" sizeContainer="small"/>
+        <Cards size="small" sizeContainer="small"/>
+        <Cards size="small" sizeContainer="small"/>
+        <Cards size="small" sizeContainer="small"/>
         {/* {products.map((product, index) => (
           <Cards key={index} product={product} />
         ))} */}
       </div>
-    </>
+    </div>
   );
 };
 

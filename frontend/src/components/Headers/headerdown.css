@@ -1,29 +1,58 @@
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
 .open{
-  display: flex;
-  cursor: none;
+  color: rgb(255, 255, 255);
+  height: 30px;
+  margin-bottom: 1.5rem;
   opacity: 1;
-  transition: opacity 500ms ease-out;
+  background-color: rgba(9, 9, 11, 0.947);
+  animation: fade-in 1s;
+}
+
+.close{
+  visibility: hidden;
+  opacity: 0;
+  height: 30px;
+  margin-bottom: 1.5rem;
+  transition: visibility 0s, opacity 500ms ease-out;
+  animation: fade-out 1s;
 }
 
 #submenu {
   display: flex;
   list-style-type: none;
   align-items: center;
+  justify-content: center;
 }
 
-li:hover{
-  opacity: 70%;
+#submenu li{
+  margin: 0.25rem;
 }
 
-#submenu li a {
-  color: white;
-  text-decoration: none;
+#submenu li a:hover{
+ color :#ff0033;
+ text-decoration: none;
   padding: 1rem;
 }
 
-.close{
-  display: none;
-  opacity: 0;
-  transition: opacity 500ms ease-out;
+#submenu li a {
+  text-decoration: none;
+  padding: 1rem;
 }
 

@@ -42,7 +42,7 @@ const toggleBar = () => {
 }
 
   return (
-    <header >
+    <header>
         <nav className="bg-slate-100 h-[60px] flex justify-between">
           <div className="ml-5 flex items-center">
             <Link to="#" onClick={toggleBar}>
@@ -55,8 +55,8 @@ const toggleBar = () => {
             </Link>
             </div>
             <div className="search-icon-bar">
-                <input type="search" id="searchbar" placeholder="     Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange}/>
-                <button className="btn-container" type="button" onClick={handleSearch} > <SearchIcon /> </button>
+                <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange}/>
+                <button className="btn-container-input" type="button" onClick={handleSearch} > <SearchIcon /> </button>
             </div>
             <div className="dark-mode">
               <button className="btn-container" type="button"> Dark Mode </button>

@@ -30,7 +30,7 @@
     height: 200px;
     border-radius: 10px;
   }
-  
+
   .big-card {
     width: 400px;
     height: 500px;
@@ -64,4 +64,13 @@
     width: 400px;
     height: 470px;
   }
+
+  .container-small, .container-big{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
+  .container-small:hover{
+    height: 215px;
+  } 

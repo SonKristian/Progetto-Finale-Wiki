@@ -22,8 +22,10 @@ const publisherDistinti = new Set();
 
 let obj = []
 
-const marvel = new Set(['Ms Marvel II',  'Anti-Vision',   'Speed Demon',   'Phoenix',   'Rune King Thor',   'Thunderbird II',   'Vindicator II',  'Sharon Carter',   'Archangel', ])
-const dc = new Set(["Arsenal", "Batman II",   'Spectre',   'Black Racer',   'Nightwing',   'Flash IV',   'Superman Prime One-Million',   'Power Woman',   'Red Hood',   'Blaquesmith',   'Tempest', ])
+const marvel = new Set(['Ms Marvel II',  'Anti-Vision',   'Speed Demon',   'Phoenix',   'Rune King Thor',   'Thunderbird II',   'Vindicator II',  'Sharon Carter',   'Archangel',   'Angel Salvadore',   'Penance II',   'Jean Grey',   'Toxin',
+'Angel',  'Speedball',   'She-Thing',   'Power Man',])
+const dc = new Set(["Arsenal", "Batman II",   'Spectre',   'Black Racer',   'Nightwing',   'Flash IV',   'Superman Prime One-Million',   'Power Woman',   'Red Hood',   'Blaquesmith',   'Tempest',   'Aztar',   'Speedy',
+])
 
 for (let i = 0; i < 731; i++) {
   let y = superheroArr[i].biography.publisher;
@@ -58,9 +60,6 @@ Set(67) {
   'NBC - Heroes',
   'Wildstorm',
   'Image Comics',
-  'Toxin',
-  'Angel',
-  'Speedy',
   'null',
   'Oracle',
   'Hawkfire',
@@ -89,15 +88,8 @@ Set(67) {
   'Titan Books',
   'Liberty Belle II',
   'Rebellion',
-  'Power Man',
   'Microsoft',
   'Boom-Boom',
-  'She-Thing',
-  'Speedball',
-  'Jean Grey',
-  'J. R. R. Tolkien',,
-  'Aztar',
-  'Penance II',
-  'Angel Salvadore',
+  'J. R. R. Tolkien'
 }
 */

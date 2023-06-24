@@ -1,4 +1,6 @@
 import supereroi from "../db/superhero.json" assert {type : "json"}
+import fs from 'node:fs/promises';
+const DB_PATH_HERO = "./superhero2.json"
 
 let superheroArr = Object.values(supereroi)
 // Set per memorizzare i publisher distinti
@@ -6,58 +8,65 @@ const publisherDistinti = new Set();
 
 // Ciclo forEach per scorrere gli oggetti di oggetti
 
-for (let i = 0; i < 731; i++) {
-    let y= superheroArr[i].biography.publisher
-    // console.log(y)
-    // console.log(i)
-    const element = y
-    publisherDistinti.add(element)
-}
+// for (let i = 0; i < 731; i++) {
+//     let y= superheroArr[i].biography.publisher
+//     // console.log(y)
+//     // console.log(i)
+//     const element = y
+//     publisherDistinti.add(element)
+// }
 
-console.log(publisherDistinti)
+// console.log(publisherDistinti)
 
 // console.log(superheroArr.filter(el => el.biography.publisher == "Marvel Comics"))
 
-// let obj = []
+let obj = []
 
-// const marvel = new Set([])
-// const dc = new Set([])
+const marvel = new Set(['Ms Marvel II',  'Anti-Vision',   'Speed Demon',   'Phoenix',   'Rune King Thor',   'Thunderbird II',   'Vindicator II',  'Sharon Carter',   'Archangel', ])
+const dc = new Set(["Arsenal", "Batman II",   'Spectre',   'Black Racer',   'Nightwing',   'Flash IV',   'Superman Prime One-Million',   'Power Woman',   'Red Hood',   'Blaquesmith',   'Tempest', ])
 
-// for (let i = 0; i < 731; i++) {
-//   let y = superheroArr[i].biography.publisher;
-//   let newObj = { ...superheroArr[i] };
+for (let i = 0; i < 731; i++) {
+  let y = superheroArr[i].biography.publisher;
+  let newObj = { ...superheroArr[i] };
 
-//   if (marvel.has(y)) {
-//     newObj.biography.publisher = "Marvel Comics";
-    
-//   }
-//   obj.push(newObj);
-
-// }
+  if (dc.has(y)) {
+    newObj.biography.publisher = "DC Comics";
+    obj.push(newObj);
+  }else if(marvel.has(y)){
+    newObj.biography.publisher = "Marvel Comics";
+    obj.push(newObj);
+  }
+}
 // console.log(obj)
+if(obj){
+let obj1 = {}
 
+for (let i = 0; i < 731; i++) {
+  obj1 = {...obj1, 
+    [i+1]:{
+    ...obj[i]
+  }}
+}
+fs.writeFile(DB_PATH_HERO, JSON.stringify(obj1, null, "  "));
+console.log(obj1)
+}
 /*
 Set(67) {
   'Marvel Comics',
   'Dark Horse Comics',
   'DC Comics',
   'NBC - Heroes',
-  'Sharon Carter',
   'Wildstorm',
-  'Archangel',
-  'Tempest',
   'Image Comics',
   'Toxin',
   'Angel',
   'Speedy',
   'null',
-  'Spectre',
   'Oracle',
   'Hawkfire',
   'Huntress',
   'Misfit',
   'Spoiler',
-  'Nightwing',
   'Icon Comics',
   'SyFy',
   '',
@@ -73,37 +82,22 @@ Set(67) {
   'Universal Studios',
   'Star Trek',
   'IDW Publishing',
-  'Black Racer',
-  'Speed Demon',
   'Impulse',
   'Shueisha',
   'Sony Pictures',
   'J. K. Rowling',
-  'Flash IV',
   'Titan Books',
-  'Phoenix',
   'Liberty Belle II',
-  'Power Woman',
   'Rebellion',
   'Power Man',
   'Microsoft',
   'Boom-Boom',
   'She-Thing',
-  'Batman II',
   'Speedball',
   'Jean Grey',
-  'Red Hood',
-  'J. R. R. Tolkien',
-  'Ms Marvel II',
+  'J. R. R. Tolkien',,
   'Aztar',
   'Penance II',
-  'Arsenal',
-  'Superman Prime One-Million',
   'Angel Salvadore',
-  'Rune King Thor',
-  'Blaquesmith',
-  'Vindicator II',
-  'Anti-Vision',
-  'Thunderbird II'
 }
 */

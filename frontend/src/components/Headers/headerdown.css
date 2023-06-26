@@ -16,7 +16,7 @@
   }
 }
 
-.open{
+.open {
   color: rgb(255, 255, 255);
   height: 30px;
   margin-bottom: 1.5rem;
@@ -25,7 +25,7 @@
   animation: fade-in 1s;
 }
 
-.close{
+.close {
   visibility: hidden;
   opacity: 0;
   height: 30px;
@@ -38,17 +38,18 @@
   display: flex;
   list-style-type: none;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  gap: 10rem;
 }
 
-#submenu li{
+#submenu li {
   margin: 0.25rem;
 }
 
-#submenu li a:hover{
- color :#ff0033;
- text-decoration: none;
-  padding: 1rem;
+#submenu li a:hover,
+.headerdown #list:hover {
+  color: #ff0033;
+  text-decoration: none;
 }
 
 #submenu li a {
@@ -56,3 +57,6 @@
   padding: 1rem;
 }
 
+.headerdown {
+  position: relative;
+}

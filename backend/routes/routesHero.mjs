@@ -1,9 +1,17 @@
 import supereroi from "../db/superhero.json" assert {type : "json"}
+import generi from "../db/generi.json" assert {type : "json"}
 
-let superheroArr = Object.entries(supereroi)
+export const getAllGenres = (req, res) =>{
+     res.send(generi)
+} 
 
-export const getGender = (req, res) =>{
-     const result = superheroArr.filter( a => a.biography.publisher )
-     console.log(result)
-     res.send(result)
+export const getHeroGenre = async (req, res) => {
+     let genre = Object.values(supereroi)
+     let prova = genre.filter((e) => e.biography.publisher == req.params.nome)
+     console.log(genre)
+     res.send(prova)
+}
+
+export const getHeroes = (req, res) =>{
+
 }

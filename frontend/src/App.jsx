@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Headers/Header.jsx";
 import Home from "./components/Main/Home.jsx"
 import CardsPage from "./components/CardsPage/CardsPage.jsx"
+import CategoriesCard from "./components/CardsPage/CategoriesCard.jsx"
 import Footer from "./components/Footers/Footer.jsx";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Routes>
        <Route path="/" element={<Home />} />
        <Route path="/cards" element={<CardsPage />} />
+       <Route path="/category/:nomecateg" element={<CategoriesCard />} />
      </Routes>
       <Footer />
     </>

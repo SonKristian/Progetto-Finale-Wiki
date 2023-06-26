@@ -8,7 +8,7 @@ const Cards = ({ size, sizeContainer}) => {
     <div className={`${containerClass}`}>
       <div className={`${cardClass}`}>
         <img
-          src="https://www.superherodb.com/pictures2/portraits/10/100/10060.jpg"
+          src=""
           alt="personaggio"
         />
       </div>

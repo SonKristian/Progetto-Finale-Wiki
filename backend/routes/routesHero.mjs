@@ -12,6 +12,6 @@ export const getHeroGenre = async (req, res) => {
      res.send(prova)
 }
 
-export const getHeroes = (req, res) =>{
+export const getAllHeroes = (req, res) =>{
 
 }

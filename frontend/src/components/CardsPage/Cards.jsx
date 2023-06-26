@@ -1,6 +1,6 @@
 import "./cards.css";
 
-const Cards = ({ size, sizeContainer}) => {
+const Cards = ({ size, sizeContainer, url}) => {
   const cardClass = size === "small" ? "small-card" : "big-card";
   const containerClass = sizeContainer === "small" ? "container-small" : "container-big"
  
@@ -8,7 +8,7 @@ const Cards = ({ size, sizeContainer}) => {
     <div className={`${containerClass}`}>
       <div className={`${cardClass}`}>
         <img
-          src=""
+          src={url}
           alt="personaggio"
         />
       </div>

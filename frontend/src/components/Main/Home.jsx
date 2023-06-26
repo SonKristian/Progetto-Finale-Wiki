@@ -3,17 +3,17 @@ import Carousel from "../Carousel/Carousel.jsx";
 import Cards from "../CardsPage/Cards.jsx";
 
 const Home = () => {
-  // const [products, setProduct] = useState([])
+  // const [hero, setHerp] = useState([])
   // useEffect(() => {
 
-  // async function fetchProducts (){
-  //     const res = await fetch("https://dummyjson.com/products")
+  // async function fetchHero (){
+  //     const res = await fetch("")
   //     const json = await res.json()
-  //     const products = json.products
-  //     setProduct(products)
+  //     const hero = json.hero
+  //     setHero(hero)
   //  }
 
-  //  fetchProducts()
+  //  fetchHero()
   //   }, []);
 
   return (
@@ -28,11 +28,11 @@ const Home = () => {
         <h2 className="font-black text-[32px]">Personaggi in evidenza</h2>
         </div>
       <div className="card-container">
-        <Cards size="small" sizeContainer="small"/>
-        <Cards size="small" sizeContainer="small"/>
-        <Cards size="small" sizeContainer="small"/>
-        <Cards size="small" sizeContainer="small"/>
-        <Cards size="small" sizeContainer="small"/>
+        <Cards size="small" url="https://www.superherodb.com/pictures2/portraits/10/100/1284.jpg" sizeContainer="small"/>
+        <Cards size="small" url="https://www.superherodb.com/pictures2/portraits/10/100/133.jpg" sizeContainer="small"/>
+        <Cards size="small" url="https://www.superherodb.com/pictures2/portraits/10/100/835.jpg" sizeContainer="small"/>
+        <Cards size="small" url="https://www.superherodb.com/pictures2/portraits/10/100/10441.jpg" sizeContainer="small"/>
+        <Cards size="small" url="https://www.superherodb.com/pictures2/portraits/10/100/115.jpg" sizeContainer="small"/>
         {/* {products.map((product, index) => (
           <Cards key={index} product={product} />
         ))} */}

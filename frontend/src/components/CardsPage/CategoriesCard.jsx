@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
-import "./cardspage.css"
+import "./cards.css"
 
 const CategoriesCard = () => {
     const [heroCat, setHeroCat] = useState([]); 
@@ -18,16 +18,15 @@ const CategoriesCard = () => {
     }, [nomecateg])
 
   return (
-    <div className="flex justify-center items-center">
-        <ul>
+    <div className="flex items-center justify-center flex-wrap">
     {heroCat.map((hero, i) => (
-        <li key={i}>
+        <div key={i} className="small-container">
+        <div className="small-card">
         <img src={hero.image.url} alt="" />
-        {hero.name}
-        </li>
-   
+        <p className="text-white mt-2 text-center">{hero.name}</p>
+        </div>
+        </div>
     ))}
-    </ul>
   </div>
   )
 }

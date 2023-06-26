@@ -12,7 +12,7 @@ const Header = () => {
 
   const fetchHero = async (hero) => {
     try {
-      const response = await axios.get(`https://superheroapi.com/api/235074712596162/search/${hero}`, {
+      const response = await axios.get(`https://superheroapi.com/api/235074712596162/search/${encodeURIComponent(hero)})`, {
         mode: "cors",
         method: "GET",
       });
@@ -24,10 +24,14 @@ const Header = () => {
       setSearchResults([]);
     }
   };
+  
+    function handleSearch(){
+      fetchHero(searchQuery);
+    }
 
-  const handleSearch = () => {
-    fetchHero(searchQuery);
-  };
+  // useEffect(()=> {
+  // fetchHero(searchQuery);
+  // }, [searchQuery])
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);

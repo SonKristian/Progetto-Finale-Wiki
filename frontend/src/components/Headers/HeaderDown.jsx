@@ -15,6 +15,13 @@ const HeaderDown = ({active}) => {
 
     getCategories(); 
   }, [])
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <nav className={active ? "open" : "close"}>
       {/* {console.log(active)} */}
@@ -26,17 +33,24 @@ const HeaderDown = ({active}) => {
             <li>
               <Link to="/cards">CardsPage</Link>
             </li>
-            {categories.map(
-              categories => (
-              <li key={categories}>
-                  <Link to={`/category/${encodeURIComponent(categories)}`}>{categories}</Link>
-              </li>
-              )
-            )}
+                <li>
+            <div className="dropdown" onClick={toggleDropdown}>
+              <button>Genere</button>
+              {isOpen && (
+                <ul className="dropdown-menu">
+                  {categories.map((category) => (
+                    <li key={category}>
+                      <Link to={`/category/${encodeURIComponent(category)}`}>{category}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
         </ul>
       </div>
-      </nav>
-  )
+    </nav>
+  );
 }
 
-export default HeaderDown
+export default HeaderDown;

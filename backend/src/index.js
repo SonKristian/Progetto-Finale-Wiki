@@ -55,14 +55,12 @@ app.get("/prova", authenticateToken, auth.prova)
 //crud on the DB superhero.json
 app.get("/genere", hero.getAllGenres)
 app.get("/genere/:nome", hero.getHeroGenre)
+app.get("/eroi/:id", hero.getSingleHero)
 
-//QUI FUNZIONA MA CON API FRONTEND NO
-app.get("/prova", async (req, res) =>{
-const response = await axios.get(`https://superheroapi.com/api/235074712596162/search/Spider-Man`)
-const data = response.data
-console.log(data)
-res.send(data)
-})
+//search
+app.post('/search/:nome', hero.search);
+
+
 
 //crud for creating hero
 //create

@@ -27,10 +27,10 @@ const HeaderDown = ({active}) => {
   <div>
     <ul id="submenu">
       <li>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </li>
       <li>
-        <Link to="/cards">CardsPage</Link>
+        <Link to="/eroi/:id">CardsPage</Link>
       </li>
       <li className="headerdown" onClick={toggleDropdown}>
         <button id="list">Genere</button>

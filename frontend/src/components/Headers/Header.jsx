@@ -3,35 +3,32 @@ import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./header.css"
+import { useState, useEffect } from 'react';
 import axios from "axios"
-import { useState, useEffect } from "react"
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const fetchHero = async (hero) => {
-    try {
-      const response = await axios.get(`https://superheroapi.com/api/235074712596162/search/${encodeURIComponent(hero)})`, {
-        mode: "cors",
-        method: "GET",
-      });
-      const data = await response.data;
-      console.log(data); // Assuming the response contains an array of results
-      setSearchResults(data);
-    } catch (error) {
-      console.error('Error searching for hero:', error);
-      setSearchResults([]);
-    }
-  };
+ const fetchHero = async (hero) => {
+  try {
+    const response = await axios.post(`http://localhost:3000/search/${encodeURIComponent(hero)}`);
+    const data = await response.data;
+    console.log(data)
+    setSearchResults(data);
+  } catch (error) {
+    console.error('Error searching for hero:', error);
+    await setSearchResults([]);
+  }
+};
   
     function handleSearch(){
       fetchHero(searchQuery);
     }
 
-  // useEffect(()=> {
-  // fetchHero(searchQuery);
-  // }, [searchQuery])
+   useEffect(()=> {
+   fetchHero(searchQuery);
+   }, [searchQuery])
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
@@ -54,8 +51,8 @@ const toggleBar = () => {
             </Link>
           </div>
             <div className="flex items-center">
-            <Link to="/">
-            <img src=".\src\assets\logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
+            <Link to="/home">
+            <img src="./src/assets/logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
             </Link>
             </div>
             <div className="search-icon-bar">
@@ -75,8 +72,17 @@ const toggleBar = () => {
         </div>
         </nav>
         <HeaderDown active={active} />
+        <div>
+          {     console.log(searchResults)}
+          {searchResults.map((hero)=> (
+          <div key={hero}>
+          <p>{hero.name}</p>
+          <img src={hero.image.url} />
+          </div>
+        )
+        )}
+        </div>
     </header>
-    
   )
 }
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./cards.css"
 
 const CategoriesCard = () => {
@@ -19,13 +20,16 @@ const CategoriesCard = () => {
 
   return (
     <div className="flex items-center justify-center flex-wrap">
+      {console.log(heroCat)}
     {heroCat.map((hero, i) => (
-        <div key={i} className="small-container">
+      <Link key={i} to={`/eroi/${hero.id}`}>
+        <div  className="small-container">
         <div className="small-card">
         <img src={hero.image.url} alt="" />
         <p className="text-white mt-2 text-center">{hero.name}</p>
         </div>
         </div>
+      </Link>
     ))}
   </div>
   )

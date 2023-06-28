@@ -34,9 +34,7 @@ const CategoriesCard = () => {
   
     // Previous page button
     pagination.push(
-      <button
-        key="prev"
-        className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
+      <button key="prev" className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
         onClick={() => handlePageChange(currentPage - 1)}
         disabled={currentPage === 1} >
        Prev
@@ -45,9 +43,7 @@ const CategoriesCard = () => {
   
     // Current page button
     pagination.push(
-      <button
-        key={currentPage}
-        className={`pagination-item active`}
+      <button key={currentPage} className={`pagination-item active`}
         onClick={() => handlePageChange(currentPage)} >
         {currentPage}
       </button>
@@ -55,9 +51,7 @@ const CategoriesCard = () => {
   
     // Next page button
     pagination.push(
-      <button
-        key="next"
-        className={`pagination-item ${currentPage === totalPages ? "disabled" : ""}`}
+      <button key="next" className={`pagination-item ${currentPage === totalPages ? "disabled" : ""}`}
         onClick={() => handlePageChange(currentPage + 1)}
         disabled={currentPage === totalPages} >
         Next

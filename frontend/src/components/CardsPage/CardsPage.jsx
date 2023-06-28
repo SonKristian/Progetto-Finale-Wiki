@@ -15,7 +15,7 @@ const CardsPage = () => {
         const data = await response.json();
         setHero(data);
       } catch (error) {
-        console.error('Error fetching hero:', error);
+        console.error("Error fetching hero:", error);
         setHero({});
       }
     }
@@ -38,19 +38,139 @@ const CardsPage = () => {
         </div>
 
         <div className="flex justify-around gap-[4.2rem] text-[20px]">
-          <button type="button" className="tab-head-single" data-id="1">
-            <span>powerstats</span>
-            <p>{hero.powerstats && hero.powerstats.strength}</p>
-          </button>
-          <button type="button" className="tab-head-single" data-id="2">
-            <span>biography</span>
-          </button>
-          <button type="button" className="tab-head-single" data-id="3">
-            <span>appearance</span>
-          </button>
-          <button type="button" className="tab-head-single" data-id="4">
-            <span>connections</span>
-          </button>
+          <details className="point">
+            <summary>
+              powerstats
+            </summary>
+            <div className="powerstats-container">
+              <div className="powerstat">
+                <h2>Intelligence</h2>
+                <meter
+                  id="intelligence"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.intelligence}
+                  max="100"
+                ></meter>
+              </div>
+              <div className="powerstat">
+                <h2>Strength</h2>
+                <meter
+                  id="strength"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.strength}
+                  max="100"
+                ></meter>
+              </div>
+              <div className="powerstat">
+                <h2>Speed</h2>
+                <meter
+                  id="speed"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.speed}
+                  max="100"
+                ></meter>
+              </div>
+              <div className="powerstat">
+                <h2>Durability</h2>
+                <meter
+                  id="durability"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.durability}
+                  max="100"
+                ></meter>
+              </div>
+              <div className="powerstat">
+                <h2>Power</h2>
+                <meter
+                  id="power"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.power}
+                  max="100"
+                ></meter>
+              </div>
+              <div className="powerstat">
+                <h2>Combat</h2>
+                <meter
+                  id="combat"
+                  className="progressbar"
+                  value={hero.powerstats && hero.powerstats.combat}
+                  max="100"
+                ></meter>
+              </div>
+            </div>
+          </details>
+
+          <details className="point">
+            <summary>
+              biography
+            </summary>
+            <div className="flex flex-col items-center justify-center">
+              <ul className="flex flex-col">
+                <li>
+                  Full Name: {hero.biography && hero.biography["full-name"]}
+                </li>
+                <li>
+                  Alter Egos: {hero.biography && hero.biography["alter-egos"]}
+                </li>
+                <li>
+                  Aliases: {hero.biography && hero.biography.aliases.join(", ")}
+                </li>
+                <li>
+                  Place of Birth:{" "}
+                  {hero.biography && hero.biography["place-of-birth"]}
+                </li>
+                <li>
+                  First Appearance:{" "}
+                  {hero.biography && hero.biography["first-appearance"]}
+                </li>
+                <li>Publisher: {hero.biography && hero.biography.publisher}</li>
+                <li>Alignment: {hero.biography && hero.biography.alignment}</li>
+              </ul>
+            </div>
+          </details>
+
+          <details className="point">
+            <summary>
+              appearance
+            </summary>
+            <ul className="flex flex-col">
+                <li>
+                  Gender: {hero.appearance && hero.appearance.gender}
+                </li>
+                <li>
+                 Race: {hero.appearance && hero.appearance.race}
+                </li>
+                <li>
+                  Height: {hero.appearance && hero.appearance.height.join(", ")}
+                </li>
+                <li>
+                  Weight:{" "}
+                  {hero.appearance && hero.appearance.weight.join(", ")}
+                </li>
+                <li>
+                  Work:
+                  {hero.work && hero.work.occupation}
+                </li>
+                <li>
+                  Base:
+                  {hero.work && hero.work.base}
+                </li>
+              </ul>
+          </details>
+          
+          <details className="point">
+            <summary>
+              connections
+            </summary>
+            <ul className="flex flex-col">
+                <li>
+                  Group Affiliation: {hero.connections && hero.connections["group-affiliation"]}
+                </li>
+                <li>
+                Relatives: {hero.connections && hero.connections.relatives}
+                </li>
+              </ul>
+          </details>
         </div>
       </div>
     </div>

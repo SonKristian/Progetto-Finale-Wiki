@@ -32,3 +32,7 @@ export const getSingleHero = (req, res) =>{
      // console.log(singleHero);
      res.send(hero[req.params.id-1][1]);
 }
+
+export const getAllHero = (req, res) =>{
+     res.send(supereroi);
+}

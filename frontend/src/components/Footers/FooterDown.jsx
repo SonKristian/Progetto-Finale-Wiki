@@ -4,7 +4,7 @@ const FooterDown = () => {
   return (
     <div className="flex bg-zinc-900 w-full items-center justify-center gap-8 ">
     <div className="mt-4">
-        <h2 className="text-white font-bold">Testo 1</h2>
+        <h2 className="text-white font-bold">About us</h2>
             <ul className="flex flex-col w-[170px] text-white h-[250px] items-start">
                 <li>1</li>
                 <li>2</li>

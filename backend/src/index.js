@@ -56,6 +56,7 @@ app.get("/prova", authenticateToken, auth.prova)
 app.get("/genere", hero.getAllGenres)
 app.get("/genere/:nome", hero.getHeroGenre)
 app.get("/eroi/:id", hero.getSingleHero)
+app.get("/eroi", hero.getAllHero)
 
 //search
 app.post('/search/:nome', hero.search);

@@ -27,16 +27,15 @@ const CardsPage = () => {
     <div className="flex justify-around width-[100%] mt-5 mb-[5rem] back bg-slate-400">
       {/* left */}
       <div className="ml-5">
+      <div className="flex justify-center items-center ml-[4rem] text-[30px]">
+          <h2 className=" font-extrabold">{hero.name}</h2>
+          {/* <h2><FavoriteIcon /></h2> */}
+        </div>
         {hero.image && <Cards size="big" url={hero.image.url} />}
         {/* In questo modo se non trova l'immagine la pagina viene comunque caricata */}
       </div>
       {/* right */}
       <div className="mt-2 mr-[5rem]">
-        <div className="flex justify-around gap-[29.7rem] text-[30px]">
-          <h2 className="pr-[1rem] font-extrabold">{hero.name}</h2>
-          {/* <h2><FavoriteIcon /></h2> */}
-        </div>
-
         <div className="flex justify-around gap-[4.2rem] text-[20px]">
           <details className="point">
             <summary>

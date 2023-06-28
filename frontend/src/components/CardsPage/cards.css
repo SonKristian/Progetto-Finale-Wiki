@@ -72,3 +72,11 @@
   .container-small:hover{
     height: 215px;
   } 
+
+  .categcard-container button{
+    font-size: 20px;
+  }
+  
+  .categcard-container button:hover{
+    color: #ff0033;
+  }

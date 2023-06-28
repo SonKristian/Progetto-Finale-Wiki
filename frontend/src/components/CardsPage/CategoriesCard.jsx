@@ -27,27 +27,51 @@ const CategoriesCard = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+  //update the current page when a pagination button is clicked.
 
   const renderPagination = () => {
     const pagination = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pagination.push(
-        <button
-          key={i}
-          className={`pagination-item ${currentPage === i ? "active" : ""}`}
-          onClick={() => handlePageChange(i)}
-        >
-          {i}
-        </button>
-      );
-    }
+  
+    // Previous page button
+    pagination.push(
+      <button
+        key="prev"
+        className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
+        onClick={() => handlePageChange(currentPage - 1)}
+        disabled={currentPage === 1} >
+       Prev
+      </button>
+    );
+  
+    // Current page button
+    pagination.push(
+      <button
+        key={currentPage}
+        className={`pagination-item active`}
+        onClick={() => handlePageChange(currentPage)} >
+        {currentPage}
+      </button>
+    );
+  
+    // Next page button
+    pagination.push(
+      <button
+        key="next"
+        className={`pagination-item ${currentPage === totalPages ? "disabled" : ""}`}
+        onClick={() => handlePageChange(currentPage + 1)}
+        disabled={currentPage === totalPages} >
+        Next
+      </button>
+    );
+  
     return pagination;
   };
 
   return (
-    <div>
+    <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
         {heroCat.slice(startIndex, endIndex).map((hero, i) => (
+          // display the cards for the current page
           <Link key={i} to={`/eroi/${hero.id}`}>
             <div className="small-container">
               <div className="small-card">
@@ -58,7 +82,7 @@ const CategoriesCard = () => {
           </Link>
         ))}
       </div>
-      <div className="pagination">{renderPagination()}</div>
+      <div className="flex gap-8 ml-[5.5rem]">{renderPagination()}</div>
     </div>
   );
 };

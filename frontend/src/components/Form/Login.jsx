@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./css/register.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -39,63 +40,67 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleLogin}>
-        <div className="flex flex-col">
-          <h1>Login</h1>
-          <p>Please enter your credentials to log in.</p>
-          <hr />
+    <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
+      <div className="form-ctn">
+        <form onSubmit={handleLogin}>
+          <div className="flex flex-col justify-center">
+            <div className="mt-[1.5rem] flex flex-col justify-center items-center">
+              <h1>Login</h1>
 
-            <label htmlFor="username">
-            <b>Username</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Username"
-            name="username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+              <p>Please enter your credentials to log in.</p>
+            </div>
 
-          <label htmlFor="email">
-            <b>Email</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+            <label className="mt-[1.5rem]" htmlFor="username">
+              <b>Username</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Username"
+              name="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
 
-          <label htmlFor="password">
-            <b>Password</b>
-          </label>
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          <hr />
-          <p>{loginStatus}</p>
+            <label className="mt-[1.5rem]" htmlFor="email">
+              <b>Email</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
 
-          <button type="submit" className="loginbtn">
-            Login
-          </button>
-        </div>
+            <label className="mt-[1.5rem]" htmlFor="password">
+              <b>Password</b>
+            </label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <p>{loginStatus}</p>
 
-        <div className="container signin">
-          <p> Do not have an account? <Link to="/register">Register</Link></p>
-        </div>
-      </form>
+            <div className="mt-[1.5rem] flex flex-col justify-center items-center">
+              <button type="submit" className="form-btn">
+                Login
+              </button>
+            </div>
+          </div>
+
+          <div className="mt-[1.5rem] pb-[3rem] flex flex-col items-center justify-center">
+            <p>
+              Do not have an account? <Link to="/register">Register</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

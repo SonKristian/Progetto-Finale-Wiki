@@ -35,9 +35,9 @@ button:hover {
   cursor: pointer;
 }
 
-.form-btn{
+.btn-action{
   color: white;
-  background-color: #ff0033 !important;
+  background-color: #ff0032 !important;
   border: none;
   border-radius: 10% 50px ; 
   height: 40px;

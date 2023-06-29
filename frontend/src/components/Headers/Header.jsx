@@ -64,10 +64,10 @@ const toggleBar = () => {
             </div>
               <div className="form">
               <Link to="/login">
-            <button className="form-btn" type="button">Login</button>
+            <button className="btn-action" type="button">Login</button>
               </Link>
               <Link to="/register">
-            <button className="form-btn" id="register-btn" type="button">Registrazioni</button>
+            <button className="btn-action" id="register-btn" type="button">Registrazioni</button>
              </Link>
         </div>
         </nav>

@@ -6,16 +6,7 @@
     padding: 0.5rem;
     border-radius: 18px ;
   }
-  
-  .small-card > h2{
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .small-card > p{
-    font-weight: bold;
-  }
-  
+
   .small-card:hover{
     opacity: 90%;
     cursor: pointer;
@@ -35,15 +26,6 @@
     margin-top: 1rem;
     padding: 1rem;
     border-radius: 36px ;
-  }
-  
-  .big-card > h2{
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .big-card > p{
-    font-weight: bold;
   }
   
   .big-card:hover{

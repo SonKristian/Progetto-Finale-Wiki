@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./css/register.css"
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -48,81 +49,81 @@ const Register = () => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
+    <div className="form-ctn">
       <form onSubmit={handleRegistration}>
-        <div className="flex flex-col">
+        <div className="flex flex-col justify-center">
+          <div className="mt-[1.5rem] flex flex-col justify-center items-center">
           <h1>Register</h1>
           <p>Please fill in this form to create an account.</p>
-          <hr />
-
-          <label htmlFor="username">
-            <b>Username</b>
+          </div>
+          
+          <label className="mt-[1.5rem]" htmlFor="username">
+            <p>Username</p>
           </label>
           <input
             type="text"
-            placeholder="Enter Username"
+            placeholder="     Enter Username"
             name="username"
-            id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
 
-          <label htmlFor="email">
+          <label className="mt-[1.5rem]" htmlFor="email">
             <b>Email</b>
           </label>
           <input
             type="text"
-            placeholder="Enter Email"
+            placeholder="     Enter Email"
             name="email"
-            id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
 
-          <label htmlFor="password">
+          <label className="mt-[1.5rem]" htmlFor="password">
             <b>Password</b>
           </label>
           <input
             type="password"
-            placeholder="Enter Password"
+            placeholder="     Enter Password"
             name="password"
-            id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
 
-          <label htmlFor="repeat-password">
+          <label className="mt-[1.5rem]" htmlFor="repeat-password">
             <b>Repeat Password</b>
           </label>
           <input
             type="password"
-            placeholder="Repeat Password"
+            placeholder="     Repeat Password"
             name="repeat-password"
-            id="repeat-password"
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
             required
           />
-          <hr />
           <p>{registrationStatus}</p>
           <p>
             By creating an account you agree to our <a href="#">Terms & Privacy</a>.
           </p>
 
-          <button type="submit" className="registerbtn">
+          <div className="mt-[1.5rem] flex flex-col justify-center items-center">
+          <button type="submit" className="form-btn">
             Register
           </button>
+          </div>
         </div>
 
-        <div className="container signin">
+        <div className="mt-[1.5rem] pb-[3rem] flex flex-col items-center justify-center">
           <p>
             Already have an account? <Link to="/login">Sign in</Link>
           </p>
         </div>
       </form>
+    </div>
     </div>
   );
 };

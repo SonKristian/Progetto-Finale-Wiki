@@ -1,0 +1,40 @@
+*{
+    font-size: 16px;
+    font-family: "Kanit", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form-ctn {
+    color: #000;
+    width: 45%;
+  border-radius: 24px;
+  background:  #4DDAD1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-ctn h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.form-ctn input{
+    height: 40px;
+    width: 400px;
+    border-radius: 8px;
+}
+
+.form-ctn a{
+    color: #ff0032;
+}
+
+.form-btn {
+  border-radius: 20px;
+  color: white;
+  background: #ff0032;
+  width: 150px;
+  height: 40px;
+}

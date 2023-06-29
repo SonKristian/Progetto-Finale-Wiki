@@ -23,7 +23,18 @@
     justify-content: center;
   }
 
-  .powerstat
+  summary{
+    background-color: black;
+    width: 125px;
+    text-align: center;
+    color: white;
+    list-style-type: none;
+    border-radius: 18px;
+  }
+
+  summary:hover, summary:focus-within{
+    color: #ff0033;
+  }
 
   .progressbar{
     width: 300px;

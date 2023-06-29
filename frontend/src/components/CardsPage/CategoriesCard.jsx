@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./cards.css";
+import Cards from "./Cards.jsx"
+import "./css/cards.css";
 
 const CategoriesCard = () => {
   const [heroCat, setHeroCat] = useState([]);
@@ -67,12 +68,7 @@ const CategoriesCard = () => {
         {heroCat.slice(startIndex, endIndex).map((hero, i) => (
           // display the cards for the current page
           <Link key={i} to={`/eroi/${hero.id}`}>
-            <div className="small-container">
-              <div className="small-card">
-                <img src={hero.image.url} alt="" />
-                <p className="text-white mt-2 text-center">{hero.name}</p>
-              </div>
-            </div>
+            <Cards size="small" sizeContainer="small" url={hero.image.url} name={hero.name}/>
           </Link>
         ))}
       </div>

@@ -2,7 +2,7 @@ import HeaderDown from "./HeaderDown"
 import { Link } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-import "./header.css"
+import "./css/header.css"
 import { useState, useEffect } from 'react';
 import axios from "axios"
 
@@ -57,18 +57,18 @@ const toggleBar = () => {
             </div>
             <div className="search-icon-bar">
                 <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange}/>
-                <button className="btn-container-input" type="button" onClick={handleSearch} > <SearchIcon /> </button>
+                <button type="button" onClick={handleSearch} > <SearchIcon /> </button>
             </div>
             <div className="dark-mode">
-              <button className="btn-container" type="button"> Dark Mode </button>
+              <button type="button"> Dark Mode </button>
             </div>
               <div className="form">
-          <a href="login.html">
-            <button className="btn-container-form" type="button">Login</button>
-          </a>
-          <a href="register.html">
-            <button className="btn-container-form" type="button">Registrazioni</button>
-          </a>
+              <Link to="/login">
+            <button className="form-btn" type="button">Login</button>
+              </Link>
+              <Link to="/register">
+            <button className="form-btn" id="register-btn" type="button">Registrazioni</button>
+             </Link>
         </div>
         </nav>
         <HeaderDown active={active} />

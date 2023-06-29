@@ -6,6 +6,8 @@ import CardsPage from "./components/CardsPage/CardsPage.jsx"
 import CategoriesCard from "./components/CardsPage/CategoriesCard.jsx"
 import HeroCard from "./components/CardsPage/HeroCard.jsx"
 import Footer from "./components/Footers/Footer.jsx";
+import Login from "./components/Form/Login.jsx"
+import Register from "./components/Form/Register.jsx"
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
       <Routes>
        <Route path="/home" element={<Home />} />
        <Route path="/eroi" element={<HeroCard />} />
+       <Route path="/login" element={<Login />} />
+       <Route path="/register" element={<Register />} />
        <Route path="/eroi/:id" element={<CardsPage />} />
        <Route path="/category/:nomecateg" element={<CategoriesCard />} />
      </Routes>

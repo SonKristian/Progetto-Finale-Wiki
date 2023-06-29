@@ -1,5 +1,5 @@
 import Cards from "./Cards.jsx";
-import "./cardspage.css";
+import "./css/cardspage.css";
 // import FavoriteIcon from "@mui/icons-material/Favorite";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -42,7 +42,7 @@ const CardsPage = () => {
               powerstats
             </summary>
             <div className="powerstats-container">
-              <div className="powerstat">
+              <div>
                 <h2>Intelligence</h2>
                 <meter
                   id="intelligence"
@@ -51,7 +51,7 @@ const CardsPage = () => {
                   max="100"
                 ></meter>
               </div>
-              <div className="powerstat">
+              <div>
                 <h2>Strength</h2>
                 <meter
                   id="strength"
@@ -60,7 +60,7 @@ const CardsPage = () => {
                   max="100"
                 ></meter>
               </div>
-              <div className="powerstat">
+              <div>
                 <h2>Speed</h2>
                 <meter
                   id="speed"
@@ -69,7 +69,7 @@ const CardsPage = () => {
                   max="100"
                 ></meter>
               </div>
-              <div className="powerstat">
+              <div>
                 <h2>Durability</h2>
                 <meter
                   id="durability"
@@ -78,7 +78,7 @@ const CardsPage = () => {
                   max="100"
                 ></meter>
               </div>
-              <div className="powerstat">
+              <div>
                 <h2>Power</h2>
                 <meter
                   id="power"
@@ -87,7 +87,7 @@ const CardsPage = () => {
                   max="100"
                 ></meter>
               </div>
-              <div className="powerstat">
+              <div>
                 <h2>Combat</h2>
                 <meter
                   id="combat"

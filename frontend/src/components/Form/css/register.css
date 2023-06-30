@@ -34,7 +34,7 @@
 .form-btn {
   border-radius: 20px;
   color: white;
-  background: #ff0032;
+  background: #ff0032 !important;
   width: 150px;
   height: 40px;
 }

@@ -1,21 +1,3 @@
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .open {
   color: rgb(255, 255, 255);
   height: 30px;
@@ -39,6 +21,7 @@
   align-items: center;
   justify-content: space-around;
   gap: 10rem;
+  width: max-content;
 }
 
 #submenu li {
@@ -58,4 +41,10 @@
 
 .headerdown {
   position: relative;
+  height: 30px; /* Altezza fissa per evitare lo spostamento degli altri elementi */
+}
+
+.dropdown {
+  padding-top: 1px; /* Posiziona il submenu sotto l'elemento del menu padre */
+  background-color: rgba(9, 9, 11, 0.947);
 }

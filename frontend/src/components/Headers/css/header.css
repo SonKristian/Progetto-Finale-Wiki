@@ -37,17 +37,13 @@ button:hover {
 
 .btn-action{
   color: white;
-  background-color: #ff0032 !important;
+  background: #ff0032 !important;
   border: none;
-  border-radius: 10% 50px ; 
+  border-radius: 20px;
   height: 40px;
   width: 100px;
   margin: -0.4rem;
   text-decoration: none;
-}
-
-#register-btn{
-  border-radius:50px 10%; 
 }
 
 .form {

@@ -35,7 +35,7 @@ const HeaderDown = ({ active }) => {
           <li className="headerdown" onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className="bg-zinc-900">
+              <ul className="dropdown">
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}`}>

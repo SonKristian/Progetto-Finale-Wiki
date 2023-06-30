@@ -67,7 +67,7 @@ const toggleBar = () => {
             <button className="btn-action" type="button">Login</button>
               </Link>
               <Link to="/register">
-            <button className="btn-action" id="register-btn" type="button">Registrazioni</button>
+            <button className="btn-action" type="button">Register</button>
              </Link>
         </div>
         </nav>

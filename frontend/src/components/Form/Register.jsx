@@ -59,7 +59,7 @@ const Register = () => {
           </div>
           
           <label className="mt-[1.5rem]" htmlFor="username">
-            <p>Username</p>
+            <b>Username</b>
           </label>
           <input
             type="text"

@@ -5,8 +5,10 @@ import utenti from "../db/utenti.json" assert {type : "json"}
 const DB_PATH_AUTH = "./db/utenti.json"
 
 export const register = async (req, res) => {
-    const { email, password, username } = req.body;
-    console.log(username);
+  let entries = Object.entries(req.body)
+  let username = entries[0][0]
+  let { email, password } = entries[0][1]
+  console.log(entries[0][1]);
   
     
     const existingUserByUsername = Object.keys(utenti).find(

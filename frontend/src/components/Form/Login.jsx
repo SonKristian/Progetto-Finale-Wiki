@@ -39,6 +39,8 @@ const Login = () => {
     }
   };
 
+  setTimeout(()=>{window.location.href="/home"}, 10000)
+
   return (
     <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
       <div className="form-ctn">

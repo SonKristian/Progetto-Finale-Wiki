@@ -23,6 +23,12 @@ const CardsPage = () => {
     getHero();
   }, [id]);
 
+  const [activeSection, setActiveSection] = useState(null);
+
+  const toggleSection = (section) => {
+    setActiveSection((prevSection) => (prevSection === section ? null : section));
+  };
+
   return (
     <div className="flex justify-around width-[100%] mt-5 mb-[5rem] back bg-slate-400">
       {/* left */}
@@ -37,11 +43,9 @@ const CardsPage = () => {
       {/* right */}
       <div className="mt-2 mr-[5rem]">
         <div className="flex justify-around gap-[4.2rem] text-[20px]">
-          <details className="point">
-            <summary>
-              powerstats
-            </summary>
-            <div className="powerstats-container">
+        <details>
+            <summary onClick={() => toggleSection("powerstat")}>powerstats</summary>
+            <div className={`point ${activeSection === "powerstat" ? "open" : "close"}`}>
               <div>
                 <h2>Intelligence</h2>
                 <meter
@@ -99,11 +103,9 @@ const CardsPage = () => {
             </div>
           </details>
 
-          <details className="point">
-            <summary>
-              biography
-            </summary>
-            <div className="flex flex-col items-center justify-center">
+          <details>
+            <summary onClick={() => toggleSection("biography")}>biography</summary>
+            <div className={`point ${activeSection === "biography" ? "open" : "close"}`}>
               <ul className="flex flex-col">
                 <li>
                   Full Name: {hero.biography && hero.biography["full-name"]}
@@ -128,10 +130,9 @@ const CardsPage = () => {
             </div>
           </details>
 
-          <details className="point">
-            <summary>
-              appearance
-            </summary>
+          <details>
+            <summary onClick={() => toggleSection("appearance")}>appearance</summary>
+            <div  className={`point ${activeSection === "appearance" ? "open" : "close"}`}>
             <ul className="flex flex-col">
                 <li>
                   Gender: {hero.appearance && hero.appearance.gender}
@@ -155,12 +156,13 @@ const CardsPage = () => {
                   {hero.work && hero.work.base}
                 </li>
               </ul>
+              </div>
           </details>
           
-          <details className="point">
-            <summary>
-              connections
-            </summary>
+          
+          <details>
+            <summary onClick={() => toggleSection("connection")}>connections</summary>
+            <div className={`point ${activeSection === "connection" ? "open" : "close"}`}>
             <ul className="flex flex-col">
                 <li>
                   Group Affiliation: {hero.connections && hero.connections["group-affiliation"]}
@@ -169,6 +171,7 @@ const CardsPage = () => {
                 Relatives: {hero.connections && hero.connections.relatives}
                 </li>
               </ul>
+              </div>
           </details>
         </div>
       </div>

@@ -27,7 +27,7 @@ const HeroCard = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
-  
+
   const renderPagination = () => {
     const pagination = [];
 
@@ -93,3 +93,53 @@ const HeroCard = () => {
 };
 
 export default HeroCard;
+const [activeSection, setActiveSection] = useState(null);
+
+  const toggleSection = (section) => {
+    setActiveSection((prevSection) => (prevSection === section ? null : section));
+  };
+
+  return (
+    <div className="flex justify-around width-[100%] mt-5 mb-[5rem] back bg-slate-400">
+      {/* left */}
+      <div className="ml-5">
+        <div className="flex justify-center items-center ml-[4rem] text-[30px]">
+          <h2 className="font-extrabold">{hero.name}</h2>
+        </div>
+        {hero.image && <Cards size="big" url={hero.image.url} />}
+      </div>
+      {/* right */}
+      <div className="mt-2 mr-[5rem]">
+        <div className="flex justify-around gap-[4.2rem] text-[20px]">
+          <details className={`point ${activeSection === "powerstat" ? "open" : "close"}`}>
+            <summary onClick={() => toggleSection("powerstat")}>powerstats</summary>
+            <div className="powerstats-container">
+              {/* Contenuto delle powerstats */}
+            </div>
+          </details>
+
+          <details className={`point ${activeSection === "biography" ? "open" : "close"}`}>
+            <summary onClick={() => toggleSection("biography")}>biography</summary>
+            <div className="flex flex-col items-center justify-center">
+              {/* Contenuto della biography */}
+            </div>
+          </details>
+
+          <details className={`point ${activeSection === "appearance" ? "open" : "close"}`}>
+            <summary onClick={() => toggleSection("appearance")}>appearance</summary>
+            <div className="flex flex-col">
+              {/* Contenuto dell'appearance */}
+            </div>
+          </details>
+
+          <details className={`point ${activeSection === "connection" ? "open" : "close"}`}>
+            <summary onClick={() => toggleSection("connection")}>connections</summary>
+            <div className="flex flex-col">
+              {/* Contenuto delle connections */}
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -19,13 +19,13 @@
 #submenu {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  gap: 10rem;
+  justify-content: space-between;
+  gap: 30rem;
   width: max-content;
 }
 
 #submenu li {
-  margin: 0.25rem;
+  margin-bottom: 0.25rem;
 }
 
 #submenu li a:hover,
@@ -36,10 +36,11 @@
 
 #submenu li a {
   text-decoration: none;
-  padding: 1rem;
+  padding: 1.5rem;
 }
 
 .headerdown {
+  margin-top: 0.3rem;
   position: relative;
   height: 30px; /* Altezza fissa per evitare lo spostamento degli altri elementi */
 }

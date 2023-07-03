@@ -23,3 +23,50 @@ export const createHero = async (req, res) =>{
         message: "A new Hero has been created",
       }).end();
 }
+
+export const getHeroesIdName = (req, res) => {
+  let newHeroesOnly = [];
+  for (let i = 0; i < newHeroes.length; i++) {
+    if (newHeroes[i].id == req.params.id) {
+      newHeroesOnly.push(newHereos[i].nome);
+      res.send(newHereosOnly);
+    }
+  }
+  res.status(200).send({
+    message: "newHereos has not been found",
+  }).end();
+};
+
+
+export const heroUpdate = async (req, res) => {
+  let updatedHereos = newHereos[req.params.id];
+  if (updatedHereos) {
+    let addHeroes = { ...updatedHereos };
+    let newestHereos = { ...addHeroes, ...req.body };
+    newHereos[req.params.id] = newestHereos;
+    
+    await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHereos, null, "  "));
+    res.send(newHereos);
+  } else {
+    res.status(200).send({
+      data: {}, error: true, message: "Hero hasn't been found",
+    });
+  }
+};
+
+
+export const heroDelete = async (req, res) => {
+  let delnewHero = newHeroes[req.params.id]
+    if (delnewHero) {
+      delete newHeroes[req.params.id]
+
+
+      await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, '  '))
+      res.status(200).send('Hero has been deleted').end()
+        
+    } else {
+        res.status(200).send({
+        data: {}, error: true, message: 'Hero has not been found'
+        })
+    }
+};

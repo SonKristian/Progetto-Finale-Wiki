@@ -5,6 +5,7 @@ import axios from "axios"
 import jwt  from 'jsonwebtoken';
 import 'dotenv/config'
 // import mongoose from "mongoose";
+import supereroi from "../db/superhero.json" assert {type : "json"}
 import * as hero from '../routes/routesHero.mjs'
 import * as newhero from '../routes/routesNewhero.mjs'
 import * as auth from "../routes/routesAuth.mjs"
@@ -44,6 +45,18 @@ app.get('/', (req, res) => {
   res.send('Benvenuto nella Wiki Spotlight!')
 })
 
+app.get('/data', (req, res) => {
+  const page = parseInt(req.query.page) || 1; // Recupera il parametro di query "page" (default: 1)
+  const itemsPerPage = 24;
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  // Esegui la sottostruttura dell'oggetto JSON originale utilizzando gli indici calcolati
+  const slicedJson = Object.values(supereroi).slice(startIndex, endIndex);
+
+  res.send(slicedJson);
+});
+
 
 //login - register
 app.post("/register", auth.register)
@@ -66,6 +79,9 @@ app.post('/search/:nome', hero.search);
 //crud for creating hero
 //create
 app.post("/newhero", authenticateToken, newhero.createHero)
+app.update("/newhero", authenticateToken, newhero.heroUpdate)
+app.get("/newhero", authenticateToken, newhero.getHeroesIdName)
+app.delete("/newhero", authenticateToken, newhero.heroDelete)
 
 app.listen(port, () => {
   // connect();

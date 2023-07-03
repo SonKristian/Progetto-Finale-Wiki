@@ -28,11 +28,10 @@ const Header = () => {
 
    useEffect(()=> {
    fetchHero(searchQuery);
-   }, [searchQuery])
+   }, [])
 
   const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
-    console.log(searchQuery)
   };
   
 
@@ -52,7 +51,7 @@ const toggleBar = () => {
           </div>
             <div className="flex items-center">
             <Link to="/home">
-            <img src="./src/assets/logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
+              <img src="./src/assets/logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]"/>
             </Link>
             </div>
             <div className="search-icon-bar">

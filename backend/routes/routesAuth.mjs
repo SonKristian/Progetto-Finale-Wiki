@@ -47,12 +47,15 @@ export const register = async (req, res) => {
   
   
 export const login = async (req, res) => {
+  try{
+    // console.log(req.body.email)
   const user = Object.values(utenti).find((usr) => usr.email === req.body.email);
   if (user) {
     const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
     if (isPasswordValid) {
-      const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1h'});
-      return res.json({ user, token });
+      const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m'});
+      const obj = { user : user, token: token };
+      res.send(obj)
     } else {
       console.log('Password non valida');
       return res.send('Password non valida');
@@ -61,6 +64,10 @@ export const login = async (req, res) => {
     console.log('Utente non trovato');
     return res.send('Utente non trovato');
   }
+} catch (error) {
+  console.error('Error generating token:', error);
+  return res.status(500).send('Error generating token');
+}
 };
 
 export const prova = (req, res) => {

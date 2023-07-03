@@ -25,12 +25,9 @@ export const createHero = async (req, res) =>{
 }
 
 export const getHeroesIdName = (req, res) => {
-  let newHeroesOnly = [];
-  for (let i = 0; i < newHeroes.length; i++) {
-    if (newHeroes[i].id == req.params.id) {
-      newHeroesOnly.push(newHereos[i].nome);
-      res.send(newHereosOnly);
-    }
+  let newHeroesOnly = Object.keys(newHeroes)
+    if (newHeroesOnly.includes(req.params.id)) {
+      res.send("ok");
   }
   res.status(200).send({
     message: "newHereos has not been found",

@@ -45,17 +45,17 @@ app.get('/', (req, res) => {
   res.send('Benvenuto nella Wiki Spotlight!')
 })
 
-app.get('/data', (req, res) => {
-  const page = parseInt(req.query.page) || 1; // Recupera il parametro di query "page" (default: 1)
-  const itemsPerPage = 24;
-  const startIndex = (page - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+// app.get('/data', (req, res) => {
+//   const page = parseInt(req.query.page) || 1; // Recupera il parametro di query "page" (default: 1)
+//   const itemsPerPage = 24;
+//   const startIndex = (page - 1) * itemsPerPage;
+//   const endIndex = startIndex + itemsPerPage;
 
-  // Esegui la sottostruttura dell'oggetto JSON originale utilizzando gli indici calcolati
-  const slicedJson = Object.values(supereroi).slice(startIndex, endIndex);
+//   // Esegui la sottostruttura dell'oggetto JSON originale utilizzando gli indici calcolati
+//   const slicedJson = Object.values(supereroi).slice(startIndex, endIndex);
 
-  res.send(slicedJson);
-});
+//   res.send(slicedJson);
+// });
 
 
 //login - register
@@ -79,9 +79,9 @@ app.post('/search/:nome', hero.search);
 //crud for creating hero
 //create
 app.post("/newhero", authenticateToken, newhero.createHero)
-app.update("/newhero", authenticateToken, newhero.heroUpdate)
-app.get("/newhero", authenticateToken, newhero.getHeroesIdName)
-app.delete("/newhero", authenticateToken, newhero.heroDelete)
+app.put("/newhero/:id", authenticateToken, newhero.heroUpdate)
+app.get("/newhero/:id", authenticateToken, newhero.getHeroesIdName)
+app.delete("/newhero/:id", authenticateToken, newhero.heroDelete)
 
 app.listen(port, () => {
   // connect();

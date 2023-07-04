@@ -32,7 +32,7 @@ const Register = () => {
         body: JSON.stringify(userData),
       });
 
-      if (response.ok) {
+      if (response) {
         setRegistrationStatus("Registration successful");
         // Clear form inputs
         setUsername("");

@@ -25,13 +25,13 @@ export const createHero = async (req, res) =>{
 }
 
 export const getHeroesIdName = (req, res) => {
-  let newHeroesOnly = Object.keys(newHeroes)
-    if (newHeroesOnly.includes(req.params.id)) {
+  // let newHeroesOnly = Object.keys(newHeroes)
+  //   if (newHeroesOnly.includes(req.params.id)) {
       res.send("ok");
-  }
-  res.status(200).send({
-    message: "newHereos has not been found",
-  }).end();
+  // }
+  // res.status(200).send({
+  //   message: "newHereos has not been found",
+  // }).end();
 };
 
 

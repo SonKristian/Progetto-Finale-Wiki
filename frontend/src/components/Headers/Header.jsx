@@ -6,7 +6,7 @@ import "./css/header.css";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, username }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -71,7 +71,14 @@ const Header = ({ isLoggedIn }) => {
             </Link>
           </div>
         ) : (
-          <p>Nome</p>
+          <div className="form">
+          <Link to="/newhero">
+            <button className="btn-action" type="button">Create Hero</button>
+          </Link>
+          <div>
+          {username && <p>Welcome, {username}!</p>}
+          </div>
+        </div>
         )}
       </nav>
       <HeaderDown active={active} />

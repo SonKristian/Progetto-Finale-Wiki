@@ -1,0 +1,162 @@
+import { useState } from "react";
+import "./css/register.css";
+
+const CreateHero = () => {
+  const [name, setName] = useState("");
+  const [gender, setGender] = useState("");
+  const [race, setRace] = useState("");
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [eyecol, setEyecol] = useState("");
+  const [haircol, setHaircol] = useState("");
+  const [herostatus, setHerostatus] =  useState("");
+
+  const creationHero = async () => {
+    const userData = {
+        name: name,
+        gender: gender,
+        race: race,
+        height: height,
+        weight: weight,
+        eyecol: eyecol,
+        haircol:  haircol,
+    }
+
+    try{
+        const response = await fetch("http://localhost:3000/newhero", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          });
+
+          if (response) {
+            setHerostatus("Hero creation : successful");
+            // Clear form inputs
+            setName("");
+            setGender("");
+            setRace("");
+            setHeight("");
+            setWeight("");
+            setEyecol("");
+            setHaircol("")
+
+          } else {
+            setHerostatus("Hero creation : failed");
+          }
+  } catch (error) {
+    setHerostatus("Error occurred during creation");
+    console.error(error);
+  }
+}
+
+  return (
+   <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
+    <div className="form-ctn">
+      <form onSubmit={creationHero}>
+        <div className="flex flex-col justify-center">
+          <div className="mt-[1.5rem] flex flex-col justify-center items-center">
+          <h1>Register</h1>
+          <p>Please fill in this form to create an account.</p>
+          </div>
+          
+          <label className="mt-[1.5rem]" htmlFor="name">
+            <b>Name</b>
+          </label>
+          <input
+            type="text"
+            placeholder="     Enter Name"
+            name="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+
+          <label className="mt-[1.5rem]" htmlFor="gender">
+            <b>Gender</b>
+          </label>
+          <input
+            type="text"
+            placeholder="     Enter Gender"
+            name="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          />
+
+          <label className="mt-[1.5rem]" htmlFor="race">
+            <b>Race</b>
+          </label>
+          <input
+            type="race"
+            placeholder="     Enter Race"
+            name="race"
+            value={race}
+            onChange={(e) => setRace(e.target.value)}
+            required
+          />
+
+         <label className="mt-[1.5rem]" htmlFor="height">
+            <b>Height</b>
+          </label>
+          <input
+            type="height"
+            placeholder="     Enter Height (cm)"
+            name="height"
+            value={height}
+            onChange={(e) => setHeight(e.target.value)}
+            required
+          />    
+
+            <label className="mt-[1.5rem]" htmlFor="weight">
+            <b>Weight</b>
+          </label>
+          <input
+            type="weight"
+            placeholder="     Enter Weight (Kg)"
+            name="weight"
+            value={weight}
+            onChange={(e) => setWeight(e.target.value)}
+            required
+          />    
+
+        <label className="mt-[1.5rem]" htmlFor="eyecol">
+            <b>Eye Color</b>
+        </label>
+          <input
+            type="eyecol"
+            placeholder="     Enter Eye Color"
+            name="eyecol"
+            value={eyecol}
+            onChange={(e) => setEyecol(e.target.value)}
+            required
+          />    
+
+        <label className="mt-[1.5rem]" htmlFor="haircol">
+            <b>Hair Color</b>
+        </label>
+          <input
+            type="haircol"
+            placeholder="     Enter Hair Color"
+            name="haircol"
+            value={haircol}
+            onChange={(e) => setHaircol(e.target.value)}
+            required
+          />    
+
+          <p>{herostatus}</p>
+
+          <div className="mt-[1.5rem] flex flex-col justify-center items-center">
+          <button type="submit" className="form-btn">
+            Create
+          </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  )
+}
+
+export default CreateHero;

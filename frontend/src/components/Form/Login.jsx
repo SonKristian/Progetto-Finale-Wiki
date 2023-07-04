@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import "./css/register.css";
 import axios from "axios";
 
-const Login = ({setIsLoggedIn}) => {
+const Login = ({setIsLoggedIn,  setUsername }) => {
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async (e) => {
@@ -30,6 +29,7 @@ const Login = ({setIsLoggedIn}) => {
         // Clear form inputs
         setEmail("");
         setPassword("");
+        setUsername(response.data.user.username)
         setTimeout(() => {  window.location.href = "/home";
         }, 1000);
       
@@ -58,7 +58,6 @@ const Login = ({setIsLoggedIn}) => {
                 type="text"
                 placeholder="Enter Username"
                 name="username"
-                value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />

@@ -1,11 +1,9 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from 'body-parser'
-import axios from "axios"
 import jwt  from 'jsonwebtoken';
 import 'dotenv/config'
 // import mongoose from "mongoose";
-import supereroi from "../db/superhero.json" assert {type : "json"}
 import * as hero from '../routes/routesHero.mjs'
 import * as newhero from '../routes/routesNewhero.mjs'
 import * as auth from "../routes/routesAuth.mjs"

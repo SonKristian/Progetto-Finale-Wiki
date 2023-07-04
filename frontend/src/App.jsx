@@ -13,22 +13,22 @@ import CreateHero from "./components/Form/CreateHero";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("")
 
   useEffect(() => {
     const storedToken = sessionStorage.getItem('jwtToken');
     if (storedToken) {
       setIsLoggedIn(true);
+
     }
   }, []);
 
   return (
     <>
-      <Header username={username} isLoggedIn={isLoggedIn}/>
+      <Header isLoggedIn={isLoggedIn}/>
       <Routes>
        <Route path="/home" element={<Home />} />
        <Route path="/eroi" element={<HeroCard />} />
-       <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn}  setUsername={setUsername}/>} />
+       <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
        <Route path="/register" element={<Register />} />
        <Route path="/newhero" element={<CreateHero />} />
        <Route path="/eroi/:id" element={<CardsPage />} />

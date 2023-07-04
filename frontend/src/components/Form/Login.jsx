@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./css/register.css";
 import axios from "axios";
 
-const Login = ({setIsLoggedIn,  setUsername }) => {
+const Login = ({setIsLoggedIn}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -20,18 +20,18 @@ const Login = ({setIsLoggedIn,  setUsername }) => {
       const response = await axios.post("http://localhost:3000/login", {
       ...userData,
       });
-     
+    
       if (response) {
         console.log(response.data)
         setIsLoggedIn(true)
         // Store the login status in sessionStorage
         sessionStorage.setItem('jwtToken', response.data.token);
+        sessionStorage.setItem('user', response.data.user);
         // Clear form inputs
         setEmail("");
         setPassword("");
-        setUsername(response.data.user.username)
-        setTimeout(() => {  window.location.href = "/home";
-        }, 1000);
+        // setTimeout(() => {  window.location.href = "/home";
+        // }, 1000);
       
       }
       } catch (error) {
@@ -50,17 +50,6 @@ const Login = ({setIsLoggedIn,  setUsername }) => {
                 <h1>Login</h1>
                 <p>Please enter your credentials to log in.</p>
               </div>
-  
-              <label className="mt-[1.5rem]" htmlFor="username">
-                <b>Username</b>
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Username"
-                name="username"
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
   
               <label className="mt-[1.5rem]" htmlFor="email">
                 <b>Email</b>
@@ -90,6 +79,7 @@ const Login = ({setIsLoggedIn,  setUsername }) => {
                 <button type="submit" className="form-btn">
                   Login
                 </button>
+      
               </div>
             </div>
   

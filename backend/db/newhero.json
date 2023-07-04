@@ -1,11 +1,29 @@
 {
   "1": {
-    "name": "Allah The Only God",
-      "gender": "Male",
-      "race": "God",
-      "height": "198 cm",
-      "weight": "191 kg",
-      "eye-color": "Blue",
-      "hair-color": "Black"
-    }
+    "name": " Cristian Di Napoli",
+    "gender": "Maschio",
+    "race": "Dio",
+    "height": "199cm",
+    "weight": "90kg",
+    "eyecol": "Red",
+    "haircol": "White"
+  },
+  "2": {
+    "name": " Cristian Di Napoli",
+    "gender": "a",
+    "race": "a",
+    "height": "a",
+    "weight": "a",
+    "eyecol": "a",
+    "haircol": "aa"
+  },
+  "3": {
+    "name": "a",
+    "gender": "a",
+    "race": "a",
+    "height": "a",
+    "weight": "a",
+    "eyecol": "a",
+    "haircol": "a"
+  }
 }

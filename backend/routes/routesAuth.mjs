@@ -36,6 +36,7 @@ export const register = async (req, res) => {
         [username]: {
           email,
           password: hashedPassword,
+          heroescreated : []
         },
       },
     };
@@ -46,29 +47,29 @@ export const register = async (req, res) => {
   }
   
   
-export const login = async (req, res) => {
-  try{
-    // console.log(req.body.email)
-  const user = Object.values(utenti).find((usr) => usr.email === req.body.email);
-  if (user) {
-    const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
-    if (isPasswordValid) {
-      const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '30m'});
-      const obj = { user : user, token: token };
-      res.send(obj)
-    } else {
-      console.log('Password non valida');
-      return res.send('Password non valida');
+  export const login = async (req, res) => {
+    try {
+      const user = Object.values(utenti).find((usr) => usr.email === req.body.email);
+      if (user) {
+        const isPasswordValid = await bcrypt.compare(req.body.password, user.password);
+        if (isPasswordValid) {
+          const token = jwt.sign({ userId: user.id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '12h' });
+          const obj = { user: Object.keys(utenti).find((key) => utenti[key] === user) , token: token };
+          res.send(obj);
+        } else {
+          console.log('Password non valida');
+          return res.send('Password non valida');
+        }
+      } else {
+        console.log('Utente non trovato');
+        return res.send('Utente non trovato');
+      }
+    } catch (error) {
+      console.error('Error generating token:', error);
+      return res.status(500).send('Error generating token');
     }
-  } else {
-    console.log('Utente non trovato');
-    return res.send('Utente non trovato');
-  }
-} catch (error) {
-  console.error('Error generating token:', error);
-  return res.status(500).send('Error generating token');
-}
-};
+  };
+  
 
 export const prova = (req, res) => {
   res.send("funge")

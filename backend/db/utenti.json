@@ -1,18 +1,23 @@
 {
   "siegIlRe": {
     "email": "sieggay@gmail.com",
-    "password": "$2a$10$/2l04sD2Fp3by6Pm./sqg.e4FO7GV2bZDEeKEqYqqHjL4hKzu/vB."
+    "password": "$2a$10$/2l04sD2Fp3by6Pm./sqg.e4FO7GV2bZDEeKEqYqqHjL4hKzu/vB.",
+    "heroescreated": [
+      
+    ]
   },
   "ErNotGabri": {
     "email": "gabripelato@sicilia.com",
-    "password": "$2a$10$kMHsaFUUswIq.v3UvsPeluxxfrcc6hX60EqOUswyECS08pqq/1Nei"
-  },
-  "": {
-    "email": "ilresupremo@gmail.com",
-    "password": "$2a$10$aM2JUTfeleuo9e6xsbsRXOn91Q/JJWwYLNgqKv54nVY9N2pOoVmTK"
+    "password": "$2a$10$kMHsaFUUswIq.v3UvsPeluxxfrcc6hX60EqOUswyECS08pqq/1Nei",
+    "heroescreated": [
+      1,2
+    ]
   },
   "rre": {
     "email": "re@re.re",
-    "password": "$2a$10$creSLKosUBm5sAF/T1nZJumdp5ldX.4eIVawXpkCpPnAAq0eGRN3u"
+    "password": "$2a$10$creSLKosUBm5sAF/T1nZJumdp5ldX.4eIVawXpkCpPnAAq0eGRN3u",
+    "heroescreated": [
+      3
+    ]
   }
 }

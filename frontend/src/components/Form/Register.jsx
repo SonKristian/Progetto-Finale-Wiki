@@ -48,8 +48,6 @@ const Register = () => {
     }
   };
 
-  setTimeout(()=>{window.location.href="/login"}, 10000)
-
   return (
     <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
     <div className="form-ctn">

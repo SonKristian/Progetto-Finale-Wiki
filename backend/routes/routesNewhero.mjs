@@ -1,37 +1,53 @@
 import axios from "axios";
 import fs from 'node:fs/promises';
 import newHeroes from "../db/newhero.json" assert {type : "json"}
+import utenti from "../db/utenti.json" assert {type : "json"}
 
 const DB_PATH_NEWHERO = "./db/newhero.json"
+const DB_PATH_USER = "./db/utenti.json"
 
 export let nextId = Object.keys(newHeroes).reduce(
     (biggest, id) => (biggest > parseInt(id, 10) ? biggest : parseInt(id, 10)),
     0
   );
   
-export const createHero = async (req, res) =>{
-    nextId++;
-    let newHero = {
-      [nextId]: { ...req.body }
-    };
-    // console.log(nextId)
-    // console.log(req.body)
-    let allNewHero = { ...newHeroes, ...newHero };
+  export const createHero = async (req, res) => {
+    try {
+      nextId++;
+      const user = req.headers.user;
+      const newHero = {
+        [nextId]: { ...req.body },
+      };
   
-    await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(allNewHero, null, "  "));
-    res.status(200).send({
+      const allNewHero = { ...newHeroes, ...newHero };
+  
+      if (!utenti[user].heroescreated) {
+        utenti[user].heroescreated = [];
+      }
+  
+      utenti[user].heroescreated.push(nextId);
+  
+      await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(allNewHero, null, "  "));
+      await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
+  
+      res.status(200).send({
         message: "A new Hero has been created",
-      }).end();
-}
+      });
+    } catch (error) {
+      console.error('Error creating hero:', error);
+      res.status(500).send("Error creating hero");
+    }
+  };
+  
 
 export const getHeroesIdName = (req, res) => {
-  // let newHeroesOnly = Object.keys(newHeroes)
-  //   if (newHeroesOnly.includes(req.params.id)) {
-      res.send("ok");
-  // }
-  // res.status(200).send({
-  //   message: "newHereos has not been found",
-  // }).end();
+  let newHeroesOnly = Object.keys(newHeroes)
+    if (newHeroesOnly.includes(req.params.id)) {
+      res.send(newHeroesOnly);
+  }
+  res.status(200).send({
+    message: "newHereos has not been found",
+  }).end();
 };
 
 

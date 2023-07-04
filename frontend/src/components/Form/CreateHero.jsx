@@ -9,9 +9,13 @@ const CreateHero = () => {
   const [weight, setWeight] = useState("");
   const [eyecol, setEyecol] = useState("");
   const [haircol, setHaircol] = useState("");
-  const [herostatus, setHerostatus] =  useState("");
+  const [herostatus, setHerostatus] =  useState(false);
 
-  const creationHero = async () => {
+  const handleCreation = async (e) => {
+    e.preventDefault();
+    const storedToken = sessionStorage.getItem('jwtToken');
+    const storedName = sessionStorage.getItem('user');
+
     const userData = {
         name: name,
         gender: gender,
@@ -27,6 +31,8 @@ const CreateHero = () => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Berear ${storedToken}`,
+              "user" : storedName,
             },
             body: JSON.stringify(userData),
           });
@@ -34,14 +40,7 @@ const CreateHero = () => {
           if (response) {
             setHerostatus("Hero creation : successful");
             // Clear form inputs
-            setName("");
-            setGender("");
-            setRace("");
-            setHeight("");
-            setWeight("");
-            setEyecol("");
-            setHaircol("")
-
+           
           } else {
             setHerostatus("Hero creation : failed");
           }
@@ -52,13 +51,15 @@ const CreateHero = () => {
 }
 
   return (
+   
    <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
+    {!herostatus ? (
     <div className="form-ctn">
-      <form onSubmit={creationHero}>
+      <form onSubmit={handleCreation}>
         <div className="flex flex-col justify-center">
           <div className="mt-[1.5rem] flex flex-col justify-center items-center">
-          <h1>Register</h1>
-          <p>Please fill in this form to create an account.</p>
+          <h1>Creation of your hero</h1>
+          <p>Please fill in this form to create your personal superhero.</p>
           </div>
           
           <label className="mt-[1.5rem]" htmlFor="name">
@@ -155,6 +156,25 @@ const CreateHero = () => {
         </div>
       </form>
     </div>
+      ):(
+        <div className="flex flex-col items-center justify-around gap-10">
+        <p>Hero has been created successfully</p>
+        <div className="flex items-center justify-around gap-10">
+        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/newhero"}}>
+            Create Again
+        </button>
+
+        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/home"}}>
+            Homepage
+        </button>
+
+
+        <button className="btn-action w-[200px]">
+            See your hero
+        </button>
+        </div>
+    </div>
+  )}
     </div>
   )
 }

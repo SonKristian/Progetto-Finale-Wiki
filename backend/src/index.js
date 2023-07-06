@@ -72,7 +72,6 @@ app.get("/eroi", hero.getAllHero)
 //search
 app.post('/search/:nome', hero.search);
 
-
 //crud for creating hero
 
 //create
@@ -80,6 +79,8 @@ app.post("/newhero", authenticateToken, newhero.createHero)
 //update
 app.put("/newhero/:id", authenticateToken, newhero.heroUpdate)
 //get
+app.get("/newhero", authenticateToken, newhero.getAllNewHero)
+//get for name
 app.get("/newhero/:id", authenticateToken, newhero.getHeroesIdName)
 //delete
 app.delete("/newhero/:id", authenticateToken, newhero.heroDelete)

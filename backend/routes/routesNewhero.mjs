@@ -104,3 +104,15 @@ export const heroDelete = async (req, res) => {
     });
   }
 };
+
+export const getAllNewHero = (req, res) =>{
+  const heroesCreated = {};
+
+  for (const username in utenti) {
+    const user = utenti[username];
+    const createdHeroes = user.heroescreated.map(heroId => newHeroes[heroId]);
+    heroesCreated[username] = createdHeroes;
+  }
+
+  res.json(heroesCreated);
+}

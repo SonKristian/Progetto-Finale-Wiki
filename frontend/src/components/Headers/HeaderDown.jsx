@@ -1,11 +1,10 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/headerdown.css";
-import { useState, useEffect, useRef } from "react";
 
 const HeaderDown = ({ active }) => {
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
-  const timeoutRef = useRef(null);
 
   useEffect(() => {
     async function getCategories() {
@@ -18,36 +17,23 @@ const HeaderDown = ({ active }) => {
   }, []);
 
   const toggleDropdown = () => {
-    setIsOpen((prevIsOpen) => {
-      clearTimeout(timeoutRef.current);
-      if (!prevIsOpen) {
-        timeoutRef.current = setTimeout(() => {
-          setIsOpen(false);
-        }, 30000);
-      }
-      return !prevIsOpen;
-    });
-  };
-
-  const closeDropdown = () => {
-    setIsOpen(false);
-    clearTimeout(timeoutRef.current);
+    setIsOpen((prevIsOpen) => !prevIsOpen);
   };
 
   return (
     <nav className={active ? "open" : "close"}>
       <div>
-        <ul id="submenu">
-          <li>
+        <div className="submenu">
+          <div className="ml-5">
             <Link to="/home">Home</Link>
-          </li>
-          <li>
+          </div>
+          <div>
             <Link to="/eroi">All Heroes</Link>
-          </li>
-          <li className="headerdown" onClick={toggleDropdown}>
+          </div>
+          <div className="headerdown" onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className="dropdown" onClick={closeDropdown}>
+              <ul className="dropdown">
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}`}>
@@ -57,8 +43,8 @@ const HeaderDown = ({ active }) => {
                 ))}
               </ul>
             )}
-          </li>
-        </ul>
+          </div>
+        </div>
       </div>
     </nav>
   );

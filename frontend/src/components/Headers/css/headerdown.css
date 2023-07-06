@@ -16,25 +16,22 @@
   animation: fade-out 1s;
 }
 
-#submenu {
+.submenu {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 30rem;
+  justify-content: center;
   width: max-content;
+  gap: 33rem;
 }
 
-#submenu li {
-  margin-bottom: 0.25rem;
-}
-
-#submenu li a:hover,
+.submenu a:hover,
 .headerdown #list:hover {
   color: #ff0033;
   text-decoration: none;
+  opacity: 1;
 }
 
-#submenu li a {
+.submenu li a {
   text-decoration: none;
   padding: 1.5rem;
 }
@@ -46,6 +43,10 @@
 }
 
 .dropdown {
-  padding-top: 0.5rem; /* Posiziona il submenu sotto l'elemento del menu padre */
+  width: 200px;
+  height: 750px;
+  padding-top: 0.5rem;
   background-color: rgba(9, 9, 11, 0.947);
+  position: sticky;
+  left: 100%;
 }

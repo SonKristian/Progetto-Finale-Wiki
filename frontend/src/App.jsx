@@ -10,6 +10,7 @@ import Footer from "./components/Footers/Footer.jsx";
 import Login from "./components/Form/Login.jsx"
 import Register from "./components/Form/Register.jsx"
 import CreateHero from "./components/Form/CreateHero";
+import Profile from "./components/Account/Profile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,6 +32,7 @@ function App() {
        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
        <Route path="/register" element={<Register />} />
        <Route path="/newhero" element={<CreateHero />} />
+       <Route path="/profile" element={<Profile />} />
        <Route path="/eroi/:id" element={<CardsPage />} />
        <Route path="/category/:nomecateg" element={<CategoriesCard />} />
      </Routes>

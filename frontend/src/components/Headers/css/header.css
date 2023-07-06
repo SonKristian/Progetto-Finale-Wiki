@@ -35,7 +35,7 @@ button:hover {
   cursor: pointer;
 }
 
-.btn-action{
+.btn-action {
   color: white;
   background: #ff0032 !important;
   border: none;
@@ -48,8 +48,17 @@ button:hover {
 
 .form {
   padding: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .form button {
   margin-right: 2rem;
+}
+
+.account {
+  width: 50px;
+  height: 50px;
+  background-color: #ff0032;
+  border-radius: 50px;
 }

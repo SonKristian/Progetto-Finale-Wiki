@@ -36,7 +36,8 @@ export const register = async (req, res) => {
         [username]: {
           email,
           password: hashedPassword,
-          heroescreated : []
+          heroescreated : [],
+          favorites: []
         },
       },
     };

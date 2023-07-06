@@ -6,7 +6,7 @@ import "./css/header.css";
 import { useState, useEffect } from 'react';
 import axios from "axios";
 
-const Header = ({ isLoggedIn, username }) => {
+const Header = ({ isLoggedIn }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
@@ -15,6 +15,7 @@ const Header = ({ isLoggedIn, username }) => {
       const response = await axios.post(`http://localhost:3000/search/${encodeURIComponent(hero)}`);
       const data = await response.data;
       console.log(data);
+      // sessionStorage.setItem('user', response.data.user);
       setSearchResults(data);
     } catch (error) {
       console.error('Error searching for hero:', error);
@@ -76,7 +77,7 @@ const Header = ({ isLoggedIn, username }) => {
             <button className="btn-action" type="button">Create Hero</button>
           </Link>
           <div>
-          {username && <p>Welcome, {username}!</p>}
+            <p>prov</p>
           </div>
         </div>
         )}

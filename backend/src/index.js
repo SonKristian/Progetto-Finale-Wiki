@@ -73,7 +73,6 @@ app.get("/eroi", hero.getAllHero)
 app.post('/search/:nome', hero.search);
 
 
-
 //crud for creating hero
 
 //create

@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import "./css/headerdown.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const HeaderDown = ({ active }) => {
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     async function getCategories() {
@@ -17,11 +18,20 @@ const HeaderDown = ({ active }) => {
   }, []);
 
   const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+    setIsOpen((prevIsOpen) => {
+      clearTimeout(timeoutRef.current);
+      if (!prevIsOpen) {
+        timeoutRef.current = setTimeout(() => {
+          setIsOpen(false);
+        }, 30000);
+      }
+      return !prevIsOpen;
+    });
   };
 
   const closeDropdown = () => {
     setIsOpen(false);
+    clearTimeout(timeoutRef.current);
   };
 
   return (

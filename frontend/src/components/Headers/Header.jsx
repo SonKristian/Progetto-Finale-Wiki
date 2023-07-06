@@ -73,9 +73,9 @@ const Header = ({ isLoggedIn }) => {
             </Link>
           </div>
         ) : (
-          <div className="form">
-          <Link to="/newhero">
-            <button className="btn-action" type="button">Create Hero</button>
+         <div className="form">
+          <Link to="/favorites">
+            <button className="btn-action" type="button">Favorites</button>
           </Link>
           <div className="form">
           <div>

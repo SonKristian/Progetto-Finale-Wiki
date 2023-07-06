@@ -9,8 +9,9 @@ import HeroCard from "./components/CardsPage/HeroCard.jsx"
 import Footer from "./components/Footers/Footer.jsx";
 import Login from "./components/Form/Login.jsx"
 import Register from "./components/Form/Register.jsx"
-import CreateHero from "./components/Form/CreateHero";
-import Profile from "./components/Account/Profile";
+import CreateHero from "./components/Form/CreateHero.jsx";
+import Profile from "./components/Account/Profile.jsx";
+import Favorites from "./components/Account/Favorites.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -34,6 +35,7 @@ function App() {
        <Route path="/newhero" element={<CreateHero />} />
        <Route path="/profile" element={<Profile />} />
        <Route path="/eroi/:id" element={<CardsPage />} />
+       <Route path="/favorites" element={<Favorites />} />
        <Route path="/category/:nomecateg" element={<CategoriesCard />} />
      </Routes>
       <Footer />

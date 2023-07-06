@@ -3,36 +3,49 @@
 *{
   font-family: 'Kanit', sans-serif;
 }
- 
+
+* {
+  font-family: 'Kanit', sans-serif;
+}
+
 .card-container {
-    display: flex;
-    justify-content: space-between;
-    margin-left: 10rem;
-    margin-right: 10rem;
-    margin-top: 1rem;
-  }
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 1rem;
+}
 
-  .point{
-    cursor: pointer;
-  }
-  
-  .powerstats-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+.point {
+  cursor: pointer;
+}
 
-  summary{
-    background-color: black;
-    width: 125px;
-    text-align: center;
-    color: white;
-    list-style-type: none;
-    border-radius: 18px;
-  }
+.powerstats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  summary:hover, summary:focus-within{
+section {
+  text-align: center;
+}
+
+.section-btn {
+  background-color: black;
+  color: white;
+  width: 125px;
+  border-radius: 18px;
+}
+
+.section-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+  .section-btn:hover, .section-btn:focus-within{
     color: #ff0033;
   }
 

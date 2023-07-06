@@ -4,22 +4,24 @@ import { useState, useEffect } from "react";
 
 const HeaderDown = ({ active }) => {
   const [categories, setCategories] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     async function getCategories() {
       const response = await fetch("http://localhost:3000/genere");
       const data = await response.json();
-      // const categoriesSliced = data.slice(0, 10);
       setCategories(data);
     }
 
     getCategories();
   }, []);
 
-  const [isOpen, setIsOpen] = useState(false);
-
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
   };
 
   return (
@@ -35,7 +37,7 @@ const HeaderDown = ({ active }) => {
           <li className="headerdown" onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className="dropdown">
+              <ul className="dropdown" onClick={closeDropdown}>
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}`}>

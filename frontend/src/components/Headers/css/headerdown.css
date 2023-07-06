@@ -46,6 +46,6 @@
 }
 
 .dropdown {
-  padding-top: 1px; /* Posiziona il submenu sotto l'elemento del menu padre */
+  padding-top: 0.5rem; /* Posiziona il submenu sotto l'elemento del menu padre */
   background-color: rgba(9, 9, 11, 0.947);
 }

@@ -50,4 +50,11 @@
   text-align: start;
   background-color: #ff0032 !important;
   position: sticky;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  transition: background-color 1s ease-in-out; /* Add transition for background color */
+}
+
+.dropdown.dark-mode {
+  background-color: #DF0B35; /* Change the background color for Dark Mode */
 }

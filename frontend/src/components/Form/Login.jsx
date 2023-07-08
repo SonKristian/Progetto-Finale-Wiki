@@ -96,7 +96,7 @@ const Login = ({ setIsLoggedIn }) => {
   
           <div className="mt-[1.5rem] pb-[3rem] flex flex-col items-center justify-center">
             <p>
-              Do not have an account? <Link to="/register">Register</Link>
+              Do not have an account? <Link to="/register"><u className="text-white">Register</u></Link>
             </p>
           </div>
         </form>

@@ -6,6 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchResult from './SearchResults';
 import "./css/header.css";
+
 import axios from "axios";
 
 const Header = ({ isLoggedIn }) => {

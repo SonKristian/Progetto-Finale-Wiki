@@ -18,7 +18,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center mb-[5rem]">
       <div className="flex flex-col align-center justify-center gap-[2rem] mt-[2rem]">
         <div className="flex items-center justify-center gap-[2rem]">
         <img

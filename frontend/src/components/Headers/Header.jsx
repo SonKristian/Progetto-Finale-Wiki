@@ -4,8 +4,8 @@ import HeaderDown from "./HeaderDown";
 import DarkMode from "../DarkMode/DarkMode.jsx"
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
+import SearchResult from './SearchResults';
 import "./css/header.css";
-
 import axios from "axios";
 
 const Header = ({ isLoggedIn }) => {
@@ -27,6 +27,7 @@ const Header = ({ isLoggedIn }) => {
   };
 
   function handleSearch() {
+    window.location.href = "/results"
     fetchHero(searchQuery);
   }
 
@@ -95,13 +96,7 @@ const Header = ({ isLoggedIn }) => {
       </nav>
       <HeaderDown active={active} />
       <div>
-        {console.log(searchResults)}
-        {searchResults.map((hero) => (
-          <div key={hero}>
-            <p>{hero.name}</p>
-            <img src={hero.image.url} alt={hero.name} />
-          </div>
-        ))}
+      {searchResults.length > 0 && <SearchResult searchResults={searchResults} />}
       </div>
     </header>
   );

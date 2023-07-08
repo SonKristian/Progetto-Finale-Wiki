@@ -61,7 +61,7 @@ app.post("/register", auth.register)
 app.post("/login", auth.login)
 
 //middleware di prova
-app.get("/prova", authenticateToken, auth.prova)
+// app.get("/prova", authenticateToken, auth.prova)
 
 //crud on the DB superhero.json
 app.get("/genere", hero.getAllGenres)
@@ -69,9 +69,12 @@ app.get("/genere/:nome", hero.getHeroGenre)
 app.get("/eroi/:id", hero.getSingleHero)
 app.get("/eroi", hero.getAllHero)
 
+
+//favorite
+app.get("/favorite", authenticateToken, hero.favorites)
+
 //search
 app.post('/search/:nome', hero.search);
-
 //crud for creating hero
 
 //create

@@ -34,7 +34,7 @@ function App() {
        <Route path="/register" element={<Register />} />
        <Route path="/newhero" element={<CreateHero />} />
        <Route path="/profile" element={<Profile />} />
-       <Route path="/eroi/:id" element={<CardsPage />} />
+       <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />
        <Route path="/favorites" element={<Favorites />} />
        <Route path="/category/:nomecateg" element={<CategoriesCard />} />
      </Routes>

@@ -3,7 +3,7 @@
     "email": "sieggay@gmail.com",
     "password": "$2a$10$/2l04sD2Fp3by6Pm./sqg.e4FO7GV2bZDEeKEqYqqHjL4hKzu/vB.",
     "heroescreated": [],
-    "favorites": []
+    "favorites": [1]
   },
   "ErNotGabri": {
     "email": "gabripelato@sicilia.com",
@@ -12,7 +12,7 @@
       1,
       2
     ],
-    "favorites": []
+    "favorites": [2]
   },
   "rre": {
     "email": "re@re.re",
@@ -20,12 +20,12 @@
     "heroescreated": [
       3
     ],
-    "favorites": []
+    "favorites": [3]
   },
   "f": {
     "email": "f@f.f",
     "password": "$2a$10$MWgb5fhuAE3m5/xYJTD3WOjbfQps1Zg26zUUC7/fs2xnn5NhIUrtS",
     "heroescreated": [],
-    "favorites": []
+    "favorites": [4]
   }
 }

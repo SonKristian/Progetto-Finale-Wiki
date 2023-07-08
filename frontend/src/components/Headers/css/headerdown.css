@@ -33,20 +33,21 @@
 
 .submenu li a {
   text-decoration: none;
-  padding: 1.5rem;
+  padding-right: 1.3rem;
+  white-space: nowrap; /* Display each item on a single line */
 }
 
 .headerdown {
   margin-top: 0.3rem;
   position: relative;
-  height: 30px; /* Altezza fissa per evitare lo spostamento degli altri elementi */
+  height: 30px;
 }
 
 .dropdown {
-  width: 200px;
-  height: 750px;
+  max-width: 157px;
+  max-height: 750px;
   padding-top: 0.5rem;
-  background-color: #FF0032 !important;
+  text-align: start;
+  background-color: #ff0032 !important;
   position: sticky;
-  left: 100%;
 }

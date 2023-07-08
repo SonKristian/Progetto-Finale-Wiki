@@ -1,6 +1,9 @@
 import supereroi from "../db/superhero.json" assert { type: "json" };
+import utenti from "../db/utenti.json" assert {type : "json"}
 import generi from "../db/generi.json" assert { type: "json" };
 import axios from "axios";
+
+const DB_PATH_AUTH = "./db/utenti.json"
 
 export const getAllGenres = (req, res) => {
   res.send(generi);
@@ -36,6 +39,14 @@ export const getAllHero = (req, res) => {
   res.send(supereroi);
 };
 
-export const favorites = (req, res) => {
-     
+export const favorites = async (req, res) => {
+  const utente = Object.values(utenti);
+
+  const favorites = [];
+
+  utente.forEach((utente) => {
+  favorites.push(...utente.favorites);
+  });
+
+  res.json(favorites);
 }

@@ -1,13 +1,31 @@
 import Cards from "./Cards.jsx";
 import "./css/cardspage.css";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const CardsPage = () => {
+const CardsPage = ({ isLoggedIn }) => {
   const [hero, setHero] = useState({});
   const { id } = useParams();
   const [activeSection, setActiveSection] = useState(null);
 
+  // Funzione per salvare l'ID dell'eroe nei preferiti dell'utente
+  const addToFavorites = () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    if (user && user.favorites) {
+      // Verifica se l'eroe è già presente nei preferiti
+      if (!user.favorites.includes(id)) {
+        // Aggiungi l'ID dell'eroe all'array dei preferiti
+        user.favorites.push(id);
+        // Aggiorna l'utente nella sessione
+        sessionStorage.setItem("user", JSON.stringify(user));
+        console.log("Hero added to favorites:", id);
+      } else {
+        console.log("Hero already in favorites:", id);
+      }
+    }
+  };
+  
   useEffect(() => {
     async function getHero() {
       try {
@@ -28,11 +46,18 @@ const CardsPage = () => {
   };
 
   return (
-    <div className="flex justify-around width-[100%] mt-5 mb-[5rem] back bg-slate-400">
+    <div className="flex justify-around mt-5 mb-[5rem] bg-slate-400">
       {/* left */}
-      <div className="ml-5">
+      <div>
         <div className="flex justify-center items-center ml-[4rem] text-[30px]">
-          <h2 className=" font-extrabold">{hero.name}</h2>
+          {!isLoggedIn ? (
+              <h2 className="font-extrabold text-3xl">{hero.name}</h2>
+            ) : (
+              <div className="flex items-center justify-around gap-[6.5rem] mt-2">
+              <h2 className="font-extrabold text-3xl">{hero.name}</h2>
+              <p className="w-[30px] cursor-pointer" onClick={addToFavorites}><FavoriteIcon /></p>
+              </div>
+            )}
         </div>
         {hero.image && <Cards size="big" url={hero.image.url} />}
       </div>

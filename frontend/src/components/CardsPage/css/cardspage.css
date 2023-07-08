@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
-
-*{
-  font-family: 'Kanit', sans-serif;
-}
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap");
 
 * {
-  font-family: 'Kanit', sans-serif;
+  font-family: "Kanit", sans-serif;
 }
 
 .card-container {
@@ -45,35 +41,36 @@ section {
   align-items: center;
   margin-top: 1rem;
 }
-  .section-btn:hover, .section-btn:focus-within{
-    color: #ff0033;
-  }
+.section-btn:hover,
+.section-btn:focus-within {
+  color: #FF0032;
+}
 
-  .progressbar{
-    width: 300px;
-    height: 20px;
-  }
+.progressbar {
+  width: 300px;
+  height: 20px;
+}
 
-  #intelligence::-webkit-meter-optimum-value {
-    background:rgba(255, 130, 0, 1); 
-  }
+#intelligence::-webkit-meter-optimum-value {
+  background: rgba(255, 130, 0, 1);
+}
 
-  #strength::-webkit-meter-optimum-value {
-    background:rgba(200, 0, 255, 1) 
-  }
+#strength::-webkit-meter-optimum-value {
+  background: rgba(200, 0, 255, 1);
+}
 
-  #speed::-webkit-meter-optimum-value {
-    background:  rgba(70, 200, 50, 1)
-  }
-  
-  #durability::-webkit-meter-optimum-value {
-    background:  rgba(255, 180, 0, 1)
-  }
+#speed::-webkit-meter-optimum-value {
+  background: rgba(70, 200, 50, 1);
+}
 
-  #power::-webkit-meter-optimum-value {
-    background:  rgba(255, 0, 50, 1)
-  }
+#durability::-webkit-meter-optimum-value {
+  background: rgba(255, 180, 0, 1);
+}
 
-  #combat::-webkit-meter-optimum-value {
-    background: rgba(0, 120, 255, 1)
-  }
+#power::-webkit-meter-optimum-value {
+  background: rgba(255, 0, 50, 1);
+}
+
+#combat::-webkit-meter-optimum-value {
+  background: rgba(0, 120, 255, 1);
+}

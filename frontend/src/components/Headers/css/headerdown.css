@@ -3,8 +3,8 @@
   height: 30px;
   margin-bottom: 1.5rem;
   opacity: 1;
-  background-color: #FF0032;
-  animation: fade-in 1s;
+  background-color: #ff0032;
+  animation: ease-in 1s;
 }
 
 .close {
@@ -13,7 +13,7 @@
   height: 30px;
   margin-bottom: 1.5rem;
   transition: visibility 0s, opacity 500ms ease-out;
-  animation: fade-out 1s;
+  animation: ease-out 1s;
 }
 
 .submenu {
@@ -26,7 +26,7 @@
 
 .submenu a:hover,
 .headerdown #list:hover {
-  color: #FF0032;
+  color: black;
   text-decoration: none;
   opacity: 1;
 }
@@ -46,7 +46,7 @@
   width: 200px;
   height: 750px;
   padding-top: 0.5rem;
-  background-color: #FF0032(9, 9, 11, 0.947);
+  background-color: #FF0032 !important;
   position: sticky;
   left: 100%;
 }

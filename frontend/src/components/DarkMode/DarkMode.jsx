@@ -11,7 +11,7 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <div className={`dark-mode-toggle ${isDarkMode ? "active" : ""}`} onClick={toggleDarkMode}>
+    <div id="dark-btn" className={`btn-action ${isDarkMode ? "active" : ""}`} onClick={toggleDarkMode}>
       {isDarkMode ? "Light Mode" : "Dark Mode"}
     </div>
   );

@@ -61,7 +61,7 @@ const Header = ({ isLoggedIn }) => {
           <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange} />
           <button type="button" onClick={handleSearch}> <SearchIcon /> </button>
         </div>
-        <div className="dark-mode">
+        <div className="flex items-center justify-center">
          <DarkMode />
         </div>
         {/* {console.log(isLoggedIn)} */}

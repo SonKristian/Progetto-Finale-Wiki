@@ -1,58 +1,59 @@
-  .small-card {
-    min-width: 125px;
-    max-width: 175px;
-    background-color: #ff0033;
-    margin: 1rem;
-    padding: 0.5rem;
-    border-radius: 18px ;
-  }
+.small-card {
+  min-width: 125px;
+  max-width: 175px;
+  background-color: #ff0032;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 18px;
+}
 
-  .small-card:hover{
-    opacity: 90%;
-    cursor: pointer;
-  }
-  
-  .small-card img {
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-  }
+.small-card:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
 
-  .big-card {
-    width: 300px;
-    height: 400px;
-    background-color: #ff0033;
-    margin-left: 4rem;
-    margin-top: 1rem;
-    padding: 1rem;
-    border-radius: 36px ;
-  }
-  
-  .big-card:hover{
-    opacity: 90%;
-    cursor: pointer;
-  }
-  
-  .big-card img {
-    border-radius: 20px;
-    width: 300px;
-    height: 370px;
-  }
+.small-card img {
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+}
 
-  .container-small, .container-big{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .container-small:hover{
-    height: 215px;
-  } 
+.big-card {
+  width: 300px;
+  height: 400px;
+  background-color: #ff0032;
+  margin-left: 4rem;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 36px;
+}
 
-  .categcard-container button{
-    font-size: 20px;
-  }
-  
-  .categcard-container button:hover{
-    color: #ff0033;
-  }
+.big-card:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.big-card img {
+  border-radius: 20px;
+  width: 300px;
+  height: 370px;
+}
+
+.container-small,
+.container-big {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container-small:hover {
+  height: 215px;
+}
+
+.categcard-container button {
+  font-size: 20px;
+}
+
+.categcard-container button:hover {
+  color: #ff0032;
+}

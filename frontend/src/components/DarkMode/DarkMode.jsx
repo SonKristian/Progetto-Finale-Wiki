@@ -1,29 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import "./css/dark.css";
 
-export default function Switch() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
+const DarkModeToggle = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode);
+    document.body.classList.toggle("dark-mode");
+    //aggiungere o rimuovere la classe CSS "dark-mode"
   };
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    document.body.className = theme;
-  }, [theme]);
+
   return (
-    <div className="header__switch">
-      <div className="header__switch--mode">
-        <p id="switch__mode">Set Mode</p>
-        <input
-          type="checkbox"
-          id="toggle"
-          className="toggle--checkbox"
-          onClick={toggleTheme}
-        />
-      </div>
+    <div className={`dark-mode-toggle ${isDarkMode ? "active" : ""}`} onClick={toggleDarkMode}>
+      {isDarkMode ? "Light Mode" : "Dark Mode"}
     </div>
   );
-}
+};
+
+export default DarkModeToggle;
+

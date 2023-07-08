@@ -3,7 +3,7 @@
   height: 30px;
   margin-bottom: 1.5rem;
   opacity: 1;
-  background-color: rgba(9, 9, 11, 0.947);
+  background-color: #FF0032;
   animation: fade-in 1s;
 }
 
@@ -26,7 +26,7 @@
 
 .submenu a:hover,
 .headerdown #list:hover {
-  color: #ff0033;
+  color: #FF0032;
   text-decoration: none;
   opacity: 1;
 }
@@ -46,7 +46,7 @@
   width: 200px;
   height: 750px;
   padding-top: 0.5rem;
-  background-color: rgba(9, 9, 11, 0.947);
+  background-color: #FF0032(9, 9, 11, 0.947);
   position: sticky;
   left: 100%;
 }

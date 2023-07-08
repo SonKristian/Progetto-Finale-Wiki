@@ -1,9 +1,11 @@
-import HeaderDown from "./HeaderDown";
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
+import HeaderDown from "./HeaderDown";
+import DarkMode from "../DarkMode/DarkMode.jsx"
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import "./css/header.css";
-import { useState, useEffect } from 'react';
+
 import axios from "axios";
 
 const Header = ({ isLoggedIn }) => {
@@ -44,7 +46,7 @@ const Header = ({ isLoggedIn }) => {
 
   return (
     <header>
-      <nav className="bg-slate-100 h-[60px] flex justify-between">
+      <nav className="bg-[#E6E6E6] h-[60px] flex justify-between">
         <div className="ml-5 flex items-center">
           <Link to="#" onClick={toggleBar}>
             <MenuIcon />
@@ -60,16 +62,16 @@ const Header = ({ isLoggedIn }) => {
           <button type="button" onClick={handleSearch}> <SearchIcon /> </button>
         </div>
         <div className="dark-mode">
-          <button type="button"> Dark Mode </button>
+         <DarkMode />
         </div>
         {/* {console.log(isLoggedIn)} */}
         {!isLoggedIn ? (
           <div className="form">
             <Link to="/login">
-              <button className="btn-action" type="button">Login</button>
+              <button id="login" className="btn-action" type="button">Login</button>
             </Link>
             <Link to="/register">
-              <button className="btn-action" type="button">Register</button>
+              <button id="register" className="btn-action" type="button">Register</button>
             </Link>
           </div>
         ) : (

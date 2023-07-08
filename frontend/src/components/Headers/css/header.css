@@ -13,10 +13,17 @@ header {
   height: 40px;
   border-radius: 10px;
   background-color: white;
+  border: #108E73 3px solid;
+
 }
 
 #searchbar {
   width: 600px;
+  border-top: #108E73 3px solid;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+  border-bottom:  #108E73 3px solid;
+
 }
 
 #searchbar:focus,
@@ -44,6 +51,15 @@ button:hover {
   width: 100px;
   margin: -0.4rem;
   text-decoration: none;
+}
+
+#login {
+  background: #108E73 !important;
+}
+
+#register {
+  color: black;
+  background: white !important;
 }
 
 .form {

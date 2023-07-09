@@ -6,25 +6,38 @@ const DarkModeToggle = () => {
 
   const toggleDarkMode = () => {
     const bodyElement = document.querySelector("body");
-  if (bodyElement) {
-    bodyElement.classList.toggle("dark-mode");
-  }
+    if (bodyElement) {
+      bodyElement.classList.toggle("dark-mode");
+    }
 
-  const navChildElement = document.querySelector(".nav-child");
-  if (navChildElement) {
-    navChildElement.classList.toggle("dark-mode");
-  }
+    const navChildElement = document.querySelector(".nav-child");
+    if (navChildElement) {
+      navChildElement.classList.toggle("dark-mode");
+    }
 
-  setisDark(true)
-};
+    const dropdownElement = document.querySelector(".dropdown");
+    if (dropdownElement) {
+      dropdownElement.classList.toggle("dark-mode");
+    }
+    
+    const headerTopElement = document.querySelector(".header-top");
+    if (headerTopElement) {
+      headerTopElement.classList.toggle("dark-mode");
+    }
+
+    setisDark(true);
+  };
 
   return (
-    <div id="dark-btn" className={`btn-action ${isDark ? "active" : ""}`} onClick={toggleDarkMode}>
+    <div
+      id="dark-btn"
+      className={`btn-action ${isDark ? "active" : ""}`}
+      onClick={toggleDarkMode}
+    >
       {isDark ? "Light Mode" : "Dark Mode"}
       {console.log("from Dark" + isDark)}
     </div>
-    
-);
+  );
 };
 
 export default DarkModeToggle;

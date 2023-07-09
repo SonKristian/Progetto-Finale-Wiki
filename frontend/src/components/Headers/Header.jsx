@@ -48,7 +48,7 @@ const Header = ({ isLoggedIn, isDark }) => {
 
   return (
     <header>
-      <nav className="bg-[#E6E6E6] h-[60px] flex justify-between">
+      <nav id="navbar" className={`header-top ${isDark ? "dark-mode" : ""}`}>
         <div className="ml-5 flex items-center">
           <Link to="#" onClick={toggleBar}>
             <MenuIcon />

@@ -3,12 +3,23 @@ body.dark-mode {
   transition: background-color 1s ease-in;
 }
 
-.nav-child.dark-mode{
+body.dark-mode h2{
+  color: white;
+  transition: background-color 1s ease-in;
+}
+
+.nav-child.dark-mode, .dropdown.dark-mode{
   background-color: #DF0B35;
   color: white;
   transition: background-color 1s ease-in;
 }
 
+.header-top.dark-mode{
+  background-color: #757575 !important;
+  transition: background-color 1s ease-in;
+}
+
+/* background-color: 0A6753 */
 body.dark-mode p {
   color: white;
 }

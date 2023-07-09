@@ -55,11 +55,24 @@ export const getHeroesIdName = (req, res) => {
   }
 };
 
+export const getHeroesForUser = (req, res) => {
+    const clientname = req.params.username
+    const arr_created = utenti[clientname].heroescreated
+    console.log(arr_created)
+    const tosend = []
+
+    for(let i=0; i < arr_created.length; i++){ 
+      if(newHeroes[arr_created[i]]) tosend.push(newHeroes[arr_created[i]]) 
+    }
+    console.log("tosend" + tosend)
+    res.json(tosend);
+};
+
 export const heroUpdate = async (req, res) => {
-  const heroName = req.params.id.toLowerCase();
+  const heroName = req.headers.id
 
   const foundHero = Object.entries(newHeroes).find(([heroId, heroData]) => {
-    return heroData.name.toLowerCase() === heroName;
+    return heroData.id === heroName;
   });
 
   const id = foundHero[0]
@@ -83,7 +96,7 @@ export const heroUpdate = async (req, res) => {
 };
 
 export const heroDelete = async (req, res) => {
-  const heroName = req.params.id.toLowerCase();
+  const heroName = req.headers.id.toLowerCase();
 
   const deleteHero = Object.entries(newHeroes).find(([heroId, heroData]) => {
     return heroData.name.toLowerCase() === heroName;

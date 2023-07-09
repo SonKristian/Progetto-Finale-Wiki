@@ -1,5 +1,6 @@
 {
   "1": {
+    "id": "1",
     "name": "Re",
     "gender": "Male",
     "race": "God",
@@ -9,6 +10,7 @@
     "haircol": "white"
   },
   "2": {
+    "id": "2",
     "name": "r2",
     "gender": "a",
     "race": "a",
@@ -18,7 +20,77 @@
     "haircol": "aa"
   },
   "3": {
+    "name": "Re",
+    "gender": "re",
+    "race": "re",
+    "height": "re",
+    "weight": "re",
+    "eyecol": "re",
+    "haircol": "re"
+  },
+  "4": {
+    "id": "4",
+    "name": "Pascal",
+    "gender": "Maschio",
+    "race": "Dio",
+    "height": "199cm",
+    "weight": "213kg",
+    "eyecol": "arcobaleno",
+    "haircol": "arcobaleno"
+  },
+  "5": {
+    "id": "5",
+    "name": "Gennaro",
+    "gender": "Non Binay",
+    "race": "Napoletano",
+    "height": "123cm",
+    "weight": "213kg",
+    "eyecol": "a",
+    "haircol": "Pelato"
+  },
+  "6": {
+    "id": "6",
+    "name": "r",
+    "gender": "r",
+    "race": "r",
+    "height": "r",
+    "weight": "r",
+    "eyecol": "r",
+    "haircol": "r"
+  },
+  "7": {
+    "id": "7",
+    "name": "r",
+    "gender": "t",
+    "race": "t",
+    "height": "t",
+    "weight": "t",
+    "eyecol": "t",
+    "haircol": "t"
+  },
+  "8": {
+    "id": "8",
     "name": "a",
+    "gender": "a",
+    "race": "a",
+    "height": "a",
+    "weight": "a",
+    "eyecol": "a",
+    "haircol": "a"
+  },
+  "9": {
+    "id": "9",
+    "name": "i",
+    "gender": "i",
+    "race": "i",
+    "height": "i",
+    "weight": "i",
+    "eyecol": "i",
+    "haircol": "i"
+  },
+  "11": {
+    "id": "10",
+    "name": "sieg",
     "gender": "a",
     "race": "a",
     "height": "a",

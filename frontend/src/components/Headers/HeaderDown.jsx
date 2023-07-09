@@ -30,11 +30,11 @@ const HeaderDown = ({ active, isDark }) => {
           <div>
             <Link to="/eroi">All Heroes</Link>
           </div>
-          {console.log("from Header down" + isDark)}
+          {/* {console.log("from Header down" + isDark)} */}
           <div className="headerdown" onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className="dropdown ">
+              <ul className={`dropdown ${isDark ? "dark-mode" : ""}`}>
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}`}>

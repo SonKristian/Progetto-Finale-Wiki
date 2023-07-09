@@ -85,6 +85,8 @@ app.put("/newhero/:id", authenticateToken, newhero.heroUpdate)
 app.get("/newhero", authenticateToken, newhero.getAllNewHero)
 //get for name
 app.get("/newhero/:id", authenticateToken, newhero.getHeroesIdName)
+//all hero for user
+app.get("/allnewheroes/:username", authenticateToken, newhero.getHeroesForUser)
 //delete
 app.delete("/newhero/:id", authenticateToken, newhero.heroDelete)
 

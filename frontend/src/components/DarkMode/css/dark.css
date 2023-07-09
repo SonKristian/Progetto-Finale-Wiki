@@ -1,10 +1,15 @@
 body.dark-mode {
-  background-color: #101010 ;
-  color: white;
-  transition: background-color 1s ease-in-out;
+  background-color: #101010;
+  transition: background-color 1s ease-in;
 }
 
-body.dark-mode p{
+.nav-child.dark-mode{
+  background-color: #DF0B35;
+  color: white;
+  transition: background-color 1s ease-in;
+}
+
+body.dark-mode p {
   color: white;
 }
 

@@ -9,7 +9,7 @@ import "./css/header.css";
 
 import axios from "axios";
 
-const Header = ({ isLoggedIn }) => {
+const Header = ({ isLoggedIn, isDark }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const storedName = sessionStorage.getItem('user');
@@ -63,8 +63,9 @@ const Header = ({ isLoggedIn }) => {
           <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange} />
           <button type="button" onClick={handleSearch}> <SearchIcon /> </button>
         </div>
+        {console.log("from Header" + isDark)}
         <div className="flex items-center justify-center">
-         <DarkMode />
+         <DarkMode isDark={isDark} />
         </div>
         {/* {console.log(isLoggedIn)} */}
         {!isLoggedIn ? (
@@ -95,7 +96,7 @@ const Header = ({ isLoggedIn }) => {
         </div>
         )}
       </nav>
-      <HeaderDown active={active} />
+      <HeaderDown active={active} isDark={isDark}/>
       <div>
       {searchResults.length > 0 && <SearchResult searchResults={searchResults} />}
       </div>

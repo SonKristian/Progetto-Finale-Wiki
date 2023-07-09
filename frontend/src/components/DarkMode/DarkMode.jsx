@@ -2,20 +2,29 @@ import { useState } from "react";
 import "./css/dark.css";
 
 const DarkModeToggle = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDark, setisDark] = useState(false);
 
   const toggleDarkMode = () => {
-    setIsDarkMode((prevIsDarkMode) => !prevIsDarkMode);
-    document.body.classList.toggle("dark-mode");
-    //aggiungere o rimuovere la classe CSS "dark-mode"
-  };
+    const bodyElement = document.querySelector("body");
+  if (bodyElement) {
+    bodyElement.classList.toggle("dark-mode");
+  }
+
+  const navChildElement = document.querySelector(".nav-child");
+  if (navChildElement) {
+    navChildElement.classList.toggle("dark-mode");
+  }
+
+  setisDark(true)
+};
 
   return (
-    <div id="dark-btn" className={`btn-action ${isDarkMode ? "active" : ""}`} onClick={toggleDarkMode}>
-      {isDarkMode ? "Light Mode" : "Dark Mode"}
+    <div id="dark-btn" className={`btn-action ${isDark ? "active" : ""}`} onClick={toggleDarkMode}>
+      {isDark ? "Light Mode" : "Dark Mode"}
+      {console.log("from Dark" + isDark)}
     </div>
-  );
+    
+);
 };
 
 export default DarkModeToggle;
-

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./css/headerdown.css";
 
-const HeaderDown = ({ active }) => {
+const HeaderDown = ({ active, isDark }) => {
   const [categories, setCategories] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -22,7 +22,7 @@ const HeaderDown = ({ active }) => {
 
   return (
     <nav className={active ? "open" : "close"}>
-      <div>
+      <div className={`nav-child ${isDark ? "dark-mode" : ""}`}>
         <div className="submenu">
           <div className="ml-5">
             <Link to="/home">Home</Link>
@@ -30,10 +30,11 @@ const HeaderDown = ({ active }) => {
           <div>
             <Link to="/eroi">All Heroes</Link>
           </div>
+          {console.log("from Header down" + isDark)}
           <div className="headerdown" onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className="dropdown">
+              <ul className="dropdown ">
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}`}>

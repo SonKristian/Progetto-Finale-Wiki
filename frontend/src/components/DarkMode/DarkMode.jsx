@@ -25,6 +25,26 @@ const DarkModeToggle = () => {
       headerTopElement.classList.toggle("dark-mode");
     }
 
+    const footerTopElement = document.querySelector("#footer-top");
+    if (footerTopElement) {
+      footerTopElement.classList.toggle("dark-mode");
+    }
+
+    const footerDownElement = document.querySelector("#footer-down");
+    if (footerDownElement) {
+      footerDownElement.classList.toggle("dark-mode");
+    }
+
+    const buttonElement = document.querySelector(".btn-action");
+    if (buttonElement) {
+      buttonElement.classList.toggle("dark-mode");
+    }
+
+    const formElement = document.querySelector(".form");
+    if (formElement) {
+      formElement.classList.toggle("dark-mode");
+    }
+
     setisDark(true);
   };
 

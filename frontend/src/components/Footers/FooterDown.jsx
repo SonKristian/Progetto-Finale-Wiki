@@ -2,7 +2,7 @@
 
 const FooterDown = () => {
   return (
-    <div className="flex bg-[#108E73] w-full items-center justify-center gap-8 ">
+    <div id="footer-down" className="flex bg-[#108E73] w-full items-center justify-center gap-8 ">
     <div className="mt-4">
         <h2 className="text-white font-bold">About us</h2>
             <ul className="flex flex-col w-[170px] text-white h-[250px] items-start">

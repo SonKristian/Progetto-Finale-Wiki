@@ -30,7 +30,7 @@ export const search = async (req, res) => {
 
 export const getSingleHero = (req, res) => {
   let hero = Object.entries(supereroi);
-  console.log(hero[req.params.id - 1][1]);
+  // console.log(hero[req.params.id - 1][1]);
   // console.log(singleHero);
   res.send(hero[req.params.id - 1][1]);
 };

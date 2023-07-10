@@ -55,8 +55,12 @@ const Header = ({ isLoggedIn, isDark }) => {
           </Link>
         </div>
         <div className="flex items-center">
-          <Link to="/home">
-            <img src="./src/assets/logoSpotlight.svg" alt="logo" className="w-[50px] m-[2rem]" />
+        <Link to="/home">
+            <img
+              src={isDark ? "./src/assets/negativeLogo.svg" : "./src/assets/logoSpotlight.svg"}
+              alt="logo"
+              className="w-[50px] m-[2rem]"
+            />
           </Link>
         </div>
         <div className="search-icon-bar">
@@ -69,20 +73,20 @@ const Header = ({ isLoggedIn, isDark }) => {
         </div>
         {/* {console.log(isLoggedIn)} */}
         {!isLoggedIn ? (
-          <div className="form">
+          <div className={`form ${isDark ? "dark-mode" : ""}`}>
             <Link to="/login">
-              <button id="login" className="btn-action" type="button">Login</button>
+              <button id="login" className={`btn-action ${isDark ? "dark-mode" : ""}`} type="button">Login</button>
             </Link>
             <Link to="/register">
-              <button id="register" className="btn-action" type="button">Register</button>
+              <button id="register" className={`btn-action ${isDark ? "dark-mode" : ""}`} type="button">Register</button>
             </Link>
           </div>
         ) : (
-         <div className="form">
+         <div className={`form ${isDark ? "dark-mode" : ""}`}>
           <Link to="/favorites">
-            <button className="btn-action" type="button">Favorites</button>
+            <button className={`btn-action ${isDark ? "dark-mode" : ""}`} type="button">Favorites</button>
           </Link>
-          <div className="form">
+          <div className={`form ${isDark ? "dark-mode" : ""}`}>
           <div>
             <Link to="/profile">
               <img className="account" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4860795e-12c4-4bc2-bd7a-4b55c30df95c/df1xaqt-8b981017-0375-4035-a0cc-2909b6cbd42b.png/v1/fill/w_564,h_651/superhero_profile_by_alexbadass_df1xaqt-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NjUxIiwicGF0aCI6IlwvZlwvNDg2MDc5NWUtMTJjNC00YmMyLWJkN2EtNGI1NWMzMGRmOTVjXC9kZjF4YXF0LThiOTgxMDE3LTAzNzUtNDAzNS1hMGNjLTI5MDliNmNiZDQyYi5wbmciLCJ3aWR0aCI6Ijw9NTY0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.TaYbRw-y1YNwFB80EJz2xMPP3T13cjGdU7QuDmOo4CA" />

@@ -5,7 +5,6 @@ import "./css/cards.css";
 
 const HeroCard = () => {
   const [allHeroes, setAllHeroes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const { page } = useParams();
   const currentPageParam = parseInt(page) || 1;
@@ -19,20 +18,34 @@ const HeroCard = () => {
       const response = await fetch(`http://localhost:3000/eroi/page/${currentPageParam}`);
       const data = await response.json();
       setAllHeroes(data);
-      setTotalPages(Math.ceil(data.length / cardsPerPage));
     }
 
     getHeroes();
   }, [currentPageParam]);
 
+  useEffect(() => {
+    async function getTotalPages() {
+      const response = await fetch(`http://localhost:3000/eroi/totalPages`);
+      const data = await response.json();
+      setTotalPages(data.totalPages);
+    }
+
+    getTotalPages();
+  }, []);
+
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    const nextPageUrl = `/eroi/page/${page}`;
+    window.location.href = nextPageUrl;
   };
 
   const handleNextPage = () => {
     const nextPage = currentPageParam + 1;
-    setCurrentPage(nextPage);
-    window.location.href = `http://localhost:3000/eroi/page/${nextPage}`;
+    handlePageChange(nextPage);
+  };
+
+  const handlePrevPage = () => {
+    const prevPage = currentPageParam - 1;
+    handlePageChange(prevPage);
   };
 
   const renderPagination = () => {
@@ -43,7 +56,7 @@ const HeroCard = () => {
       <button
         key="prev"
         className={`pagination-item ${currentPageParam === 1 ? "disabled" : ""}`}
-        onClick={() => handlePageChange(currentPageParam - 1)}
+        onClick={handlePrevPage}
         disabled={currentPageParam === 1}
       >
         Prev
@@ -69,7 +82,7 @@ const HeroCard = () => {
           currentPageParam === totalPages ? "disabled" : ""
         }`}
         onClick={handleNextPage}
-        disabled={currentPageParam === totalPages}
+      
       >
         Next
       </button>
@@ -82,7 +95,6 @@ const HeroCard = () => {
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
         {Object.values(allHeroes)
-          .slice(startIndex, endIndex)
           .map((hero, i) => (
             <Link key={i} to={`/eroi/${hero.id}`}>
               <Cards

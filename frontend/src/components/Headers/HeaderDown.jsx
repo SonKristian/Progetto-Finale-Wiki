@@ -28,7 +28,7 @@ const HeaderDown = ({ active, isDark }) => {
             <Link to="/home">Home</Link>
           </div>
           <div>
-            <Link to="/eroi">All Heroes</Link>
+            <Link to="/eroi/page/1">All Heroes</Link>
           </div>
           {/* {console.log("from Header down" + isDark)} */}
           <div className="headerdown" onClick={toggleDropdown}>

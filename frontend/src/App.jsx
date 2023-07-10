@@ -32,7 +32,7 @@ function App() {
       <Header isLoggedIn={isLoggedIn}/>
       <Routes>
        <Route path="/home" element={<Home />} />
-       <Route path="/eroi" element={<HeroCard />} />
+       <Route path="/eroi/page/:page" element={<HeroCard />} />
        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
        <Route path="/register" element={<Register />} />
        <Route path="/newhero" element={<CreateHero />} />
@@ -43,7 +43,7 @@ function App() {
        <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />
        <Route path="/favorites" element={<Favorites />} />
        <Route path="/category/:nomecateg" element={<CategoriesCard />} />
-     </Routes>
+      </Routes>
       <Footer />
     </>
   );

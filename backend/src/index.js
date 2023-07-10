@@ -67,7 +67,7 @@ app.post("/login", auth.login)
 app.get("/genere", hero.getAllGenres)
 app.get("/genere/:nome", hero.getHeroGenre)
 app.get("/eroi/:id", hero.getSingleHero)
-app.get("/eroi", hero.getAllHero)
+app.get("/eroi/page/:page", hero.getAllHero)
 
 
 //favorite

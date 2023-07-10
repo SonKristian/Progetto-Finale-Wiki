@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Cards from "./Cards.jsx";
 import "./css/cards.css";
 
@@ -7,25 +7,32 @@ const HeroCard = () => {
   const [allHeroes, setAllHeroes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const { page } = useParams();
+  const currentPageParam = parseInt(page) || 1;
 
   const cardsPerPage = 24;
-  const startIndex = (currentPage - 1) * cardsPerPage;
+  const startIndex = (currentPageParam - 1) * cardsPerPage;
   const endIndex = startIndex + cardsPerPage;
 
   useEffect(() => {
-    async function getCategories() {
-      const response = await fetch(`http://localhost:3000/eroi`);
+    async function getHeroes() {
+      const response = await fetch(`http://localhost:3000/eroi/page/${currentPageParam}`);
       const data = await response.json();
-      console.log(data);
-      setTotalPages(Math.ceil(data.length / cardsPerPage));
       setAllHeroes(data);
+      setTotalPages(Math.ceil(data.length / cardsPerPage));
     }
 
-    getCategories();
-  }, []);
+    getHeroes();
+  }, [currentPageParam]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  const handleNextPage = () => {
+    const nextPage = currentPageParam + 1;
+    setCurrentPage(nextPage);
+    window.location.href = `http://localhost:3000/eroi/page/${nextPage}`;
   };
 
   const renderPagination = () => {
@@ -35,9 +42,9 @@ const HeroCard = () => {
     pagination.push(
       <button
         key="prev"
-        className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1}
+        className={`pagination-item ${currentPageParam === 1 ? "disabled" : ""}`}
+        onClick={() => handlePageChange(currentPageParam - 1)}
+        disabled={currentPageParam === 1}
       >
         Prev
       </button>
@@ -46,11 +53,11 @@ const HeroCard = () => {
     // Current page button
     pagination.push(
       <button
-        key={currentPage}
+        key={currentPageParam}
         className={`pagination-item active`}
-        onClick={() => handlePageChange(currentPage)}
+        onClick={() => handlePageChange(currentPageParam)}
       >
-        {currentPage}
+        {currentPageParam}
       </button>
     );
 
@@ -59,10 +66,10 @@ const HeroCard = () => {
       <button
         key="next"
         className={`pagination-item ${
-          currentPage === totalPages ? "disabled" : ""
+          currentPageParam === totalPages ? "disabled" : ""
         }`}
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages}
+        onClick={handleNextPage}
+        disabled={currentPageParam === totalPages}
       >
         Next
       </button>

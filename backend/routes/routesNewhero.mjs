@@ -1,4 +1,3 @@
-import axios from "axios";
 import fs from "node:fs/promises";
 import newHeroes from "../db/newhero.json" assert { type: "json" };
 import utenti from "../db/utenti.json" assert { type: "json" };
@@ -16,7 +15,7 @@ export const createHero = async (req, res) => {
     nextId++;
     const user = req.headers.user;
     const newHero = {
-      [nextId]: { ...req.body },
+      [nextId]: { ...req.body, id: nextId },
     };
 
     const allNewHero = { ...newHeroes, ...newHero };

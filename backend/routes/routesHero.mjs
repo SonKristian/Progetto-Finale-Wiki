@@ -36,7 +36,15 @@ export const getSingleHero = (req, res) => {
 };
 
 export const getAllHero = (req, res) => {
-  res.send(supereroi);
+  const cardsPerPage = 24;
+  const currentPage = parseInt(req.params.page);
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = startIndex + cardsPerPage;
+
+  const superArray = Object.values(supereroi);
+  const superSlice = superArray.slice(startIndex, endIndex);
+
+  res.send(superSlice);
 };
 
 export const favorites = async (req, res) => {
@@ -47,6 +55,7 @@ export const favorites = async (req, res) => {
   utente.forEach((utente) => {
   favorites.push(...utente.favorites);
   });
+
 
   res.json(favorites);
 }

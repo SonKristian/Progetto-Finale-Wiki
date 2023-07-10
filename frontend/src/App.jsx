@@ -11,6 +11,7 @@ import Login from "./components/Form/Login.jsx"
 import Register from "./components/Form/Register.jsx"
 import CreateHero from "./components/Form/CreateHero.jsx";
 import ModifyHero from "./components/Form/ModifyHero.jsx";
+import DeleteHero from "./components/Form/DeleteHero.jsx";
 import Profile from "./components/Account/Profile.jsx";
 import Favorites from "./components/Account/Favorites.jsx";
 // import SearchResult from "./components/Headers/SearchResults";
@@ -36,6 +37,7 @@ function App() {
        <Route path="/register" element={<Register />} />
        <Route path="/newhero" element={<CreateHero />} />
        <Route path="/modify/newhero/:id" element={<ModifyHero />} />
+       <Route path="/delete/newhero/:id" element={<DeleteHero />} />
        <Route path="/profile" element={<Profile />} />
        {/* <Route path="/results" element={<SearchResult />} /> */}
        <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />

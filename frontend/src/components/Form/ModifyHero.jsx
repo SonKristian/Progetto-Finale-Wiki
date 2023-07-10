@@ -13,7 +13,7 @@ const ModifyHero = () => {
   const [haircol, setHaircol] = useState("");
   const [herostatus, setHerostatus] =  useState(false);
 
-  const handleCreation = async (e) => {
+  const handleEdit = async (e) => {
     e.preventDefault();
     const storedToken = sessionStorage.getItem('jwtToken');
     const storedName = sessionStorage.getItem('user');
@@ -41,14 +41,14 @@ const ModifyHero = () => {
           });
 
           if (response) {
-            setHerostatus("Hero creation : successful");
+            setHerostatus("Hero edit : successful");
             // Clear form inputs
            
           } else {
-            setHerostatus("Hero creation : failed");
+            setHerostatus("Hero edit : failed");
           }
   } catch (error) {
-    setHerostatus("Error occurred during creation");
+    setHerostatus("Error occurred during editing");
     console.error(error);
   }
 }
@@ -58,11 +58,11 @@ const ModifyHero = () => {
    <div className="flex justify-center items-center mb-[5rem] mt-[4rem]">
     {!herostatus ? (
     <div className="form-ctn">
-      <form onSubmit={handleCreation}>
+      <form onSubmit={handleEdit}>
         <div className="flex flex-col justify-center">
           <div className="mt-[1.5rem] flex flex-col justify-center items-center">
-          <h1>Creation of your hero</h1>
-          <p>Please fill in this form to create your personal superhero.</p>
+          <h1>Edit your hero</h1>
+          <p>Please fill in this form to edit your personal superhero.</p>
           </div>
           
           <label className="mt-[1.5rem]" htmlFor="name">
@@ -161,10 +161,10 @@ const ModifyHero = () => {
     </div>
       ):(
         <div className="flex flex-col items-center justify-around gap-10">
-        <p>Hero has been created successfully</p>
+        <p>Hero has been edited successfully</p>
         <div className="flex items-center justify-around gap-10">
         <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/newhero"}}>
-            Create Again
+            Create
         </button>
 
         <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/home"}}>
@@ -172,7 +172,7 @@ const ModifyHero = () => {
         </button>
 
 
-        <button className="btn-action w-[200px]">
+        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/profile"}}>
             See your hero
         </button>
         </div>

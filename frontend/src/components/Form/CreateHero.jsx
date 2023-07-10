@@ -169,7 +169,7 @@ const CreateHero = () => {
         </button>
 
 
-        <button className="btn-action w-[200px]">
+        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/profile"}}>
             See your hero
         </button>
         </div>

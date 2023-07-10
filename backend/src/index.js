@@ -65,7 +65,7 @@ app.post("/login", auth.login)
 
 //crud on the DB superhero.json
 app.get("/genere", hero.getAllGenres)
-app.get("/genere/:nome", hero.getHeroGenre)
+app.get("/genere/:nome/page/:page", hero.getHeroGenre)
 app.get("/eroi/:id", hero.getSingleHero)
 app.get("/eroi/page/:page", hero.getAllHero)
 

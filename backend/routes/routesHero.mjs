@@ -10,11 +10,18 @@ export const getAllGenres = (req, res) => {
 };
 
 export const getHeroGenre = async (req, res) => {
+  const cardsPerPage = 24;
+  const currentPage = parseInt(req.params.page);
+  const startIndex = (currentPage - 1) * cardsPerPage;
+  const endIndex = startIndex + cardsPerPage;
+
   let genre = Object.values(supereroi);
   let allgen = genre.filter((e) => e.biography.publisher == req.params.nome);
-  console.log(genre);
-  res.send(allgen);
+  let slicegen = allgen.slice(startIndex, endIndex)
+  console.log(slicegen);
+  res.send(slicegen);
 };
+
 
 export const search = async (req, res) => {
   const nome = encodeURIComponent(req.params.nome);

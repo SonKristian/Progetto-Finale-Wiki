@@ -42,7 +42,7 @@ function App() {
        {/* <Route path="/results" element={<SearchResult />} /> */}
        <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />
        <Route path="/favorites" element={<Favorites />} />
-       <Route path="/category/:nomecateg" element={<CategoriesCard />} />
+       <Route path="/category/:nomecateg/page/:page" element={<CategoriesCard />} />
       </Routes>
       <Footer />
     </>

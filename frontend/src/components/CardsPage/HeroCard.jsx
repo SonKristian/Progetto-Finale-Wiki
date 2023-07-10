@@ -9,29 +9,18 @@ const HeroCard = () => {
   const { page } = useParams();
   const currentPageParam = parseInt(page) || 1;
 
-  const cardsPerPage = 24;
-  const startIndex = (currentPageParam - 1) * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
 
   useEffect(() => {
     async function getHeroes() {
       const response = await fetch(`http://localhost:3000/eroi/page/${currentPageParam}`);
       const data = await response.json();
       setAllHeroes(data);
+      setTotalPages(data.totalPages);
     }
 
     getHeroes();
   }, [currentPageParam]);
 
-  useEffect(() => {
-    async function getTotalPages() {
-      const response = await fetch(`http://localhost:3000/eroi/totalPages`);
-      const data = await response.json();
-      setTotalPages(data.totalPages);
-    }
-
-    getTotalPages();
-  }, []);
 
   const handlePageChange = (page) => {
     const nextPageUrl = `/eroi/page/${page}`;

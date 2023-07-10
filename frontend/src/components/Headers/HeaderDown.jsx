@@ -37,7 +37,7 @@ const HeaderDown = ({ active, isDark }) => {
               <ul className={`dropdown ${isDark ? "dark-mode" : ""}`}>
                 {categories.map((category) => (
                   <li key={category}>
-                    <Link to={`/category/${encodeURIComponent(category)}`}>
+                    <Link to={`/category/${encodeURIComponent(category)}/page/1`}>
                       {category}
                     </Link>
                   </li>

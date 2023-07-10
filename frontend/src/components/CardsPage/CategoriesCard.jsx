@@ -7,65 +7,83 @@ import "./css/cards.css";
 const CategoriesCard = () => {
   const [heroCat, setHeroCat] = useState([]);
   const { nomecateg } = useParams();
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-
-  const cardsPerPage = 24;
-  const startIndex = (currentPage - 1) * cardsPerPage;
-  const endIndex = startIndex + cardsPerPage;
+  const { page } = useParams();
+  const currentPageParam = parseInt(page) || 1;
 
   useEffect(() => {
     async function getCategories() {
-      const response = await fetch(`http://localhost:3000/genere/${nomecateg}`);
+      const response = await fetch(`http://localhost:3000/genere/${nomecateg}/page/${currentPageParam}`);
       const data = await response.json();
       setHeroCat(data);
-      setTotalPages(Math.ceil(data.length / cardsPerPage));
+      setTotalPages(data.totalPages);
     }
 
     getCategories();
-  }, [nomecateg]);
+  }, [nomecateg , currentPageParam]);
 
   const handlePageChange = (page) => {
-    setCurrentPage(page);
+    const nextPageUrl = `/genere/${nomecateg}/page/${page}`;
+    window.location.href = nextPageUrl;
   };
-  //update the current page when a pagination button is clicked.
+
+  const handleNextPage = () => {
+    const nextPage = currentPageParam + 1;
+    handlePageChange(nextPage);
+  };
+
+  const handlePrevPage = () => {
+    const prevPage = currentPageParam - 1;
+    handlePageChange(prevPage);
+  };
 
   const renderPagination = () => {
     const pagination = [];
-  
+
     // Previous page button
     pagination.push(
-      <button key="prev" className={`pagination-item ${currentPage === 1 ? "disabled" : ""}`}
-        onClick={() => handlePageChange(currentPage - 1)}
-        disabled={currentPage === 1} >
-       Prev
+      <button
+        key="prev"
+        className={`pagination-item ${currentPageParam === 1 ? "disabled" : ""}`}
+        onClick={handlePrevPage}
+        disabled={currentPageParam === 1}
+      >
+        Prev
       </button>
     );
-  
+
     // Current page button
     pagination.push(
-      <button key={currentPage} className={`pagination-item active`}
-        onClick={() => handlePageChange(currentPage)} >
-        {currentPage}
+      <button
+        key={currentPageParam}
+        className={`pagination-item active`}
+        onClick={() => handlePageChange(currentPageParam)}
+      >
+        {currentPageParam}
       </button>
     );
-  
+
     // Next page button
     pagination.push(
-      <button key="next" className={`pagination-item ${currentPage === totalPages ? "disabled" : ""}`}
-        onClick={() => handlePageChange(currentPage + 1)}
-        disabled={currentPage === totalPages} >
+      <button
+        key="next"
+        className={`pagination-item ${
+          currentPageParam === totalPages ? "disabled" : ""
+        }`}
+        onClick={handleNextPage}
+      
+      >
         Next
       </button>
     );
-  
+
     return pagination;
   };
 
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        {heroCat.slice(startIndex, endIndex).map((hero, i) => (
+        {heroCat.map((hero, i) => (
           // display the cards for the current page
           <Link key={i} to={`/eroi/${hero.id}`}>
             <Cards size="small" sizeContainer="small" url={hero.image.url} name={hero.name}/>

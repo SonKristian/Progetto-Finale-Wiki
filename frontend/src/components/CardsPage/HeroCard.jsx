@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Cards from "./Cards.jsx";
 import "./css/cards.css";
 
-const HeroCard = () => {
+const HeroCard = ({ isDark }) => {
   const [allHeroes, setAllHeroes] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const { page } = useParams();
@@ -16,6 +16,7 @@ const HeroCard = () => {
       const data = await response.json();
       setAllHeroes(data);
       setTotalPages(data.totalPages);
+      // console.log("num "+ data.totalPages)
     }
 
     getHeroes();
@@ -95,7 +96,7 @@ const HeroCard = () => {
             </Link>
           ))}
       </div>
-      <div className="flex gap-8 ml-[5.5rem]">{renderPagination()}</div>
+      <div className={`container-pag ${isDark ? "dark-mode" : ""}`}>{renderPagination()}</div>
     </div>
   );
 };

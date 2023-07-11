@@ -40,11 +40,16 @@ const DarkModeToggle = () => {
       buttonElement.classList.toggle("dark-mode");
     }
 
-    const formElement = document.querySelector(".form");
-    if (formElement) {
-      formElement.classList.toggle("dark-mode");
+    const paginationElement = document.querySelector(".container-pag");
+    if (paginationElement) {
+      paginationElement.classList.toggle("dark-mode");
     }
 
+    const logoElement = document.querySelector(".logo");
+    if(logoElement) {
+      logoElement.classList.toggle("dark-mode")
+    }
+    
     setisDark(true);
   };
 

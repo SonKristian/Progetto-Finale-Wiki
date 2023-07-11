@@ -18,7 +18,7 @@ export const getHeroGenre = async (req, res) => {
   let genre = Object.values(supereroi);
   let allgen = genre.filter((e) => e.biography.publisher == req.params.nome);
   let slicegen = allgen.slice(startIndex, endIndex)
-  console.log(slicegen);
+  console.log("current " + currentPage + "start " + startIndex + "end " + endIndex);
   res.send(slicegen);
 };
 

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
-import Cards from "./Cards.jsx"
+import { Link, useParams } from "react-router-dom";
+import Cards from "./Cards.jsx";
 import "./css/cards.css";
 
-const CategoriesCard = () => {
+const CategoriesCard = ({ isDark }) => {
   const [heroCat, setHeroCat] = useState([]);
   const { nomecateg } = useParams();
   const [totalPages, setTotalPages] = useState(1);
@@ -13,17 +12,20 @@ const CategoriesCard = () => {
 
   useEffect(() => {
     async function getCategories() {
-      const response = await fetch(`http://localhost:3000/genere/${nomecateg}/page/${currentPageParam}`);
+      const response = await fetch(
+        `http://localhost:3000/genere/${nomecateg}/page/${currentPageParam}`
+      );
       const data = await response.json();
       setHeroCat(data);
       setTotalPages(data.totalPages);
+      console.log("data nel fetch total pages " + data.totalPages);
     }
-
+    console.log("ciao")
     getCategories();
-  }, [nomecateg , currentPageParam]);
+  }, [nomecateg, currentPageParam]);
 
   const handlePageChange = (page) => {
-    const nextPageUrl = `/genere/${nomecateg}/page/${page}`;
+    const nextPageUrl = `/category/${nomecateg}/page/${page}`;
     window.location.href = nextPageUrl;
   };
 
@@ -44,7 +46,9 @@ const CategoriesCard = () => {
     pagination.push(
       <button
         key="prev"
-        className={`pagination-item ${currentPageParam === 1 ? "disabled" : ""}`}
+        className={`pagination-item ${
+          currentPageParam === 1 ? "disabled" : ""
+        }`}
         onClick={handlePrevPage}
         disabled={currentPageParam === 1}
       >
@@ -71,7 +75,7 @@ const CategoriesCard = () => {
           currentPageParam === totalPages ? "disabled" : ""
         }`}
         onClick={handleNextPage}
-      
+        disabled={currentPageParam === totalPages}
       >
         Next
       </button>
@@ -83,14 +87,19 @@ const CategoriesCard = () => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        {heroCat.map((hero, i) => (
-          // display the cards for the current page
+        {Object.values(heroCat).map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
-            <Cards size="small" sizeContainer="small" url={hero.image.url} name={hero.name}/>
+            {console.log("porco dio nel map " + heroCat)}
+            <Cards
+              size="small"
+              sizeContainer="small"
+              url={hero.image.url}
+              name={hero.name}
+            />
           </Link>
         ))}
       </div>
-      <div className="flex gap-8 ml-[5.5rem]">{renderPagination()}</div>
+      <div className={`container-pag ${isDark ? "dark-mode" : ""}`}>{renderPagination()}</div>
     </div>
   );
 };

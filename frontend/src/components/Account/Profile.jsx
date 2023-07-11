@@ -45,12 +45,13 @@ const Profile = () => {
           {newHero.map((hero) => (
             <div className="flex items-center justify-center gap-[2rem]" key={hero.id}>
               <ul className="w-[200px]">
-                <li>{hero.name}</li>
-                <li>{hero.race}</li>
-                <li>{hero.height}</li>
-                <li>{hero.weight}</li>
-                <li>{hero.eyecol}</li>
-                <li>{hero.haircol}</li>
+                <li>Name: {hero.name}</li>
+                <li>Gender: {hero.gender}</li>
+                <li>Race: {hero.race}</li>
+                <li>Height: {hero.height}</li>
+                <li>Weitght: {hero.weight}</li>
+                <li>Eye Color:{hero.eyecol}</li>
+                <li>Hair Color:{hero.haircol}</li>
               </ul>
               <div className="flex items-center justify-center gap-[1rem]">
                 <button

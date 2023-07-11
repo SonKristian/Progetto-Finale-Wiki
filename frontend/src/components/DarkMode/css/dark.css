@@ -31,6 +31,11 @@ body.dark-mode h2{
   transition: background-color 1s ease-in;
 }
 
+.container-pag.dark-mode{
+  color: white;
+  transition: background-color 1s ease-in;
+}
+
 #footer-top.dark-mode{
   background-color: #042b22;
   transition: background-color 1s ease-in;

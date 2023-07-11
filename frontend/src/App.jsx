@@ -14,7 +14,7 @@ import ModifyHero from "./components/Form/ModifyHero.jsx";
 import DeleteHero from "./components/Form/DeleteHero.jsx";
 import Profile from "./components/Account/Profile.jsx";
 import Favorites from "./components/Account/Favorites.jsx";
-// import SearchResult from "./components/Headers/SearchResults";
+import SearchResult from "./components/Headers/SearchResults";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -39,7 +39,7 @@ function App() {
        <Route path="/modify/newhero/:id" element={<ModifyHero />} />
        <Route path="/delete/newhero/:id" element={<DeleteHero />} />
        <Route path="/profile" element={<Profile />} />
-       {/* <Route path="/results" element={<SearchResult />} /> */}
+       <Route path="/results/:nome" element={<SearchResult />} />
        <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />
        <Route path="/favorites" element={<Favorites />} />
        <Route path="/category/:nomecateg/page/:page" element={<CategoriesCard />} />

@@ -49,7 +49,7 @@ const DarkModeToggle = () => {
     if(logoElement) {
       logoElement.classList.toggle("dark-mode")
     }
-    
+
     setisDark(true);
   };
 
@@ -60,7 +60,7 @@ const DarkModeToggle = () => {
       onClick={toggleDarkMode}
     >
       {isDark ? "Light Mode" : "Dark Mode"}
-      {console.log("from Dark" + isDark)}
+      {/* {console.log("from Dark" + isDark)} */}
     </div>
   );
 };

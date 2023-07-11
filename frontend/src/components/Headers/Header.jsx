@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { Link, useParams } from "react-router-dom";
 import HeaderDown from "./HeaderDown";
 import DarkMode from "../DarkMode/DarkMode.jsx"
 import SearchIcon from '@mui/icons-material/Search';
@@ -7,38 +7,15 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchResult from './SearchResults';
 import "./css/header.css";
 
-import axios from "axios";
 
 const Header = ({ isLoggedIn, isDark }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
+  const { nome } = useParams()
+  const [searchQuery, setSearchQuery] = useState("");
   const storedName = sessionStorage.getItem('user');
 
-  const fetchHero = async (hero) => {
-    try {
-      const response = await axios.post(`http://localhost:3000/search/${encodeURIComponent(hero)}`);
-      const data = await response.data;
-      console.log(data);
-      // sessionStorage.setItem('user', response.data.user);
-      setSearchResults(data);
-    } catch (error) {
-      console.error('Error searching for hero:', error);
-      await setSearchResults([]);
-    }
-  };
-
-  function handleSearch() {
-    window.location.href = "/results"
-    fetchHero(searchQuery);
+  async function handleSearch(e) {
+    window.location.href = `/results/${searchQuery}`
   }
-
-  useEffect(() => {
-    fetchHero(searchQuery);
-  }, []);
-
-  const handleInputChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
 
   const [active, setActive] = useState(true);
   const toggleBar = () => {
@@ -65,7 +42,7 @@ const Header = ({ isLoggedIn, isDark }) => {
         </div>
         
         <div className="search-icon-bar">
-          <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" value={searchQuery} onChange={handleInputChange} />
+          <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" onChange={(e) => setSearchQuery(e.target.value)} />
           <button type="button" onClick={handleSearch}> <SearchIcon /> </button>
         </div>
         {/* {console.log("from Header" + isDark)} */}
@@ -103,7 +80,7 @@ const Header = ({ isLoggedIn, isDark }) => {
       </nav>
       <HeaderDown active={active} isDark={isDark}/>
       <div>
-      {searchResults.length > 0 && <SearchResult searchResults={searchResults} />}
+       <SearchResult searchQuery={searchQuery} />
       </div>
     </header>
   );

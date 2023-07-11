@@ -18,9 +18,9 @@ const CategoriesCard = ({ isDark }) => {
       const data = await response.json();
       setHeroCat(data);
       setTotalPages(data.totalPages);
-      console.log("data nel fetch total pages " + data.totalPages);
+      // console.log("data nel fetch total pages " + data.totalPages);
     }
-    console.log("ciao")
+    // console.log("ciao")
     getCategories();
   }, [nomecateg, currentPageParam]);
 
@@ -87,9 +87,9 @@ const CategoriesCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        {Object.values(heroCat).map((hero, i) => (
+        {heroCat.map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
-            {console.log("porco dio nel map " + heroCat)}
+            {/* {console.log(" map " + heroCat)} */}
             <Cards
               size="small"
               sizeContainer="small"

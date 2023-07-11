@@ -25,6 +25,7 @@ function authenticateToken(req, res, next) {
     next()
   })
 }
+
 // const connect = async () => {
 //   try {
 //     await mongoose.connect(process.env.MONGO_DB);
@@ -43,19 +44,6 @@ app.get('/', (req, res) => {
   res.send('Benvenuto nella Wiki Spotlight!')
 })
 
-// app.get('/data', (req, res) => {
-//   const page = parseInt(req.query.page) || 1; // Recupera il parametro di query "page" (default: 1)
-//   const itemsPerPage = 24;
-//   const startIndex = (page - 1) * itemsPerPage;
-//   const endIndex = startIndex + itemsPerPage;
-
-//   // Esegui la sottostruttura dell'oggetto JSON originale utilizzando gli indici calcolati
-//   const slicedJson = Object.values(supereroi).slice(startIndex, endIndex);
-
-//   res.send(slicedJson);
-// });
-
-
 //login - register
 app.post("/register", auth.register)
 app.post("/login", auth.login)
@@ -71,7 +59,12 @@ app.get("/eroi/page/:page", hero.getAllHero)
 
 
 //favorite
-app.get("/favorite", authenticateToken, hero.favorites)
+//get
+app.get("/favorite/:username", authenticateToken, hero.getFavorites)
+//delete
+app.delete("/favorite/:username", authenticateToken, hero.deleteFavorite)
+//put
+app.put("/favorite/:username", authenticateToken, hero.updatefavorites)
 
 //search
 app.post('/search/:nome', hero.search);

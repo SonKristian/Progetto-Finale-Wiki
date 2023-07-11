@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import HeaderDown from "./HeaderDown";
 import DarkMode from "../DarkMode/DarkMode.jsx"
 import SearchIcon from '@mui/icons-material/Search';
@@ -9,13 +9,17 @@ import "./css/header.css";
 
 
 const Header = ({ isLoggedIn, isDark }) => {
-  const { nome } = useParams()
-  const [searchQuery, setSearchQuery] = useState("");
+
+  const [searchQuery, setSearchQuery] = useState(""); // Inizialmente impostato con il valore del parametro nome, se presente
   const storedName = sessionStorage.getItem('user');
 
-  async function handleSearch(e) {
-    window.location.href = `/results/${searchQuery}`
-  }
+  const handleSearch = () => {
+    window.location.href = `/results/${encodeURIComponent(searchQuery)}`;
+  };
+
+  const handleInputChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
 
   const [active, setActive] = useState(true);
   const toggleBar = () => {
@@ -41,10 +45,19 @@ const Header = ({ isLoggedIn, isDark }) => {
         </Link>
         </div>
         
-        <div className="search-icon-bar">
-          <input type="search" id="searchbar" placeholder="Search for your superhero" className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]" onChange={(e) => setSearchQuery(e.target.value)} />
-          <button type="button" onClick={handleSearch}> <SearchIcon /> </button>
-        </div>
+      <div className="search-icon-bar">
+        <input
+          type="search"
+          id="searchbar"
+          placeholder="Search for your superhero"
+          className="w-[600px] rounded-s-lg h-[40px] m-[0.4rem]"
+          value={searchQuery}
+          onChange={handleInputChange}
+        />
+        <button type="button" onClick={handleSearch}>
+          <SearchIcon />
+        </button>
+      </div>
         {/* {console.log("from Header" + isDark)} */}
         <div className="flex items-center justify-center">
          <DarkMode />

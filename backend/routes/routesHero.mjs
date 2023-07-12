@@ -1,9 +1,10 @@
 import supereroi from "../db/superhero.json" assert { type: "json" };
 import utenti from "../db/utenti.json" assert {type : "json"}
 import generi from "../db/generi.json" assert { type: "json" };
+import fs from "node:fs/promises";
 import axios from "axios";
 
-const DB_PATH_AUTH = "./db/utenti.json"
+const DB_PATH_USER = "./db/utenti.json";
 
 export const getAllGenres = (req, res) => {
   res.send(generi);
@@ -54,55 +55,48 @@ export const getAllHero = (req, res) => {
   res.send(superSlice);
 };
 
-export const updatefavorites = async (req, res) => {
-  const heroName = req.headers.id
+export const createFavorites = async (req, res) => {
 
-  const foundFavorite = Object.entries(utenti).find(([heroId, favData]) => {
-    return favData.id === heroName;
-  });
-
-  const id = foundFavorite[0]
-  console.log(id)
-
-  let updatedFavorites = utenti[id];
-  if (updatedFavorites) {
-    
-    let newestFavorites = { ...req.body };
-    utenti[id] = newestFavorites;
-
-    await fs.writeFile(DB_PATH_AUTH, JSON.stringify(utenti, null, "  "));
-    res.send(utenti[id]);
-  } else {
-    res.status(200).send({
-      data: {},
-      error: true,
-      message: "Favorite hasn't been found",
-    });
+  const user = req.headers.user;
+  const id = req.headers.id
+  if (utenti[user]) {
+    utenti[user].favorites.push(parseInt(id));
   }
+
+  await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
+
+    res.send("ok");
+  // } catch {
+  //   res.status(200).send({
+  //     data: {},
+  //     error: true,
+  //     message: "Favorite cannot be added",
+  //   });
+  // }
 }
 
 export const deleteFavorite = async (req, res) => {
-  const heroName = req.headers.id.toLowerCase();
+  const userId = req.params.username;
+  const id = req.headers.id;
+console.log(id);
+  const user = utenti[userId];
+console.log(user);
+  if (user && user.favorites.includes(parseInt(id))) {
+    const index = user.favorites.indexOf(parseInt(id));
+  
+    user.favorites.splice(index, 1);
 
-  const deleteFavorite = Object.entries(utenti).find(([heroId, favData]) => {
-    return favData.name.toLowerCase() === heroName;
-  });
-
-  let delFav = deleteFavorite[0];
-  let delnewfav = utenti[delFav];
-  if (delnewfav) {
-    delete utenti[delFav];
-
-    await fs.writeFile(DB_PATH_AUTH, JSON.stringify(utenti, null, "  "));
+    await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
     res.status(200).send("Favorite has been deleted").end();
   } else {
-    res.status(200).send({
+    res.status(404).send({
       data: {},
       error: true,
-      message: "Favorite has not been found",
+      message: "User or favorite not found",
     });
   }
-}
+};
+
 
 export const getFavorites = async (req, res) => {
   const { username } = req.params;
@@ -111,7 +105,7 @@ export const getFavorites = async (req, res) => {
 
   if (user) {
     const favoriteItems = user.favorites.map((favId) => {
-      return user.heroescreated.find((heroId) => heroId === favId);
+      return user.favorites.find((heroId) => heroId === favId);
     });
 
     res.json(favoriteItems);

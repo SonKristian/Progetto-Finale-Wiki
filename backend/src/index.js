@@ -64,12 +64,11 @@ app.get("/favorite/:username", authenticateToken, hero.getFavorites)
 //delete
 app.delete("/favorite/:username", authenticateToken, hero.deleteFavorite)
 //put
-app.put("/favorite/:username", authenticateToken, hero.updatefavorites)
+app.post("/favorite/:username", authenticateToken, hero.createFavorites)
 
 //search
 app.post('/search/:nome', hero.search);
 //crud for creating hero
-
 //create
 app.post("/newhero", authenticateToken, newhero.createHero)
 //update

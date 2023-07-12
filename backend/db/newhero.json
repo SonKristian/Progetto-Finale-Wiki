@@ -13,14 +13,14 @@
   },
   {
     "2": {
-      "name": "puerco",
-      "gender": "132",
-      "race": "23",
-      "height": "213",
-      "weight": "213",
-      "eyecol": "213",
-      "haircol": "213",
-      "id":"2"
+      "name": " Cristian Di Napoli",
+      "gender": "Maschio",
+      "race": "Dio",
+      "height": "199cm",
+      "weight": "90kg",
+      "eyecol": "Black",
+      "haircol": "21",
+      "id": "2"
     }
   },
   {
@@ -37,38 +37,14 @@
   },
   {
     "4": {
-      "name": "proviamoancora",
-      "gender": "la",
-      "race": "mo",
-      "height": "2121",
-      "weight": "2121",
-      "eyecol": "2112",
-      "haircol": "cane",
-      "id": 4
-    }
-  },
-  {
-    "5": {
-      "name": "quellogiusto",
-      "gender": "4",
-      "race": "forse",
-      "height": "mboh",
-      "weight": "daje",
-      "eyecol": "roma",
-      "haircol": "dajue",
-      "id": "5"
-    }
-  },
-  {
-    "6": {
-      "name": "sporco",
-      "gender": "6",
-      "race": "6",
-      "height": "6",
-      "weight": "6",
-      "eyecol": "6",
-      "haircol": "6",
-      "id": "6"
+      "name": "modify",
+      "gender": "modify",
+      "race": "modify",
+      "height": "modify",
+      "weight": "modify",
+      "eyecol": "modify",
+      "haircol": "modify",
+      "id": "4"
     }
   }
 ]

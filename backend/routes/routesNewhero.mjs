@@ -79,18 +79,19 @@ export const getHeroesForUser = (req, res) => {
     res.json(tosend);
 };
 
+
 export const heroUpdate = async (req, res) => {
   const heroName = req.params.id
 
-  const foundHero = newHeroes.find((e) => Object.keys(e) == heroName)
+  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName)
 
+  const id = Object.keys(foundHero)[0]
   console.log(foundHero);
   
-  let updatedHereos = foundHero;
-  if (updatedHereos) {
-    let newestHereos = {[heroName]: { ...req.body }};
+  if (id) {
+    let newestHereos = {[id]: { ...req.body }};
 
-    newHeroes[heroName-1] = newestHereos;
+    newHeroes[id-1] = newestHereos;
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
   
@@ -102,21 +103,17 @@ export const heroUpdate = async (req, res) => {
       message: "Hero hasn't been found",
     });
   }
-};
+}
 
 export const heroDelete = async (req, res) => {
-  const heroName = req.headers.id
+  const heroName = req.params.id;
 
-  const deleteHero = newHeroes.find((e) => e.id === heroName)
+  const deleteHeroIndex = newHeroes.findIndex((e) => Object.keys(e)[0] === heroName);
 
-
-  let delHero = deleteHero[0];
-  let delnewHero = newHeroes[delHero];
-  if (delnewHero) {
-    delete newHeroes[delHero];
+  if (deleteHeroIndex !== -1) {
+    newHeroes.splice(deleteHeroIndex, 1);
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
-    await fs.readFile( DB_PATH_NEWHERO,  JSON.stringify(newHeroes, null, "  "))
     res.status(200).send("Hero has been deleted").end();
   } else {
     res.status(200).send({

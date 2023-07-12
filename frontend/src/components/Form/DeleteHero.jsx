@@ -14,7 +14,7 @@ const CreateHero = () => {
 
     try{
         const response = await fetch(`http://localhost:3000/newhero/${id}`, {
-            method: "PUT",
+            method: "DELETE",
             headers: {
               "Content-Type": "application/json",
               "Authorization": `Berear ${storedToken}`,

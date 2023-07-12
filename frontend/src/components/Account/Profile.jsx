@@ -42,28 +42,44 @@ const Profile = () => {
         </div>
 
         <div className="flex flex-col gap-[2rem]">
-          {newHero.map((hero) => (
-            <div className="flex items-center justify-center gap-[2rem]" key={hero.id}>
+          {newHero.map((heroes) => (
+            <div
+              className="flex items-center justify-center gap-[2rem]"
+              key={Object.keys(heroes)[0]}
+            >
               <ul className="w-[200px]">
-                <li>Name: {hero.name}</li>
-                <li>Gender: {hero.gender}</li>
-                <li>Race: {hero.race}</li>
-                <li>Height: {hero.height}</li>
-                <li>Weitght: {hero.weight}</li>
-                <li>Eye Color:{hero.eyecol}</li>
-                <li>Hair Color:{hero.haircol}</li>
+                {Object.entries(heroes).map(([id, hero]) => (
+                  <div key={id}>
+                    <ul>
+                      <li>Name: {hero.name}</li>
+                      <li>Gender: {hero.gender}</li>
+                      <li>Race: {hero.race}</li>
+                      <li>Height: {hero.height}</li>
+                      <li>Weight: {hero.weight}</li>
+                      <li>Eye Color: {hero.eyecol}</li>
+                      <li>Hair Color: {hero.haircol}</li>
+                    </ul>
+                    <div className="flex items-center justify-center gap-[1rem]">
+                      <button
+                        className="btn-action"
+                        onClick={() =>
+                          (window.location.href = `/modify/newhero/${hero.id}`)
+                        }
+                      >
+                        <ModeEditIcon />
+                      </button>
+                      <button
+                        className="btn-action"
+                        onClick={() =>
+                          (window.location.href = `/delete/newhero/${hero.id}`)
+                        }
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+                  </div>
+                ))}
               </ul>
-              <div className="flex items-center justify-center gap-[1rem]">
-                <button
-                  className="btn-action"
-                  onClick={() => (window.location.href = `/modify/newhero/${hero.id}`)}
-                >
-                  <ModeEditIcon />
-                </button>
-                <button className="btn-action"  onClick={() => (window.location.href = `/delete/newhero/${hero.id}`)}>
-                  <DeleteIcon />
-                </button>
-              </div>
             </div>
           ))}
         </div>

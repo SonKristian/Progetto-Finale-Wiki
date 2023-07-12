@@ -5,19 +5,32 @@ import utenti from "../db/utenti.json" assert { type: "json" };
 const DB_PATH_NEWHERO = "./db/newhero.json";
 const DB_PATH_USER = "./db/utenti.json";
 
-export let nextId = Object.keys(newHeroes).reduce(
-  (biggest, id) => (biggest > parseInt(id, 10) ? biggest : parseInt(id, 10)),
-  0
-);
+export const getNextId = (heroesArray) => {
+  let maxId = 0;
+  
+  for (const newHeroes of heroesArray) {
+    const heroId = Object.keys(newHeroes)[0];
+    const id = parseInt(heroId);
+    
+    if (!isNaN(id) && id > maxId) {
+      maxId = id;
+    }
+  }
+  
+  return maxId + 1;
+};
+
+export let nextId;
+
 
 export const createHero = async (req, res) => {
   try {
-    nextId++;
+    const heroesArray = Object.values(newHeroes);
+    const nextId = getNextId(heroesArray);
     const user = req.headers.user;
-    const newHero = {
-      [nextId]: { ...req.body, id: nextId },
-    };
-    newHeroes.push(newHero)
+    const newHero = { [nextId]: { ...req.body, id: nextId } };
+
+    newHeroes.push(newHero);
 
     if (!utenti[user].heroescreated) {
       utenti[user].heroescreated = [];
@@ -28,14 +41,13 @@ export const createHero = async (req, res) => {
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
     await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
 
-    res.send(
-      newHeroes
-    ).end();
+    res.send(newHeroes).end();
   } catch (error) {
     console.error("Error creating hero:", error);
     res.status(500).send("Error creating hero");
   }
 };
+
 
 
 export const getHeroesIdName = (req, res) => {
@@ -68,24 +80,21 @@ export const getHeroesForUser = (req, res) => {
 };
 
 export const heroUpdate = async (req, res) => {
-  const heroName = req.headers.id
+  const heroName = req.params.id
 
-  const foundHero = Object.entries(newHeroes).find(([heroId, heroData]) => {
-    return heroData.id === heroName;
-  });
+  const foundHero = newHeroes.find((e) => Object.keys(e) == heroName)
 
-  const id = foundHero[0]
-  console.log(id)
-
-  let updatedHereos = newHeroes[id];
+  console.log(foundHero);
+  
+  let updatedHereos = foundHero;
   if (updatedHereos) {
-    
-    let newestHereos = { ...req.body };
-    newHeroes[id] = newestHereos;
+    let newestHereos = {[heroName]: { ...req.body }};
+
+    newHeroes[heroName-1] = newestHereos;
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
   
-    res.send(newHeroes[id]);
+    res.send(newHeroes);
   } else {
     res.status(200).send({
       data: {},
@@ -96,11 +105,10 @@ export const heroUpdate = async (req, res) => {
 };
 
 export const heroDelete = async (req, res) => {
-  const heroName = req.headers.id.toLowerCase();
+  const heroName = req.headers.id
 
-  const deleteHero = Object.entries(newHeroes).find(([heroId, heroData]) => {
-    return heroData.name.toLowerCase() === heroName;
-  });
+  const deleteHero = newHeroes.find((e) => e.id === heroName)
+
 
   let delHero = deleteHero[0];
   let delnewHero = newHeroes[delHero];

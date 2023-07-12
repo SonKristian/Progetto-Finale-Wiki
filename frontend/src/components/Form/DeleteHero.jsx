@@ -17,7 +17,6 @@ const CreateHero = () => {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
-              "id" : id,
               "Authorization": `Berear ${storedToken}`,
               "user" : storedName,
             },

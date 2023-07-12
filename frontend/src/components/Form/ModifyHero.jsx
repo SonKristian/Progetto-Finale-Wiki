@@ -26,6 +26,7 @@ const ModifyHero = () => {
         weight: weight,
         eyecol: eyecol,
         haircol:  haircol,
+        id: id
     }
 
     try{
@@ -33,7 +34,6 @@ const ModifyHero = () => {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
-              "id" : id,
               "Authorization": `Berear ${storedToken}`,
               "user" : storedName,
             },

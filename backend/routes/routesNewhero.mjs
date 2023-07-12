@@ -17,8 +17,7 @@ export const createHero = async (req, res) => {
     const newHero = {
       [nextId]: { ...req.body, id: nextId },
     };
-
-    const allNewHero = { ...newHeroes, ...newHero };
+    newHeroes.push(newHero)
 
     if (!utenti[user].heroescreated) {
       utenti[user].heroescreated = [];
@@ -26,17 +25,18 @@ export const createHero = async (req, res) => {
 
     utenti[user].heroescreated.push(nextId);
 
-    await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(allNewHero, null, "  "));
+    await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
     await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
 
-    res.status(200).send({
-      message: "A new Hero has been created",
-    });
+    res.send(
+      newHeroes
+    ).end();
   } catch (error) {
     console.error("Error creating hero:", error);
     res.status(500).send("Error creating hero");
   }
 };
+
 
 export const getHeroesIdName = (req, res) => {
   const heroName = req.params.id.toLowerCase();
@@ -84,6 +84,7 @@ export const heroUpdate = async (req, res) => {
     newHeroes[id] = newestHereos;
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
+  
     res.send(newHeroes[id]);
   } else {
     res.status(200).send({
@@ -107,6 +108,7 @@ export const heroDelete = async (req, res) => {
     delete newHeroes[delHero];
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
+    await fs.readFile( DB_PATH_NEWHERO,  JSON.stringify(newHeroes, null, "  "))
     res.status(200).send("Hero has been deleted").end();
   } else {
     res.status(200).send({
@@ -117,14 +119,6 @@ export const heroDelete = async (req, res) => {
   }
 };
 
-export const getAllNewHero = (req, res) =>{
-  const heroesCreated = {};
-
-  for (const username in utenti) {
-    const user = utenti[username];
-    const createdHeroes = user.heroescreated.map(heroId => newHeroes[heroId]);
-    heroesCreated[username] = createdHeroes;
-  }
-
-  res.json(heroesCreated);
-}
+export const getAllNewHero = async (req, res) => {
+  res.send(newHeroes);
+};

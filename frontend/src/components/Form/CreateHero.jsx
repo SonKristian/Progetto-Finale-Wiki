@@ -38,6 +38,7 @@ const CreateHero = () => {
           });
 
           if (response) {
+            console.log(response.body)
             setHerostatus("Hero creation : successful");
             // Clear form inputs
            

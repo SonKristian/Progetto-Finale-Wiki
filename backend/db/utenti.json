@@ -10,10 +10,7 @@
   "ErNotGabri": {
     "email": "gabripelato@sicilia.com",
     "password": "$2a$10$kMHsaFUUswIq.v3UvsPeluxxfrcc6hX60EqOUswyECS08pqq/1Nei",
-    "heroescreated": [
-      1,
-      2
-    ],
+    "heroescreated": [],
     "favorites": [
       2
     ]
@@ -22,14 +19,13 @@
     "email": "re@re.re",
     "password": "$2a$10$creSLKosUBm5sAF/T1nZJumdp5ldX.4eIVawXpkCpPnAAq0eGRN3u",
     "heroescreated": [
+      1,
+      2,
       3,
       4,
-      5,
-      7,
-      8,
-      9,
-      10,
-      11
+      1,
+      1,
+      2
     ],
     "favorites": [
       3

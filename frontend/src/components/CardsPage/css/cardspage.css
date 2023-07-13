@@ -74,3 +74,15 @@ section {
 #combat::-webkit-meter-optimum-value {
   background: rgba(0, 120, 255, 1);
 }
+
+.fav-on{
+color: red;
+width: 30px;
+cursor: pointer;
+}
+
+.fav-off{
+  color: black;
+  width: 30px;
+  cursor: pointer;
+}

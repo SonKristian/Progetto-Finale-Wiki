@@ -7,11 +7,12 @@ const SearchResult = () => {
   const { nome } = useParams();
   const [searchResults, setSearchResults] = useState([]);
   const [found, setFound] = useState(false);
-  const [redirect, setRedirect] = useState(false); // Aggiunto stato per reindirizzamento
+  const [loading, setLoading] = useState(false); // Aggiunto stato per reindirizzamento
 
   useEffect(() => {
     const fetchHero = async () => {
       try {
+        setLoading(true)
         setTimeout(async () => {
           const response = await axios.post(
             `http://localhost:3000/search/${encodeURIComponent(nome)}`
@@ -19,19 +20,29 @@ const SearchResult = () => {
           const data = response.data;
           setSearchResults(data);
           setFound(true);
+          setLoading(false)
         }, 3000);
       } catch (error) {
         console.error("Error searching for hero:", error);
-        setFound(false);
-        if (!found) {
-          setRedirect(true); // Imposta lo stato di reindirizzamento
-        }
+        // setFound(false);
+        // if (!found) {
+        //   setRedirect(true); // Imposta lo stato di reindirizzamento
+        // }
       }
     };
 
     fetchHero();
   }, [nome]);
 
+  if(loading){
+    return (
+      <>
+         <div className='loaderContainer'>
+            <img src="http://localhost:5173/src/assets/bat.gif"  alt="a" />
+         </div>
+      </>
+      )
+  }
   // Controllo per reindirizzamento
   // if (found) {
   //   window.location.href = "/notfound";

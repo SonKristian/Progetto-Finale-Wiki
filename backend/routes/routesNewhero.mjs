@@ -66,17 +66,25 @@ export const getHeroesIdName = (req, res) => {
 };
 
 export const getHeroesForUser = (req, res) => {
-    const clientname = req.params.username
-    const arr_created = utenti[clientname].heroescreated
-    console.log(arr_created)
-    const tosend = []
+  const clientname = req.params.username;
+  const arr_created = utenti[clientname].heroescreated;
+  console.log("id", arr_created);
+  const tosend = [];
 
-    for(let i=0; i < arr_created.length; i++){ 
-      if(newHeroes[arr_created[i]]) tosend.push(newHeroes[arr_created[i]]) 
+  for (let i = 0; i < arr_created.length; i++) {
+    const heroId = arr_created[i];
+    console.log("heroid", heroId)
+    const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroId)
+    console.log("hero", foundHero)
+    if (foundHero) {
+      tosend.push(foundHero);
     }
-    console.log("tosend" + tosend)
-    res.json(tosend);
+  }
+
+  console.log("tosend", tosend);
+  res.json(tosend);
 };
+
 
 
 export const heroUpdate = async (req, res) => {

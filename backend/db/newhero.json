@@ -46,5 +46,17 @@
       "haircol": "modify",
       "id": "4"
     }
+  },
+  {
+    "5": {
+      "name": "Massimo Ranieri",
+      "gender": "Maschio",
+      "race": "Paolo",
+      "height": "170cm",
+      "weight": "60kg",
+      "eyecol": "Marroni",
+      "haircol": "Marroni",
+      "id": 5
+    }
   }
 ]

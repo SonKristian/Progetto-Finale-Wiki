@@ -26,13 +26,15 @@ const Profile = ({setIsLoggedIn}) => {
     }
     fetchNewHero();
   }, []);
+  console.log(newHero);
 
   const handleLogout = () => {
     setIsLoggedIn(false);
-    sessionStorage.removeItem('jwtToken');
-    sessionStorage.removeItem('username');
-    window.location.href="/"
+    sessionStorage.removeItem("jwtToken");
+    sessionStorage.removeItem("username");
+    window.location.href = "/";
   };
+
 
   return (
     <div className="flex items-center justify-center mb-[5rem]">
@@ -52,13 +54,13 @@ const Profile = ({setIsLoggedIn}) => {
         </div>
 
         <div className="flex flex-col gap-[2rem] w-[600px]">
-          {newHero.map((heroes) => (
-            <div
-              className="flex items-center justify-between"
-              key={Object.keys(heroes)[0]}
-            >
-              {Object.entries(heroes).map(([id, hero]) => (
-                <div className="flex items-center justify-between flex-grow" key={id}>
+            {newHero.map((heroes) =>
+            Object.entries(heroes).map(([id, hero]) => (
+              <div
+                className="flex items-center justify-between"
+                key={id.toString()}
+              >
+                <div className="flex items-center justify-between flex-grow">
                   <ul className="mr-[1rem]">
                     <li>Name: {hero.name}</li>
                     <li>Gender: {hero.gender}</li>
@@ -87,18 +89,19 @@ const Profile = ({setIsLoggedIn}) => {
                     </button>
                   </div>
                 </div>
-              ))}
-            </div>
-          ))}
+              </div>
+            ))
+          )}
         </div>
         <Link to="/newhero">
-              <button className="btn-action w-[250px]" type="button">
-                Create Another Hero
-              </button>
-      </Link>
+          <button className="btn-action w-[250px]" type="button">
+            Create Another Hero
+          </button>
+        </Link>
       </div>
     </div>
   );
 };
+
 
 export default Profile;

@@ -22,9 +22,7 @@
       1,
       2,
       3,
-      4,
-      5,
-      6
+      4
     ],
     "favorites": [
       3,
@@ -38,6 +36,16 @@
     "heroescreated": [],
     "favorites": [
       4
+    ]
+  },
+  "forty": {
+    "email": "fortuna@gmail.com",
+    "password": "$2a$10$XaVS0X7F15YFG5e./L7OAOpq7RlH7Im4Sy3MJi4fUJv64tlo.Zt/e",
+    "heroescreated": [
+      5
+    ],
+    "favorites": [
+      6
     ]
   }
 }

@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
-const Profile = () => {
+const Profile = ({setIsLoggedIn}) => {
   const [newHero, setNewHero] = useState([]);
   const storedName = sessionStorage.getItem("user");
   const storedToken = sessionStorage.getItem("jwtToken");
@@ -27,6 +26,13 @@ const Profile = () => {
     fetchNewHero();
   }, []);
 
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    sessionStorage.removeItem('jwtToken');
+    sessionStorage.removeItem('username');
+    window.location.href="/"
+  };
+
   return (
     <div className="flex items-center justify-center mb-[5rem]">
       <div className="flex flex-col align-center justify-center gap-[2rem] mt-[2rem]">
@@ -38,6 +44,9 @@ const Profile = () => {
           />
           <div>
             <p>{storedName}'s superheroes</p>
+          </div>
+          <div>
+            <button className="btn-action" onClick={handleLogout}>Logout</button>
           </div>
         </div>
 

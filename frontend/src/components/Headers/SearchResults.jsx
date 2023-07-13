@@ -9,7 +9,7 @@ const SearchResult = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [found, setFound] = useState(false)
-
+ 
   useEffect(() => {
     const fetchHero = async () => {
       try {

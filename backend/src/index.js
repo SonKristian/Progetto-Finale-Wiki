@@ -57,9 +57,7 @@ app.get("/genere/:nome/page/:page", hero.getHeroGenre)
 app.get("/eroi/:id", hero.getSingleHero)
 app.get("/eroi/page/:page", hero.getAllHero)
 
-
-//favorite
-//get
+//favorite  ---- get
 app.get("/favorite/:username", authenticateToken, hero.getFavorites)
 //delete
 app.delete("/favorite/:username", authenticateToken, hero.deleteFavorite)
@@ -68,8 +66,9 @@ app.post("/favorite/:username", authenticateToken, hero.createFavorites)
 
 //search
 app.post('/search/:nome', hero.search);
-//crud for creating hero
-//create
+
+
+//crud for creating hero --- create
 app.post("/newhero", authenticateToken, newhero.createHero)
 //update
 app.put("/newhero/:id", authenticateToken, newhero.heroUpdate)

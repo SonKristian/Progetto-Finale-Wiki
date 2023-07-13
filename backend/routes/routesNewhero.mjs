@@ -51,14 +51,13 @@ export const createHero = async (req, res) => {
 
 
 export const getHeroesIdName = (req, res) => {
-  const heroName = req.params.id.toLowerCase();
+  const heroName = req.params.id;
 
-  const foundHero = Object.entries(newHeroes).find(([heroId, heroData]) => {
-    return heroData.name.toLowerCase() === heroName;
-  });
+  
+  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName)
 
   if (foundHero) {
-    res.send(foundHero[1]);
+    res.send(foundHero);
   } else {
     res.status(404).send({
       message: "Hero not found",

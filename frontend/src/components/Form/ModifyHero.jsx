@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "./css/register.css";
 
@@ -12,6 +12,41 @@ const ModifyHero = () => {
   const [eyecol, setEyecol] = useState("");
   const [haircol, setHaircol] = useState("");
   const [herostatus, setHerostatus] =  useState(false);
+
+  useEffect(() => {
+    const getHero = async () => {
+      try {
+        const storedToken = sessionStorage.getItem("jwtToken");
+        const storedName = sessionStorage.getItem("user");
+
+        const response = await fetch(`http://localhost:3000/newhero/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${storedToken}`,
+            user: storedName,
+          },
+        });
+
+        const data = await response.json();
+        const hero = data[id];
+
+        // Imposta gli stati iniziali con i valori dell'eroe da modificare
+        setName(hero.name);
+        setGender(hero.gender);
+        setRace(hero.race);
+        setHeight(hero.height);
+        setWeight(hero.weight);
+        setEyecol(hero.eyecol);
+        setHaircol(hero.haircol);
+
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    getHero();
+  }, [id]);
 
   const handleEdit = async (e) => {
     e.preventDefault();

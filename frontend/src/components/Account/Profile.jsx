@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
@@ -35,7 +36,7 @@ const Profile = ({setIsLoggedIn}) => {
 
   return (
     <div className="flex items-center justify-center mb-[5rem]">
-      <div className="flex flex-col align-center justify-center gap-[2rem] mt-[2rem]">
+      <div className="flex flex-col items-center justify-center gap-[2rem] mt-[2rem]">
         <div className="flex items-center justify-center gap-[2rem]">
           <img
             className="w-[200px]"
@@ -90,6 +91,11 @@ const Profile = ({setIsLoggedIn}) => {
             </div>
           ))}
         </div>
+        <Link to="/newhero">
+              <button className="btn-action w-[250px]" type="button">
+                Create Another Hero
+              </button>
+      </Link>
       </div>
     </div>
   );

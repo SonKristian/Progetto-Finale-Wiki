@@ -104,7 +104,11 @@ export const getFavorites = async (req, res) => {
 
   if (user) {
     const favoriteItems = user.favorites.map((favId) => {
-      return user.favorites.find((heroId) => heroId === favId);
+      const hero = supereroi[favId];
+      return {
+        id: favId,
+        name: hero ? hero.name : 'Unknown', // Assumendo che il nome sia presente nel file supereroi.json
+      };
     });
 
     res.json(favoriteItems);

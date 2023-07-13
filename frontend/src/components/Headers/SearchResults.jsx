@@ -14,6 +14,8 @@ const SearchResult = () => {
     const fetchHero = async () => {
       try {
         setLoading(true);
+        setTimeout(async () => {
+  
         const response = await axios.post(
           `http://localhost:3000/search/${encodeURIComponent(nome)}`
         );
@@ -21,6 +23,7 @@ const SearchResult = () => {
         setSearchResults(data);
         setLoading(false);
         setFound(true)
+      }, 3000);
       } catch (error) {
         console.error("Error searching for hero:", error);
         setLoading(false);
@@ -54,4 +57,3 @@ const SearchResult = () => {
 };
 
 export default SearchResult;
-2

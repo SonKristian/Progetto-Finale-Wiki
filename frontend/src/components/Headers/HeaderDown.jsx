@@ -23,7 +23,7 @@ const HeaderDown = ({ active, isDark }) => {
   return (
     <nav className={active ? "open" : "close"}>
       <div className={`nav-child ${isDark ? "dark-mode" : ""}`}>
-        <div className="submenu">
+        <div className={`submenu ${isDark ? "dark-mode" : ""}`}>
           <div className="ml-5">
             <Link to="/">Home</Link>
           </div>
@@ -31,10 +31,10 @@ const HeaderDown = ({ active, isDark }) => {
             <Link to="/eroi/page/1">All Heroes</Link>
           </div>
           {/* {console.log("from Header down" + isDark)} */}
-          <div className="headerdown" onClick={toggleDropdown}>
+          <div className={`headerdown ${!isDark ? "dark-mode" : ""}`} onClick={toggleDropdown}>
             <button id="list">Genere</button>
             {isOpen && (
-              <ul className={`dropdown ${isDark ? "dark-mode" : ""}`}>
+              <ul className={`dropdown ${!isDark ? "dark-mode" : ""}`}>
                 {categories.map((category) => (
                   <li key={category}>
                     <Link to={`/category/${encodeURIComponent(category)}/page/1`}>

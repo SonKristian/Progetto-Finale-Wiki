@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import Carousel from "../Carousel/Carousel.jsx";
 import Cards from "../CardsPage/Cards.jsx";
 
 const Home = () => {
 
   return (
+    
     <div className="flex flex-col justify-center items-center">
       <Carousel />
       <div className="mt-[4rem]">

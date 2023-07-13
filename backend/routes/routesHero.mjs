@@ -1,5 +1,5 @@
 import supereroi from "../db/superhero.json" assert { type: "json" };
-import utenti from "../db/utenti.json" assert {type : "json"}
+import utenti from "../db/utenti.json" assert { type: "json" };
 import generi from "../db/generi.json" assert { type: "json" };
 import fs from "node:fs/promises";
 import axios from "axios";
@@ -18,11 +18,12 @@ export const getHeroGenre = async (req, res) => {
 
   let genre = Object.values(supereroi);
   let allgen = genre.filter((e) => e.biography.publisher == req.params.nome);
-  let slicegen = allgen.slice(startIndex, endIndex)
-  console.log("current " + currentPage + "start " + startIndex + "end " + endIndex);
+  let slicegen = allgen.slice(startIndex, endIndex);
+  console.log(
+    "current " + currentPage + "start " + startIndex + "end " + endIndex
+  );
   res.send(slicegen);
 };
-
 
 export const search = async (req, res) => {
   const nome = encodeURIComponent(req.params.nome);
@@ -56,16 +57,15 @@ export const getAllHero = (req, res) => {
 };
 
 export const createFavorites = async (req, res) => {
-
   const user = req.headers.user;
-  const id = req.headers.id
+  const id = req.headers.id;
   if (utenti[user]) {
     utenti[user].favorites.push(parseInt(id));
   }
 
   await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
 
-    res.send("ok");
+  res.send("ok");
   // } catch {
   //   res.status(200).send({
   //     data: {},
@@ -73,17 +73,17 @@ export const createFavorites = async (req, res) => {
   //     message: "Favorite cannot be added",
   //   });
   // }
-}
+};
 
 export const deleteFavorite = async (req, res) => {
   const userId = req.params.username;
   const id = req.headers.id;
-console.log(id);
+  console.log(id);
   const user = utenti[userId];
-console.log(user);
+  console.log(user);
   if (user && user.favorites.includes(parseInt(id))) {
     const index = user.favorites.indexOf(parseInt(id));
-  
+
     user.favorites.splice(index, 1);
 
     await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
@@ -96,7 +96,6 @@ console.log(user);
     });
   }
 };
-
 
 export const getFavorites = async (req, res) => {
   const { username } = req.params;

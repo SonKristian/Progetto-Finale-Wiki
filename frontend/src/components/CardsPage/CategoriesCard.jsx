@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Cards from "./Cards.jsx";
 import "./css/cards.css";
+import Loading from "../Loading/Loading.jsx";
 
 const CategoriesCard = ({ isDark }) => {
   const [heroCat, setHeroCat] = useState([]);
+  const [loading, setLoading] = useState(false); 
   const { nomecateg } = useParams();
   const [totalPages, setTotalPages] = useState(1);
   const { page } = useParams();
@@ -12,15 +14,23 @@ const CategoriesCard = ({ isDark }) => {
 
   useEffect(() => {
     async function getCategories() {
+      try {
+        setLoading(true);
+        setTimeout(async () => {
       const response = await fetch(
         `http://localhost:3000/genere/${nomecateg}/page/${currentPageParam}`
       );
       const data = await response.json();
       setHeroCat(data);
       setTotalPages(data.totalPages);
-      // console.log("data nel fetch total pages " + data.totalPages);
+      setLoading(false)
+      }, 3000);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
     }
     // console.log("ciao")
+  }
     getCategories();
   }, [nomecateg, currentPageParam]);
 
@@ -87,6 +97,7 @@ const CategoriesCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
+        <Loading loading={loading}/>
         {heroCat.map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
             {/* {console.log(" map " + heroCat)} */}

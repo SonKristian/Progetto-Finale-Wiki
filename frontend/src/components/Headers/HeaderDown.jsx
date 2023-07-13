@@ -25,7 +25,7 @@ const HeaderDown = ({ active, isDark }) => {
       <div className={`nav-child ${isDark ? "dark-mode" : ""}`}>
         <div className="submenu">
           <div className="ml-5">
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </div>
           <div>
             <Link to="/eroi/page/1">All Heroes</Link>

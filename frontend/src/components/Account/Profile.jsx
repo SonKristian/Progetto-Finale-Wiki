@@ -41,55 +41,45 @@ const Profile = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-[2rem]">
+        <div className="flex flex-col gap-[2rem] w-[600px]">
           {newHero.map((heroes) => (
             <div
-              className="flex items-center justify-center gap-[2rem]"
+              className="flex items-center justify-between"
               key={Object.keys(heroes)[0]}
             >
-              <ul className="w-[200px]">
-                {Object.entries(heroes).map(([id, hero]) => (
-                  <div key={id}>
-                    <ul>
-                      <li>Name: {hero.name}</li>
-                      <li>Gender: {hero.gender}</li>
-                      <li>Race: {hero.race}</li>
-                      <li>Height: {hero.height}</li>
-                      <li>Weight: {hero.weight}</li>
-                      <li>Eye Color: {hero.eyecol}</li>
-                      <li>Hair Color: {hero.haircol}</li>
-                    </ul>
-                    <div className="flex items-center justify-center gap-[1rem]">
-                      <button
-                        className="btn-action"
-                        onClick={() =>
-                          (window.location.href = `/modify/newhero/${hero.id}`)
-                        }
-                      >
-                        <ModeEditIcon />
-                      </button>
-                      <button
-                        className="btn-action"
-                        onClick={() =>
-                          (window.location.href = `/delete/newhero/${hero.id}`)
-                        }
-                      >
-                        <DeleteIcon />
-                      </button>
-                    </div>
+              {Object.entries(heroes).map(([id, hero]) => (
+                <div className="flex items-center justify-between flex-grow" key={id}>
+                  <ul className="mr-[1rem]">
+                    <li>Name: {hero.name}</li>
+                    <li>Gender: {hero.gender}</li>
+                    <li>Race: {hero.race}</li>
+                    <li>Height: {hero.height}</li>
+                    <li>Weight: {hero.weight}</li>
+                    <li>Eye Color: {hero.eyecol}</li>
+                    <li>Hair Color: {hero.haircol}</li>
+                  </ul>
+                  <div className="flex items-center gap-[1rem]">
+                    <button
+                      className="btn-action"
+                      onClick={() =>
+                        (window.location.href = `/modify/newhero/${hero.id}`)
+                      }
+                    >
+                      <ModeEditIcon />
+                    </button>
+                    <button
+                      className="btn-action"
+                      onClick={() =>
+                        (window.location.href = `/delete/newhero/${hero.id}`)
+                      }
+                    >
+                      <DeleteIcon />
+                    </button>
                   </div>
-                ))}
-              </ul>
+                </div>
+              ))}
             </div>
           ))}
-        </div>
-
-        <div className="flex justify-center items-center gap-[5rem]">
-          <Link to="/newhero">
-            <button className="btn-action w-[250px]" type="button">
-              Create Another Hero
-            </button>
-          </Link>
         </div>
       </div>
     </div>

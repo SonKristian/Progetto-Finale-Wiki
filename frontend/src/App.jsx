@@ -15,6 +15,7 @@ import DeleteHero from "./components/Form/DeleteHero.jsx";
 import Profile from "./components/Account/Profile.jsx";
 import Favorites from "./components/Account/Favorites.jsx";
 import SearchResult from "./components/Headers/SearchResults";
+import NotFound from "./components/Loading/NotFound";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,7 +32,7 @@ function App() {
     <>
       <Header isLoggedIn={isLoggedIn}/>
       <Routes>
-       <Route path="/home" element={<Home />} />
+       <Route path="/" element={<Home />} />
        <Route path="/eroi/page/:page" element={<HeroCard />} />
        <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
        <Route path="/register" element={<Register />} />
@@ -43,6 +44,7 @@ function App() {
        <Route path="/eroi/:id" element={<CardsPage isLoggedIn={isLoggedIn} />} />
        <Route path="/favorites" element={<Favorites />} />
        <Route path="/category/:nomecateg/page/:page" element={<CategoriesCard />} />
+       <Route path="/notfound" element={<NotFound />} />
       </Routes>
       <Footer />
     </>

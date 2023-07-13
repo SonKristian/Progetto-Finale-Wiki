@@ -14,7 +14,11 @@ const Header = ({ isLoggedIn, isDark }) => {
   const storedName = sessionStorage.getItem('user');
 
   const handleSearch = () => {
+    if (searchQuery.trim() === "") {
+    window.location.href = "/notfound";
+    }else{ 
     window.location.href = `/results/${encodeURIComponent(searchQuery)}`;
+    }
   };
 
   const handleInputChange = (e) => {
@@ -37,7 +41,7 @@ const Header = ({ isLoggedIn, isDark }) => {
         </div>
         
         <div className="flex items-center">
-        <Link to="/home">
+        <Link to="/">
          <img
            src={isDark ? "http://localhost:5173/src/assets/negativeLogo.svg" : "http://localhost:5173/src/assets/logoSpotlight.svg"}
            alt="logo"

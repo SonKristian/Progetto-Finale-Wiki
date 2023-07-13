@@ -66,7 +66,7 @@ const CreateHero = () => {
             Create Again
         </button>
 
-        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/home"}}>
+        <button className="btn-action w-[200px]" onClick={() => {window.location.href = "/"}}>
             Homepage
         </button>
 

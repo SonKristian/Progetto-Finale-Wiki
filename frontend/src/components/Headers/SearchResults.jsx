@@ -2,46 +2,45 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Cards from "../CardsPage/Cards.jsx";
 import axios from "axios";
-import Loading from "../Loading/Loading.jsx";
 
 const SearchResult = () => {
   const { nome } = useParams();
   const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [found, setFound] = useState(false)
- 
+  const [found, setFound] = useState(false);
+  const [redirect, setRedirect] = useState(false); // Aggiunto stato per reindirizzamento
+
   useEffect(() => {
     const fetchHero = async () => {
       try {
-        setLoading(true);
         setTimeout(async () => {
-  
-        const response = await axios.post(
-          `http://localhost:3000/search/${encodeURIComponent(nome)}`
-        );
-        const data = response.data; // Estrai i dati dalla risposta
-        setSearchResults(data);
-        setLoading(false);
-        setFound(true)
-      }, 3000);
+          const response = await axios.post(
+            `http://localhost:3000/search/${encodeURIComponent(nome)}`
+          );
+          const data = response.data;
+          setSearchResults(data);
+          setFound(true);
+        }, 3000);
       } catch (error) {
         console.error("Error searching for hero:", error);
-        setLoading(false);
-        setFound(false)
-        if(!found) window.location.href = "/notfound" 
+        setFound(false);
+        if (!found) {
+          setRedirect(true); // Imposta lo stato di reindirizzamento
+        }
       }
     };
 
     fetchHero();
-  }, [nome]); // Aggiungi nome come dipendenza per richiamare la ricerca ogni volta che il parametro nome cambia
- 
+  }, [nome]);
+
+  // Controllo per reindirizzamento
+  // if (found) {
+  //   window.location.href = "/notfound";
+  //   return null; // Evita il rendering del componente quando si verifica il reindirizzamento
+  // }
 
   return (
     <div className="flex justify-center items-center">
-      {loading ? (
-        <Loading loading={loading} />
-      ) : (
-        Object.values(searchResults).map((hero, i) => (
+        {Object.values(searchResults).map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
             <Cards
               size="small"
@@ -50,8 +49,7 @@ const SearchResult = () => {
               name={hero.name}
             />
           </Link>
-        ))
-      )}
+        ))}
     </div>
   );
 };

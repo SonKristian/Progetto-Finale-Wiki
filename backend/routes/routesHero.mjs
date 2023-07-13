@@ -57,15 +57,15 @@ export const getAllHero = (req, res) => {
 };
 
 export const createFavorites = async (req, res) => {
-  const user = req.headers.user;
-  const id = req.headers.id;
+  const user = req.params.username;
+  const id = req.body.id;
   if (utenti[user]) {
     utenti[user].favorites.push(parseInt(id));
   }
 
   await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
 
-  res.send("ok");
+  res.send("Added to favorites");
   // } catch {
   //   res.status(200).send({
   //     data: {},
@@ -77,7 +77,7 @@ export const createFavorites = async (req, res) => {
 
 export const deleteFavorite = async (req, res) => {
   const userId = req.params.username;
-  const id = req.headers.id;
+  const id = req.headers["id"];
   console.log(id);
   const user = utenti[userId];
   console.log(user);
@@ -105,8 +105,10 @@ export const getFavorites = async (req, res) => {
   if (user) {
     const favoriteItems = user.favorites.map((favId) => {
       const hero = supereroi[favId];
+      const url = supereroi[favId].image.url
       return {
         id: favId,
+        image: url,
         name: hero ? hero.name : 'Unknown', // Assumendo che il nome sia presente nel file supereroi.json
       };
     });

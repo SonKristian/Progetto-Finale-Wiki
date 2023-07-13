@@ -1,30 +1,60 @@
 import Cards from "./Cards.jsx";
 import "./css/cardspage.css";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios"
 
 const CardsPage = ({ isLoggedIn }) => {
   const [hero, setHero] = useState({});
   const { id } = useParams();
   const [activeSection, setActiveSection] = useState(null);
-
+  const [favorite, setsFavorite] = useState(false)
+  const storedToken = sessionStorage.getItem("jwtToken")
+  const storedUser = sessionStorage.getItem("user")
   // Funzione per salvare l'ID dell'eroe nei preferiti dell'utente
-  const addToFavorites = () => {
-    const user = JSON.parse(sessionStorage.getItem("user"));
-    if (user && user.favorites) {
-      // Verifica se l'eroe è già presente nei preferiti
-      if (!user.favorites.includes(id)) {
-        // Aggiungi l'ID dell'eroe all'array dei preferiti
-        user.favorites.push(id);
-        // Aggiorna l'utente nella sessione
-        sessionStorage.setItem("user", JSON.stringify(user));
-        console.log("Hero added to favorites:", id);
-      } else {
-        console.log("Hero already in favorites:", id);
-      }
+
+  const addFavorites = async () => {
+    console.log(id);
+    try {
+      const response = await axios.post(
+        `http://localhost:3000/favorite/${storedUser}`,
+        { id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        }
+      );
+      setsFavorite(true);
+      console.log("Added to favorites", response);
+    } catch (error) {
+      console.error(error);
+      setHero({});
     }
   };
+
+  const removeFavorites = async () => {
+    console.log(id);
+    try {
+      const response = await axios.delete(
+        `http://localhost:3000/favorite/${storedUser}`,
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+            id: id
+          },
+        }
+      );
+      setsFavorite(false);
+      console.log("Deleted from favorites", response);
+    } catch (error) {
+      console.error(error);
+      setHero({});
+    }
+  };
+  
   
   useEffect(() => {
     async function getHero() {
@@ -55,7 +85,14 @@ const CardsPage = ({ isLoggedIn }) => {
             ) : (
               <div className="flex items-center justify-around gap-[6.5rem] mt-2">
               <h2 className="font-extrabold text-3xl">{hero.name}</h2>
-              <p className="w-[30px] cursor-pointer" onClick={addToFavorites}><FavoriteIcon /></p>
+              {!favorite ? (
+              <p className="w-[30px] cursor-pointer" onClick={addFavorites}><FavoriteIcon /></p>
+              ):(
+                <div className="flex gap-[1rem]">
+                <p className="w-[30px] cursor-pointer" onClick={addFavorites}><FavoriteIcon /></p>
+                <p className="w-[30px] cursor-pointer" onClick={removeFavorites}><DeleteIcon /></p>
+                </div>
+              )}
               </div>
             )}
         </div>

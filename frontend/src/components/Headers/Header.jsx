@@ -9,7 +9,6 @@ import "./css/header.css";
 
 
 const Header = ({ isLoggedIn, isDark }) => {
-
   const [searchQuery, setSearchQuery] = useState(""); // Inizialmente impostato con il valore del parametro nome, se presente
   const storedName = sessionStorage.getItem('user');
 
@@ -78,7 +77,7 @@ const Header = ({ isLoggedIn, isDark }) => {
           </div>
         ) : (
          <div className="form">
-          <Link to="/favorites">
+          <Link to={`/favorites/${storedName}`}>
             <button className={`btn-action ${isDark ? "dark-mode" : ""}`} type="button">Favorites</button>
           </Link>
           <div className="form">

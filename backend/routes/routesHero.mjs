@@ -24,18 +24,25 @@ export const getHeroGenre = async (req, res) => {
   );
   res.send(slicegen);
 };
-
 export const search = async (req, res) => {
   const nome = encodeURIComponent(req.params.nome);
   const accessToken = "235074712596162"; // Sostituisci con il tuo access token
-
+  
   const response = await axios.get(
     `https://superheroapi.com/api/${accessToken}/search/${nome}`
   );
   const data = response.data.results;
-  console.log(data);
-  res.send(data);
+  
+  if (!data || data === "" || data === null || data === undefined)  {
+    res.status(404).send({
+      message : "not found"
+    });
+    console.log(data);
+  } else {
+    res.send(data);
+  }
 };
+
 
 export const getSingleHero = (req, res) => {
   let hero = Object.entries(supereroi);

@@ -9,7 +9,7 @@ const CardsPage = ({ isLoggedIn }) => {
   const [hero, setHero] = useState({});
   const { id } = useParams();
   const [activeSection, setActiveSection] = useState(null);
-  const [favorite, setsFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(false);
   const storedToken = sessionStorage.getItem("jwtToken");
   const storedUser = sessionStorage.getItem("user");
   // Funzione per salvare l'ID dell'eroe nei preferiti dell'utente
@@ -26,14 +26,14 @@ const CardsPage = ({ isLoggedIn }) => {
           },
         }
       );
-      setsFavorite(true);
       console.log("Added to favorites", response);
+      setFavorite(true); // Aggiorna il valore di favorite dopo l'aggiunta ai preferiti
     } catch (error) {
       console.error(error);
       setHero({});
     }
   };
-
+  
   const removeFavorites = async () => {
     console.log(id);
     try {
@@ -46,13 +46,43 @@ const CardsPage = ({ isLoggedIn }) => {
           },
         }
       );
-      setsFavorite(false);
       console.log("Deleted from favorites", response);
+      setFavorite(false); // Aggiorna il valore di favorite dopo la rimozione dai preferiti
     } catch (error) {
       console.error(error);
       setHero({});
     }
   };
+  
+  
+  useEffect(() => {
+    const getFavorites = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3000/favorite/${storedUser}`,
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+              id: id,
+            },
+          }
+        );
+        const data = response.data;
+        console.log("data", data);
+        const fav = data.filter((e) => e.id == id);
+        console.log("fav", fav);
+        if(fav.length!=0){
+          setFavorite(true);
+        }else{
+        setFavorite(false);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getFavorites();
+  }, [favorite]);
+  
 
   useEffect(() => {
     async function getHero() {
@@ -75,26 +105,6 @@ const CardsPage = ({ isLoggedIn }) => {
     );
   };
 
-  useEffect(() => {
-    async function handleAlreadyFavorite() {
-      if (isLoggedIn) {
-        const res = await axios.get(
-          `http://localhost:3000/favorite/${storedUser}`,
-          {
-            headers: {
-              Authorization: `Bearer ${storedToken}`,
-              id: id,
-            },
-          }
-        );
-        const favorites = res.data.includes(id);
-        console.log(favorites);
-        favorites ? setsFavorite(true) : setsFavorite(false);
-      }
-    }
-    handleAlreadyFavorite();
-  }, [id]);
-
   return (
     <div className="flex justify-around mt-5 mb-[5rem] bg-slate-400">
       {/* left */}
@@ -106,7 +116,7 @@ const CardsPage = ({ isLoggedIn }) => {
             <div className="flex items-center justify-around gap-[6.5rem] mt-2">
               <h2 className="font-extrabold text-3xl">{hero.name}</h2>
               <p
-                className={favorite ? "fav-on" : "fav-off"}
+                className={`fav-icon ${favorite ? "fav-on" : "fav-off"}`}
                 onClick={!favorite ? addFavorites : removeFavorites}
               >
                 <FavoriteIcon />

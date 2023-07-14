@@ -3,30 +3,45 @@
     "email": "sieggay@gmail.com",
     "password": "$2a$10$/2l04sD2Fp3by6Pm./sqg.e4FO7GV2bZDEeKEqYqqHjL4hKzu/vB.",
     "heroescreated": [],
-    "favorites": [1]
+    "favorites": [
+      1
+    ]
   },
   "ErNotGabri": {
     "email": "gabripelato@sicilia.com",
     "password": "$2a$10$kMHsaFUUswIq.v3UvsPeluxxfrcc6hX60EqOUswyECS08pqq/1Nei",
     "heroescreated": [],
-    "favorites": [2]
+    "favorites": [
+      2
+    ]
   },
   "rre": {
     "email": "re@re.re",
     "password": "$2a$10$creSLKosUBm5sAF/T1nZJumdp5ldX.4eIVawXpkCpPnAAq0eGRN3u",
-    "heroescreated": [1, 2, 3, 4],
-    "favorites": [3, 18, 437]
+    "heroescreated": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "favorites": []
   },
   "f": {
     "email": "f@f.f",
     "password": "$2a$10$MWgb5fhuAE3m5/xYJTD3WOjbfQps1Zg26zUUC7/fs2xnn5NhIUrtS",
     "heroescreated": [],
-    "favorites": [4]
+    "favorites": [
+      4
+    ]
   },
   "forty": {
     "email": "fortuna@gmail.com",
     "password": "$2a$10$XaVS0X7F15YFG5e./L7OAOpq7RlH7Im4Sy3MJi4fUJv64tlo.Zt/e",
-    "heroescreated": [5],
-    "favorites": [6]
+    "heroescreated": [
+      5
+    ],
+    "favorites": [
+      6
+    ]
   }
 }

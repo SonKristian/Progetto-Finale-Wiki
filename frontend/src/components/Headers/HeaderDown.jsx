@@ -35,7 +35,7 @@ const HeaderDown = ({ active, isDark }) => {
             className={`headerdown ${!isDark ? "dark-mode" : ""}`}
             onClick={toggleDropdown}
           >
-            <button id="list">Genere</button>
+            <button id="list">Genre</button>
             {isOpen && (
               <ul className={`dropdown ${!isDark ? "dark-mode" : ""}`}>
                 {categories.map((category) => (

@@ -35,7 +35,7 @@ const FooterDown = () => {
       </div>
 
       <div className="mt-4">
-        <h2 className="text-white font-bold cursor-pointer">Testo 4</h2>
+        <h2 className="text-white font-bold cursor-pointer">Other </h2>
         <ul className="flex flex-col w-[170px] text-white h-[250px] items-start cursor-pointer">
           <li className="hover:text-black">Help & FAQ</li>
           <li className="hover:text-black">Terms & Conditions</li>

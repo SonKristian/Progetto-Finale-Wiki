@@ -122,7 +122,16 @@ export const heroDelete = async (req, res) => {
   if (deleteHeroIndex !== -1) {
     newHeroes.splice(deleteHeroIndex, 1);
 
+    // Rimuovi l'eroe dall'array heroescreated dell'utente
+    Object.values(utenti).forEach((user) => {
+      const heroIndex = user.heroescreated.indexOf(parseInt(heroName));
+      if (heroIndex !== -1) {
+        user.heroescreated.splice(heroIndex, 1);
+      }
+    });
+
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
+    await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
     res.status(200).send("Hero has been deleted").end();
   } else {
     res.status(404).send({
@@ -132,6 +141,7 @@ export const heroDelete = async (req, res) => {
     });
   }
 };
+
 
 export const getAllNewHero = async (req, res) => {
   if (newHeroes) {

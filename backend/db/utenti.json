@@ -46,5 +46,13 @@
     "favorites": [
       6
     ]
+  },
+  "Pasqualone": {
+    "email": "paky@rozzi.it",
+    "password": "$2a$10$BdhT4loXsWokjUC0sVRqGekDoIUCAEuW8BnKF1rpjNseeKWZUHPbu",
+    "heroescreated": [
+      6
+    ],
+    "favorites": []
   }
 }

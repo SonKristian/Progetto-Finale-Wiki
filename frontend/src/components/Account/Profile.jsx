@@ -16,21 +16,21 @@ const Profile = ({ setIsLoggedIn }) => {
       try {
         setLoading(true);
         setTimeout(async () => {
-        const response = await axios.get(
-          `http://localhost:3000/allnewheroes/${encodeURIComponent(
-            storedName
-          )}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${storedToken}`,
-            },
-          }
-        );
-        const data = response.data;
-        setNewHero(data);
-        console.log(data);
-        setLoading(false);
+          const response = await axios.get(
+            `http://localhost:3000/allnewheroes/${encodeURIComponent(
+              storedName
+            )}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${storedToken}`,
+              },
+            }
+          );
+          const data = response.data;
+          setNewHero(data);
+          console.log(data);
+          setLoading(false);
         }, 3000);
       } catch (error) {
         console.log(error);
@@ -68,44 +68,55 @@ const Profile = ({ setIsLoggedIn }) => {
         </div>
 
         <div className="flex flex-col gap-[2rem] w-[600px]">
-        <Loading loading={loading} url={"http://localhost:5173/src/assets/spidermeme.gif"} />
-          {newHero.map((heroes) =>
-            Object.entries(heroes).map(([id, hero]) => (
-              <div
-                className="flex items-center justify-between"
-                key={id.toString()}
-              >
-                <div className="flex items-center justify-between flex-grow">
-                  <ul className="mr-[1rem]">
-                    <li>Name: {hero.name}</li>
-                    <li>Gender: {hero.gender}</li>
-                    <li>Race: {hero.race}</li>
-                    <li>Height: {hero.height}</li>
-                    <li>Weight: {hero.weight}</li>
-                    <li>Eye Color: {hero.eyecol}</li>
-                    <li>Hair Color: {hero.haircol}</li>
-                  </ul>
-                  <div className="flex items-center gap-[1rem]">
-                    <button
-                      className="btn-action"
-                      onClick={() =>
-                        (window.location.href = `/modify/newhero/${hero.id}`)
-                      }
-                    >
-                      <ModeEditIcon />
-                    </button>
-                    <button
-                      className="btn-action"
-                      onClick={() =>
-                        (window.location.href = `/delete/newhero/${hero.id}`)
-                      }
-                    >
-                      <DeleteIcon />
-                    </button>
+          <Loading
+            loading={loading}
+            url={"http://localhost:5173/src/assets/spidermeme.gif"}
+          />
+          {newHero.length === 0 ? (
+            <div className="flex items-center justify-center">
+              <p>
+                Non hai creato ancora nessun eroe, rimedia usando questo bottone
+              </p>
+            </div>
+          ) : (
+            newHero.map((heroes) =>
+              Object.entries(heroes).map(([id, hero]) => (
+                <div
+                  className="flex items-center justify-between"
+                  key={id.toString()}
+                >
+                  <div className="flex items-center justify-between flex-grow">
+                    <ul className="mr-[1rem]">
+                      <li>Name: {hero.name}</li>
+                      <li>Gender: {hero.gender}</li>
+                      <li>Race: {hero.race}</li>
+                      <li>Height: {hero.height}</li>
+                      <li>Weight: {hero.weight}</li>
+                      <li>Eye Color: {hero.eyecol}</li>
+                      <li>Hair Color: {hero.haircol}</li>
+                    </ul>
+                    <div className="flex items-center gap-[1rem]">
+                      <button
+                        className="btn-action"
+                        onClick={() =>
+                          (window.location.href = `/modify/newhero/${hero.id}`)
+                        }
+                      >
+                        <ModeEditIcon />
+                      </button>
+                      <button
+                        className="btn-action"
+                        onClick={() =>
+                          (window.location.href = `/delete/newhero/${hero.id}`)
+                        }
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))
+              ))
+            )
           )}
         </div>
         <Link to="/newhero">

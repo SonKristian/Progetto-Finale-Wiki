@@ -57,7 +57,7 @@ const CreateHero = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-around gap-10">
-          <p>Hero has been created successfully</p>
+          <p>Hero has been deleted successfully</p>
           <div className="flex items-center justify-around gap-10">
             <button
               className="btn-action w-[200px]"
@@ -65,7 +65,7 @@ const CreateHero = () => {
                 window.location.href = "/newhero";
               }}
             >
-              Create Again
+              Create 
             </button>
 
             <button

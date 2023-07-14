@@ -30,6 +30,7 @@ const CreateHero = () => {
     } catch (error) {
       setHerostatus("Error occurred during deletion");
       console.error(error);
+      window.location.href = "/notfound"
     }
   };
 

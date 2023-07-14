@@ -47,6 +47,7 @@ const CreateHero = () => {
     } catch (error) {
       setHerostatus("Error occurred during creation");
       console.error(error);
+      window.location.href = "/notfound"
     }
   };
 

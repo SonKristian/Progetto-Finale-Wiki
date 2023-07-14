@@ -31,9 +31,10 @@ const CardsPage = ({ isLoggedIn }) => {
     } catch (error) {
       console.error(error);
       setHero({});
+      window.location.href = "/notfound"
     }
   };
-  
+
   const removeFavorites = async () => {
     console.log(id);
     try {
@@ -51,38 +52,39 @@ const CardsPage = ({ isLoggedIn }) => {
     } catch (error) {
       console.error(error);
       setHero({});
+      window.location.href = "/notfound"
     }
   };
-  
-  
+
   useEffect(() => {
     const getFavorites = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/favorite/${storedUser}`,
-          {
-            headers: {
-              Authorization: `Bearer ${storedToken}`,
-              id: id,
-            },
+          const response = await axios.get(
+            `http://localhost:3000/favorite/${storedUser}`,
+            {
+              headers: {
+                Authorization: `Bearer ${storedToken}`,
+                id: id,
+              },
+            }
+          );
+          const data = response.data;
+
+          console.log("data", data);
+          const fav = data.filter((e) => e.id == id);
+          console.log("fav", fav);
+          if (fav.length != 0) {
+            setFavorite(true);
+          } else {
+            setFavorite(false);
           }
-        );
-        const data = response.data;
-        console.log("data", data);
-        const fav = data.filter((e) => e.id == id);
-        console.log("fav", fav);
-        if(fav.length!=0){
-          setFavorite(true);
-        }else{
-        setFavorite(false);
-        }
       } catch (error) {
         console.error(error);
+        window.location.href = "/notfound"
       }
     };
     getFavorites();
   }, [favorite]);
-  
 
   useEffect(() => {
     async function getHero() {
@@ -93,6 +95,7 @@ const CardsPage = ({ isLoggedIn }) => {
       } catch (error) {
         console.error("Error fetching hero:", error);
         setHero({});
+        window.location.href = "/notfound"
       }
     }
 
@@ -125,6 +128,11 @@ const CardsPage = ({ isLoggedIn }) => {
           )}
         </div>
         {hero.image && <Cards size="big" url={hero.image.url} />}
+        {favorite && (
+          <p className="text-center mt-4">
+            L&apos;eroe è stato inserito nei preferiti
+          </p>
+        )}
       </div>
       {/* right */}
       <div className="mt-2 mr-[5rem]">

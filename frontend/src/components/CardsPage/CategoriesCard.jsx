@@ -28,6 +28,7 @@ const CategoriesCard = ({ isDark }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
+        window.location.href = "/notfound"
       }
       // console.log("ciao")
     }
@@ -97,7 +98,7 @@ const CategoriesCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        <Loading loading={loading} />
+        <Loading loading={loading} url={"http://localhost:5173/src/assets/spider.gif"}/>
         {heroCat.map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
             {/* {console.log(" map " + heroCat)} */}

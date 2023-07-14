@@ -42,6 +42,7 @@ const Login = ({ setIsLoggedIn }) => {
     } catch (error) {
       setIsLoggedIn("Error during Log in");
       console.error(error);
+      window.location.href = "/notfound"
     }
   };
 

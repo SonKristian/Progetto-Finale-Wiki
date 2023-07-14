@@ -1,10 +1,9 @@
-const Loading = ({ loading }) => {
+const Loading = ({ loading, url }) => {
   return (
-    <div>
+    <div className="flex items-center justify-center">
       {loading && (
-        <img src="http://localhost:5173/src/assets/spider.gif" alt="Loading" />
+        <img src={url} alt="Loading" />
       )}
-      {/* Altri componenti della tua pagina */}
     </div>
   );
 };

@@ -41,6 +41,7 @@ const ModifyHero = () => {
         setHaircol(hero.haircol);
       } catch (error) {
         console.error(error);
+        window.location.href = "/notfound"
       }
     };
 
@@ -83,6 +84,7 @@ const ModifyHero = () => {
     } catch (error) {
       setHerostatus("Error occurred during editing");
       console.error(error);
+      window.location.href = "/notfound"
     }
   };
 

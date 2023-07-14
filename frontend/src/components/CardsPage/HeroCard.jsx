@@ -27,6 +27,7 @@ const HeroCard = ({ isDark }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
+        window.location.href = "/notfound"
       }
     }
     getHeroes();
@@ -94,12 +95,12 @@ const HeroCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        <Loading loading={loading} />
+        <Loading loading={loading} url={"http://localhost:5173/src/assets/spider.gif"}/>
         {Object.values(allHeroes).map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
             <Cards
               size="small"
-              sizeContainer="small"
+              sizeContainer="small hover"
               url={hero.image.url}
               name={hero.name}
             />

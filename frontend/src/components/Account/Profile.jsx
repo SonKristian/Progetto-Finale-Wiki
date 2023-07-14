@@ -3,26 +3,39 @@ import { Link } from "react-router-dom";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
+import Loading from "../Loading/Loading";
 
 const Profile = ({ setIsLoggedIn }) => {
   const [newHero, setNewHero] = useState([]);
+  const [loading, setLoading] = useState(false);
   const storedName = sessionStorage.getItem("user");
   const storedToken = sessionStorage.getItem("jwtToken");
 
   useEffect(() => {
     async function fetchNewHero() {
-      const response = await axios.get(
-        `http://localhost:3000/allnewheroes/${encodeURIComponent(storedName)}`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${storedToken}`,
-          },
-        }
-      );
-      const data = response.data;
-      setNewHero(data);
-      console.log(data);
+      try {
+        setLoading(true);
+        setTimeout(async () => {
+        const response = await axios.get(
+          `http://localhost:3000/allnewheroes/${encodeURIComponent(
+            storedName
+          )}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${storedToken}`,
+            },
+          }
+        );
+        const data = response.data;
+        setNewHero(data);
+        console.log(data);
+        setLoading(false);
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+        window.location.href = "/notfound";
+      }
     }
     fetchNewHero();
   }, []);
@@ -45,7 +58,7 @@ const Profile = ({ setIsLoggedIn }) => {
             alt="Profile"
           />
           <div>
-            <p>{storedName}'s superheroes</p>
+            <p>{storedName}&apos;s superheroes</p>
           </div>
           <div>
             <button className="btn-action" onClick={handleLogout}>
@@ -55,6 +68,7 @@ const Profile = ({ setIsLoggedIn }) => {
         </div>
 
         <div className="flex flex-col gap-[2rem] w-[600px]">
+        <Loading loading={loading} url={"http://localhost:5173/src/assets/spidermeme.gif"} />
           {newHero.map((heroes) =>
             Object.entries(heroes).map(([id, hero]) => (
               <div

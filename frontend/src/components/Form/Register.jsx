@@ -56,6 +56,7 @@ const Register = () => {
     } catch (error) {
       setRegistrationStatus("Error occurred during registration");
       console.error(error);
+      window.location.href = "/notfound"
     }
   };
 

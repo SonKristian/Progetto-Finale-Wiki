@@ -74,7 +74,7 @@ const Profile = ({ setIsLoggedIn }) => {
           />
           {newHero.length === 0 ? (
             <div className="flex items-center justify-center">
-              <p>
+              <p className="text-xl font-bold">
                 Non hai creato ancora nessun eroe, rimedia usando questo bottone
               </p>
             </div>

@@ -5,6 +5,7 @@ import DarkMode from "../DarkMode/DarkMode.jsx"
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchResult from './SearchResults';
+import Logo from "./Logo.jsx"
 import "./css/header.css";
 
 
@@ -40,12 +41,9 @@ const Header = ({ isLoggedIn, isDark }) => {
         </div>
         
         <div className="flex items-center">
-        <Link to="/">
-         <img
-           src={isDark ? "http://localhost:5173/src/assets/negativeLogo.svg" : "http://localhost:5173/src/assets/logoSpotlight.svg"}
-           alt="logo"
-           className="w-[50px] m-[2rem]" />
-        </Link>
+          <Link to="/">
+            <Logo isDark={isDark} />
+          </Link>
         </div>
         
       <div className="search-icon-bar">

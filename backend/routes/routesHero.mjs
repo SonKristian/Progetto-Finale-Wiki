@@ -24,6 +24,7 @@ export const getHeroGenre = async (req, res) => {
   );
   res.send(slicegen);
 };
+
 export const search = async (req, res) => {
   const nome = encodeURIComponent(req.params.nome);
   const accessToken = "235074712596162"; // Sostituisci con il tuo access token
@@ -35,11 +36,11 @@ export const search = async (req, res) => {
   
   if (!data || data === "" || data === null || data === undefined)  {
     res.status(404).send({
-      message : "not found"
+      message : "Hero not found"
     });
     console.log(data);
   } else {
-    res.send(data);
+    res.status(200).send(data);
   }
 };
 
@@ -60,26 +61,27 @@ export const getAllHero = (req, res) => {
   const superArray = Object.values(supereroi);
   const superSlice = superArray.slice(startIndex, endIndex);
 
-  res.send(superSlice);
+  res.status(200).send(superSlice);
 };
 
 export const createFavorites = async (req, res) => {
   const user = req.params.username;
   const id = req.body.id;
+  
+  try{
   if (utenti[user]) {
     utenti[user].favorites.push(parseInt(id));
   }
 
   await fs.writeFile(DB_PATH_USER, JSON.stringify(utenti, null, "  "));
-
-  res.send("Added to favorites");
-  // } catch {
-  //   res.status(200).send({
-  //     data: {},
-  //     error: true,
-  //     message: "Favorite cannot be added",
-  //   });
-  // }
+  res.status(200).send("Added to favorites");
+  }catch (error){
+    res.status(404).send({
+      data: {},
+      error: true,
+      message: "Favorite cannot be added",
+    });
+  }
 };
 
 export const deleteFavorite = async (req, res) => {
@@ -99,7 +101,7 @@ export const deleteFavorite = async (req, res) => {
     res.status(404).send({
       data: {},
       error: true,
-      message: "User or favorite not found",
+      message: "User or favorite cannot be deleted",
     });
   }
 };
@@ -120,7 +122,7 @@ export const getFavorites = async (req, res) => {
       };
     });
 
-    res.json(favoriteItems);
+    res.json(favoriteItems).status(200);
   } else {
     res.status(404).json({ message: "User not found" });
   }

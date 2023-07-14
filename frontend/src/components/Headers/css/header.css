@@ -77,3 +77,10 @@ button:hover {
   background-color: #FF0032;
   border-radius: 50px;
 }
+
+.light-logo{
+  background-image: url("/frontend/public/logoSpotlight.svg");
+  width: 50px;
+  margin: 2rem;
+}
+

@@ -7,21 +7,20 @@ const DB_PATH_USER = "./db/utenti.json";
 
 export const getNextId = (heroesArray) => {
   let maxId = 0;
-  
+
   for (const newHeroes of heroesArray) {
     const heroId = Object.keys(newHeroes)[0];
     const id = parseInt(heroId);
-    
+
     if (!isNaN(id) && id > maxId) {
       maxId = id;
     }
   }
-  
+
   return maxId + 1;
 };
 
 export let nextId;
-
 
 export const createHero = async (req, res) => {
   try {
@@ -48,13 +47,10 @@ export const createHero = async (req, res) => {
   }
 };
 
-
-
 export const getHeroesIdName = (req, res) => {
   const heroName = req.params.id;
 
-  
-  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName)
+  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName);
 
   if (foundHero) {
     res.send(foundHero);
@@ -71,51 +67,57 @@ export const getHeroesForUser = (req, res) => {
   console.log("id", arr_created);
   const tosend = [];
 
-  for (let i = 0; i < arr_created.length; i++) {
-    const heroId = arr_created[i];
-    console.log("heroid", heroId)
-    const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroId)
-    console.log("hero", foundHero)
-    if (foundHero) {
-      tosend.push(foundHero);
+  try {
+    for (let i = 0; i < arr_created.length; i++) {
+      const heroId = arr_created[i];
+      console.log("heroid", heroId);
+      const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroId);
+      console.log("hero", foundHero);
+      if (foundHero) {
+        tosend.push(foundHero);
+      }
     }
-  }
 
-  console.log("tosend", tosend);
-  res.json(tosend);
+    console.log("tosend", tosend);
+    res.json(tosend).status(200);
+  } catch (error) {
+    res.status(404).send({
+      message: "Cannot get Hero for your user",
+    });
+  }
 };
 
-
-
 export const heroUpdate = async (req, res) => {
-  const heroName = req.params.id
+  const heroName = req.params.id;
 
-  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName)
+  const foundHero = newHeroes.find((e) => Object.keys(e)[0] == heroName);
 
-  const id = Object.keys(foundHero)[0]
+  const id = Object.keys(foundHero)[0];
   console.log(foundHero);
-  
-  if (id) {
-    let newestHereos = {[id]: { ...req.body }};
 
-    newHeroes[id-1] = newestHereos;
+  if (id) {
+    let newestHereos = { [id]: { ...req.body } };
+
+    newHeroes[id - 1] = newestHereos;
 
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
-  
-    res.send(newHeroes);
+
+    res.status(200).send(newHeroes);
   } else {
-    res.status(200).send({
+    res.status(404).send({
       data: {},
       error: true,
       message: "Hero hasn't been found",
     });
   }
-}
+};
 
 export const heroDelete = async (req, res) => {
   const heroName = req.params.id;
 
-  const deleteHeroIndex = newHeroes.findIndex((e) => Object.keys(e)[0] === heroName);
+  const deleteHeroIndex = newHeroes.findIndex(
+    (e) => Object.keys(e)[0] === heroName
+  );
 
   if (deleteHeroIndex !== -1) {
     newHeroes.splice(deleteHeroIndex, 1);
@@ -123,7 +125,7 @@ export const heroDelete = async (req, res) => {
     await fs.writeFile(DB_PATH_NEWHERO, JSON.stringify(newHeroes, null, "  "));
     res.status(200).send("Hero has been deleted").end();
   } else {
-    res.status(200).send({
+    res.status(404).send({
       data: {},
       error: true,
       message: "Hero has not been found",
@@ -132,5 +134,9 @@ export const heroDelete = async (req, res) => {
 };
 
 export const getAllNewHero = async (req, res) => {
-  res.send(newHeroes);
+  if (newHeroes) {
+    res.status(200).send(newHeroes);
+  } else {
+    res.status(404).send({message : "There are not heroes"});
+  }
 };

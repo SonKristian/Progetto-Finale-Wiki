@@ -31,7 +31,6 @@ const CardsPage = ({ isLoggedIn }) => {
     } catch (error) {
       console.error(error);
       setHero({});
-      window.location.href = "/notfound"
     }
   };
 
@@ -52,35 +51,33 @@ const CardsPage = ({ isLoggedIn }) => {
     } catch (error) {
       console.error(error);
       setHero({});
-      window.location.href = "/notfound"
     }
   };
 
   useEffect(() => {
     const getFavorites = async () => {
       try {
-          const response = await axios.get(
-            `http://localhost:3000/favorite/${storedUser}`,
-            {
-              headers: {
-                Authorization: `Bearer ${storedToken}`,
-                id: id,
-              },
-            }
-          );
-          const data = response.data;
-
-          console.log("data", data);
-          const fav = data.filter((e) => e.id == id);
-          console.log("fav", fav);
-          if (fav.length != 0) {
-            setFavorite(true);
-          } else {
-            setFavorite(false);
+        const response = await axios.get(
+          `http://localhost:3000/favorite/${storedUser}`,
+          {
+            headers: {
+              Authorization: `Bearer ${storedToken}`,
+              id: id,
+            },
           }
+        );
+        const data = response.data;
+
+        console.log("data", data);
+        const fav = data.filter((e) => e.id == id);
+        console.log("fav", fav);
+        if (fav.length != 0) {
+          setFavorite(true);
+        } else {
+          setFavorite(false);
+        }
       } catch (error) {
         console.error(error);
-        window.location.href = "/notfound"
       }
     };
     getFavorites();
@@ -95,7 +92,6 @@ const CardsPage = ({ isLoggedIn }) => {
       } catch (error) {
         console.error("Error fetching hero:", error);
         setHero({});
-        window.location.href = "/notfound"
       }
     }
 

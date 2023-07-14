@@ -93,7 +93,10 @@ const Register = () => {
               required
             />
 
-            <label className="mt-[1.5rem]  flex justify-between " htmlFor="password">
+            <label
+              className="mt-[1.5rem]  flex justify-between "
+              htmlFor="password"
+            >
               <b>Password</b>
               <button
                 type="button"
@@ -112,7 +115,10 @@ const Register = () => {
               required
             />
 
-            <label className="mt-[1.5rem] flex justify-between " htmlFor="repeat-password">
+            <label
+              className="mt-[1.5rem] flex justify-between "
+              htmlFor="repeat-password"
+            >
               <b>Repeat Password</b>
               <button
                 type="button"

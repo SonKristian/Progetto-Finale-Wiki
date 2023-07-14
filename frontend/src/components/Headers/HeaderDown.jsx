@@ -31,13 +31,18 @@ const HeaderDown = ({ active, isDark }) => {
             <Link to="/eroi/page/1">All Heroes</Link>
           </div>
           {/* {console.log("from Header down" + isDark)} */}
-          <div className={`headerdown ${!isDark ? "dark-mode" : ""}`} onClick={toggleDropdown}>
+          <div
+            className={`headerdown ${!isDark ? "dark-mode" : ""}`}
+            onClick={toggleDropdown}
+          >
             <button id="list">Genere</button>
             {isOpen && (
               <ul className={`dropdown ${!isDark ? "dark-mode" : ""}`}>
                 {categories.map((category) => (
                   <li key={category}>
-                    <Link to={`/category/${encodeURIComponent(category)}/page/1`}>
+                    <Link
+                      to={`/category/${encodeURIComponent(category)}/page/1`}
+                    >
                       {category}
                     </Link>
                   </li>

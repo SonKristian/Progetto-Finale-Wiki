@@ -4,7 +4,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 
-const Profile = ({setIsLoggedIn}) => {
+const Profile = ({ setIsLoggedIn }) => {
   const [newHero, setNewHero] = useState([]);
   const storedName = sessionStorage.getItem("user");
   const storedToken = sessionStorage.getItem("jwtToken");
@@ -35,7 +35,6 @@ const Profile = ({setIsLoggedIn}) => {
     window.location.href = "/";
   };
 
-
   return (
     <div className="flex items-center justify-center mb-[5rem]">
       <div className="flex flex-col items-center justify-center gap-[2rem] mt-[2rem]">
@@ -49,12 +48,14 @@ const Profile = ({setIsLoggedIn}) => {
             <p>{storedName}'s superheroes</p>
           </div>
           <div>
-            <button className="btn-action" onClick={handleLogout}>Logout</button>
+            <button className="btn-action" onClick={handleLogout}>
+              Logout
+            </button>
           </div>
         </div>
 
         <div className="flex flex-col gap-[2rem] w-[600px]">
-            {newHero.map((heroes) =>
+          {newHero.map((heroes) =>
             Object.entries(heroes).map(([id, hero]) => (
               <div
                 className="flex items-center justify-between"
@@ -102,6 +103,5 @@ const Profile = ({setIsLoggedIn}) => {
     </div>
   );
 };
-
 
 export default Profile;

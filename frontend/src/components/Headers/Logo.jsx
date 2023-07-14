@@ -1,8 +1,8 @@
 const Logo = ({ isDark }) => {
-    return (
-      <>
-        <div className={isDark ? "light-logo" : "dark-logo"}>
-        {isDark ? (
+  return (
+    <>
+      <div className={isDark ? "light-logo" : "dark-logo"}>
+        {!isDark ? (
           <img
             src="http://localhost:5173/src/assets/logoSpotlight.svg"
             alt="light-mode-logo"
@@ -15,10 +15,9 @@ const Logo = ({ isDark }) => {
             className="w-[50px] m-[2rem]"
           />
         )}
-        </div>
-      </>
-    );
-  };
-  
-  export default Logo;
-  
+      </div>
+    </>
+  );
+};
+
+export default Logo;

@@ -105,7 +105,12 @@ const CardsPage = ({ isLoggedIn }) => {
           ) : (
             <div className="flex items-center justify-around gap-[6.5rem] mt-2">
               <h2 className="font-extrabold text-3xl">{hero.name}</h2>
-                <p className={favorite ? "fav-on" : "fav-off"} onClick={!favorite ? addFavorites : removeFavorites}><FavoriteIcon /></p>
+              <p
+                className={favorite ? "fav-on" : "fav-off"}
+                onClick={!favorite ? addFavorites : removeFavorites}
+              >
+                <FavoriteIcon />
+              </p>
             </div>
           )}
         </div>

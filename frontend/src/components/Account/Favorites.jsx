@@ -37,7 +37,12 @@ const Favorites = () => {
       {favorites.map((hero, i) => (
         <Link key={i} to={`/eroi/${hero.id}`}>
           {console.log("map", hero)}
-          <Cards size="small" sizeContainer="small" url={hero.image} name={hero.name} />
+          <Cards
+            size="small"
+            sizeContainer="small"
+            url={hero.image}
+            name={hero.name}
+          />
         </Link>
       ))}
     </div>

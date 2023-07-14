@@ -19,7 +19,7 @@ const DarkModeToggle = () => {
     if (dropdownElement) {
       dropdownElement.classList.toggle("dark-mode");
     }
-    
+
     const headerTopElement = document.querySelector(".header-top");
     if (headerTopElement) {
       headerTopElement.classList.toggle("dark-mode");
@@ -46,8 +46,8 @@ const DarkModeToggle = () => {
     }
 
     const logoElement = document.querySelector(".logo");
-    if(logoElement) {
-      logoElement.classList.toggle("dark-mode")
+    if (logoElement) {
+      logoElement.classList.toggle("dark-mode");
     }
 
     setisDark(true);

@@ -43,7 +43,7 @@ section {
 }
 .section-btn:hover,
 .section-btn:focus-within {
-  color: #FF0032;
+  color: #ff0032;
 }
 
 .progressbar {
@@ -75,13 +75,13 @@ section {
   background: rgba(0, 120, 255, 1);
 }
 
-.fav-on{
-color: red;
-width: 30px;
-cursor: pointer;
+.fav-on {
+  color: red;
+  width: 30px;
+  cursor: pointer;
 }
 
-.fav-off{
+.fav-off {
   color: black;
   width: 30px;
   cursor: pointer;

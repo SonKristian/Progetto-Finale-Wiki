@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading.jsx";
 const HeroCard = ({ isDark }) => {
   const [allHeroes, setAllHeroes] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false); 
+  const [loading, setLoading] = useState(false);
   const { page } = useParams();
   const currentPageParam = parseInt(page) || 1;
 
@@ -16,12 +16,14 @@ const HeroCard = ({ isDark }) => {
       try {
         setLoading(true);
         setTimeout(async () => {
-        const response = await fetch(`http://localhost:3000/eroi/page/${currentPageParam}`);
-        const data = await response.json();
-        setAllHeroes(data);
-        setTotalPages(data.totalPages);
-        setLoading(false);
-      }, 3000);
+          const response = await fetch(
+            `http://localhost:3000/eroi/page/${currentPageParam}`
+          );
+          const data = await response.json();
+          setAllHeroes(data);
+          setTotalPages(data.totalPages);
+          setLoading(false);
+        }, 3000);
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
@@ -29,7 +31,6 @@ const HeroCard = ({ isDark }) => {
     }
     getHeroes();
   }, [currentPageParam]);
-  
 
   const handlePageChange = (page) => {
     const nextPageUrl = `/eroi/page/${page}`;
@@ -53,7 +54,9 @@ const HeroCard = ({ isDark }) => {
     pagination.push(
       <button
         key="prev"
-        className={`pagination-item ${currentPageParam === 1 ? "disabled" : ""}`}
+        className={`pagination-item ${
+          currentPageParam === 1 ? "disabled" : ""
+        }`}
         onClick={handlePrevPage}
         disabled={currentPageParam === 1}
       >
@@ -80,7 +83,6 @@ const HeroCard = ({ isDark }) => {
           currentPageParam === totalPages ? "disabled" : ""
         }`}
         onClick={handleNextPage}
-      
       >
         Next
       </button>
@@ -92,20 +94,21 @@ const HeroCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        <Loading loading={loading}/>
-        {Object.values(allHeroes)
-          .map((hero, i) => (
-            <Link key={i} to={`/eroi/${hero.id}`}>
-              <Cards
-                size="small"
-                sizeContainer="small"
-                url={hero.image.url}
-                name={hero.name}
-              />
-            </Link>
-          ))}
+        <Loading loading={loading} />
+        {Object.values(allHeroes).map((hero, i) => (
+          <Link key={i} to={`/eroi/${hero.id}`}>
+            <Cards
+              size="small"
+              sizeContainer="small"
+              url={hero.image.url}
+              name={hero.name}
+            />
+          </Link>
+        ))}
       </div>
-      <div className={`container-pag ${isDark ? "dark-mode" : ""}`}>{renderPagination()}</div>
+      <div className={`container-pag ${isDark ? "dark-mode" : ""}`}>
+        {renderPagination()}
+      </div>
     </div>
   );
 };

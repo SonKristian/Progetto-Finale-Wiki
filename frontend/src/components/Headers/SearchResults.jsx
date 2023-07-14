@@ -19,10 +19,9 @@ const SearchResult = () => {
         console.error("Error searching for hero:", error);
       }
     };
-  
+
     fetchHero();
   }, [nome]);
-
 
   return (
     <div className="flex justify-center items-center">

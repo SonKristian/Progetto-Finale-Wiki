@@ -67,7 +67,10 @@ const Login = ({ setIsLoggedIn }) => {
               required
             />
 
-            <label className="mt-[1.5rem]  flex justify-between " htmlFor="password">
+            <label
+              className="mt-[1.5rem]  flex justify-between "
+              htmlFor="password"
+            >
               <b>Password</b>
               <button
                 type="button"
@@ -88,15 +91,17 @@ const Login = ({ setIsLoggedIn }) => {
           </div>
 
           <div className="mt-[1.5rem] flex flex-col justify-center items-center">
-                <button type="submit" className="form-btn">
-                  Login
-                </button>
-      
-              </div>
-  
+            <button type="submit" className="form-btn">
+              Login
+            </button>
+          </div>
+
           <div className="mt-[1.5rem] pb-[3rem] flex flex-col items-center justify-center">
             <p>
-              Do not have an account? <Link to="/register"><u className="text-white">Register</u></Link>
+              Do not have an account?{" "}
+              <Link to="/register">
+                <u className="text-white">Register</u>
+              </Link>
             </p>
           </div>
         </form>

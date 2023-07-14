@@ -3,50 +3,52 @@ body.dark-mode {
   transition: background-color 1s ease-in;
 }
 
-body.dark-mode h2{
+body.dark-mode h2 {
   color: white;
   transition: background-color 1s ease-in;
 }
 
-.nav-child.dark-mode, .dropdown.dark-mode{
-  background-color: #DF0B35;
+.nav-child.dark-mode,
+.dropdown.dark-mode {
+  background-color: #df0b35;
   color: white;
   transition: background-color 1s ease-in;
 }
 
 .btn-action.dark-mode {
-  background-color: #DF0B35 !important;
+  background-color: #df0b35 !important;
   color: white;
   transition: background-color 1s ease-in;
 }
 
-.form>.btn-action.dark-mode {
-  background-color: #DF0B35 !important;
+.form > .btn-action.dark-mode {
+  background-color: #df0b35 !important;
   color: white;
   transition: background-color 1s ease-in;
 }
 
-.header-top.dark-mode{
+.header-top.dark-mode {
   background-color: #5c5c5c !important;
   transition: background-color 1s ease-in;
 }
 
-.container-pag.dark-mode{
+.container-pag.dark-mode {
   color: white;
   transition: background-color 1s ease-in;
 }
 
-#footer-top.dark-mode{
+#footer-top.dark-mode {
   background-color: #042b22;
   transition: background-color 1s ease-in;
 }
 
-#footer-down.dark-mode{
-  background-color: #0A6753;
+#footer-down.dark-mode {
+  background-color: #0a6753;
   transition: background-color 1s ease-in;
 }
 /* background-color: 0A6753 */
-body.dark-mode p, body.dark-mode li {
+body.dark-mode p,
+body.dark-mode li {
   color: white;
 }
 

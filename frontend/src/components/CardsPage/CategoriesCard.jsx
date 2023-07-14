@@ -28,24 +28,30 @@ const CategoriesCard = ({ isDark }) => {
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
-        window.location.href = "/notfound"
+        window.location.href = "/notfound";
       }
-      // console.log("ciao")
     }
     getCategories();
   }, [nomecateg, currentPageParam]);
 
   const handlePageChange = (page) => {
-    const nextPageUrl = `/category/${nomecateg}/page/${page}`;
+    const nextPage = Math.min(page, totalPages);
+    const nextPageUrl = `/category/${nomecateg}/page/${nextPage > 0 ? nextPage : 1}`;
     window.location.href = nextPageUrl;
   };
 
   const handleNextPage = () => {
+    if (currentPageParam === totalPages) {
+      return;
+    }
     const nextPage = currentPageParam + 1;
     handlePageChange(nextPage);
   };
 
   const handlePrevPage = () => {
+    if (currentPageParam === 1) {
+      return;
+    }
     const prevPage = currentPageParam - 1;
     handlePageChange(prevPage);
   };
@@ -98,13 +104,15 @@ const CategoriesCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        <Loading loading={loading} url={"http://localhost:5173/src/assets/spider.gif"}/>
+        <Loading
+          loading={loading}
+          url={"http://localhost:5173/src/assets/spider.gif"}
+        />
         {heroCat.map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
-            {/* {console.log(" map " + heroCat)} */}
             <Cards
               size="small"
-              sizeContainer="small"
+              sizeContainer={`small ${hero.image.url ? "hover" : ""}`}
               url={hero.image.url}
               name={hero.name}
             />
@@ -117,5 +125,6 @@ const CategoriesCard = ({ isDark }) => {
     </div>
   );
 };
+
 
 export default CategoriesCard;

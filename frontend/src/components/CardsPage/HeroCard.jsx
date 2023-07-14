@@ -6,8 +6,8 @@ import Loading from "../Loading/Loading.jsx";
 
 const HeroCard = ({ isDark }) => {
   const [allHeroes, setAllHeroes] = useState([]);
-  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [totalPages, setTotalPages] = useState(1);
   const { page } = useParams();
   const currentPageParam = parseInt(page) || 1;
 
@@ -20,30 +20,37 @@ const HeroCard = ({ isDark }) => {
             `http://localhost:3000/eroi/page/${currentPageParam}`
           );
           const data = await response.json();
-          setAllHeroes(data);
           setTotalPages(data.totalPages);
+          setAllHeroes(data);
           setLoading(false);
         }, 3000);
       } catch (error) {
         console.error("Error fetching data:", error);
         setLoading(false);
-        window.location.href = "/notfound"
+        window.location.href = "/notfound";
       }
     }
     getHeroes();
   }, [currentPageParam]);
 
   const handlePageChange = (page) => {
-    const nextPageUrl = `/eroi/page/${page}`;
+    const nextPage = Math.min(page, totalPages);
+    const nextPageUrl = `/eroi/page/${nextPage > 0 ? nextPage : 1}`;
     window.location.href = nextPageUrl;
   };
 
   const handleNextPage = () => {
+    if (currentPageParam === totalPages) {
+      return;
+    }
     const nextPage = currentPageParam + 1;
     handlePageChange(nextPage);
   };
 
   const handlePrevPage = () => {
+    if (currentPageParam === 1) {
+      return;
+    }
     const prevPage = currentPageParam - 1;
     handlePageChange(prevPage);
   };
@@ -84,6 +91,7 @@ const HeroCard = ({ isDark }) => {
           currentPageParam === totalPages ? "disabled" : ""
         }`}
         onClick={handleNextPage}
+        disabled={currentPageParam === totalPages}
       >
         Next
       </button>
@@ -95,12 +103,15 @@ const HeroCard = ({ isDark }) => {
   return (
     <div className="categcard-container">
       <div className="flex items-center justify-center flex-wrap">
-        <Loading loading={loading} url={"http://localhost:5173/src/assets/spider.gif"}/>
+        <Loading
+          loading={loading}
+          url={"http://localhost:5173/src/assets/spider.gif"}
+        />
         {Object.values(allHeroes).map((hero, i) => (
           <Link key={i} to={`/eroi/${hero.id}`}>
             <Cards
               size="small"
-              sizeContainer="small hover"
+              sizeContainer="small"
               url={hero.image.url}
               name={hero.name}
             />
@@ -113,5 +124,7 @@ const HeroCard = ({ isDark }) => {
     </div>
   );
 };
+
+
 
 export default HeroCard;
